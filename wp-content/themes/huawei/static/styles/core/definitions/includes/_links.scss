@@ -1,0 +1,14 @@
+%link {
+    color : $secondary-01;
+    font-family : $font-primary;
+    cursor : pointer;
+    @include transition-default();
+    font-weight: 900;
+    &:hover {
+        text-decoration : underline;
+    }
+}
+
+.link {
+    @extend %link;
+}

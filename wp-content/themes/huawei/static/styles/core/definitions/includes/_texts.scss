@@ -1,0 +1,55 @@
+
+html{
+    font-family: $font-primary;
+    text-align: left;
+    color: $primary-black;
+}
+
+
+
+
+// définition du texte par défaut (police, couleur, épaisseur)
+
+%texts-default {
+    font-family: $font-primary;
+    color: $primary-black;
+    font-weight: 400;
+}
+
+// polices des textes courants 
+
+.p {
+    @extend %texts-default;
+    @include font-size(rem(14), rem(22));
+
+    @include breakpoint(sm) {
+        @include font-size(rem(16), rem(25));
+    }
+
+    &--small {
+        @extend %texts-default;
+        @include font-size(rem(12), rem(19));
+
+        @include breakpoint(sm) {
+            @include font-size(rem(14), rem(22));
+        }
+    }
+
+    &--medium {
+        @extend %texts-default;
+        @include font-size(rem(18), rem(29));
+
+        @include breakpoint(sm) {
+            @include font-size(rem(20), rem(32));
+        }
+    }
+
+    &--large {
+        @extend %texts-default;
+        @include font-size(rem(24), rem(34));
+    }
+
+    &--bold {
+        font-weight: 700;
+    }
+}

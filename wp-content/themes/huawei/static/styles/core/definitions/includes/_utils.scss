@@ -1,0 +1,24 @@
+/* ===================
+	    Icomoon
+/* ===================*/
+
+@mixin icon($content, $size: rem(24), $color: inherit) {
+  content: $content;
+  font-family: "icomoon";
+  font-size: $size;
+  color: $color;
+  font-weight: 400;
+}
+
+/* ===================
+	   Padding
+/* ===================*/
+@mixin padding(){
+  padding: rem(40) 0;
+  @include breakpoint(sm) {
+    padding: rem(60) 0;
+  }
+  @include breakpoint(lg) {
+    padding: rem(80) 0;
+  }
+}

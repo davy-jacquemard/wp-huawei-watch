@@ -1,0 +1,319 @@
+%clearfix {
+  &::after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+}
+@mixin text-truncate(){
+  @extend %clearfix;
+}
+
+%text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@mixin text-truncate(){
+  @extend %text-truncate;
+}
+
+@function number($string) {
+  // Matrices
+  $strings: '0' '1' '2' '3' '4' '5' '6' '7' '8' '9';
+  $numbers: 0 1 2 3 4 5 6 7 8 9;
+
+  // Result
+  $result: 0;
+
+  // Looping through all characters
+  @for $i from 1 through str-length($string) {
+    $character: str-slice($string, $i, $i);
+    $index: index($strings, $character);
+
+    @if not $index {
+      @warn "Unknown character `#{$character}`.";
+      @return false;
+    }
+
+    $number: nth($numbers, $index);
+    $result: $result * 10 + $number;
+  }
+
+  @return $result;
+}
+
+@function str-split($string, $separator) {
+  $i: str-index($string, $separator);
+  @if $i != null {
+    @return append(
+      str-slice($string, 1, $i - 1),
+      str-split(str-slice($string, $i + str-length($separator)), $separator)
+    );
+  }
+  @return $string;
+}
+
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+  @return $number;
+}
+
+@mixin position($position, $args) {
+  @each $o in top right bottom left {
+    $i: index($args, $o);
+    @if $i and $i + 1 <= length($args) and type-of(nth($args, $i + 1)) == number {
+      $value: nth($args, $i + 1);
+      @if(unit($value) == "px"){
+        #{$o}: rem(strip-unit($value));
+      }
+      @else {
+        #{$o}: $value;
+      }
+    }
+  }
+  position: $position;
+}
+
+// Positioning helpers
+@mixin absolute($args: '') {
+  @include position(absolute, $args);
+}
+
+@mixin fixed($args: '') {
+  @include position(fixed, $args);
+}
+
+@mixin relative($args: '') {
+  @include position(relative, $args);
+}
+
+@mixin size($width: null, $height: null) {
+  @if(unit($width) == "px"){
+    width : rem(strip-unit($width));
+  }
+  @else {
+    width: $width;
+  }
+  @if(unit($height) == "px"){
+    height : rem(strip-unit($height));
+  }
+  @else {
+    height: $height;
+  }
+}
+
+@mixin first($nb) {
+  &:nth-child(-n + #{$nb}) {
+    @content;
+  }
+}
+@mixin last($nb) {
+  &:nth-last-child(-n + #{$nb}) {
+    @content;
+  }
+}
+@mixin from($nb) {
+  &:nth-child(n+ #{$nb}){
+    @content;
+  }
+}
+@mixin from-end($nb) {
+  &:nth-last-child(#{$nb}){
+    @content;
+  }
+}
+@mixin each($nb) {
+  &:nth-child(#{$nb}n){
+    @content;
+  }
+}
+@mixin between($first, $last) {
+  &:nth-child(#{$first}+3):nth-child(-n+#{$last}){
+    @content;
+  }
+}
+
+@mixin margin($args) {
+
+  $values : true;
+
+  @each $o in $args {
+    @if type-of($o) == string and $o != "auto" {
+      $values: false;
+    }
+  }
+
+  @if $values {
+    margin: $args;
+  }
+  @else{
+    @each $o in top right bottom left {
+      $i: index($args, $o);
+      @if $i and $i + 1 <= length($args) and type-of(nth($args, $i + 1)) == number {
+        $value: nth($args, $i + 1);
+        @if(unit($value) == "px"){
+          margin-#{$o}: rem(strip-unit($value));
+        }
+        @else {
+          margin-#{$o}: $value;
+        }
+      }
+    }
+  }
+
+}
+
+@mixin padding($args) {
+
+  $values : true;
+
+  @each $o in $args {
+    @if type-of($o) == string and $o != "inherit" {
+      $values: false;
+    }
+  }
+
+  @if $values {
+    padding: $args;
+  }
+  @else{
+    @each $o in top right bottom left {
+      $i: index($args, $o);
+      @if $i and $i + 1 <= length($args) and type-of(nth($args, $i + 1)) == number {
+        $value: nth($args, $i + 1);
+        @if(unit($value) == "px"){
+          padding-#{$o}: rem(strip-unit($value));
+        }
+        @else {
+          padding-#{$o}: $value;
+        }
+      }
+    }
+  }
+
+}
+
+@function nth-safe($list, $key, $default) {
+  @return if($key <= length($list), nth($list, $key), $default);
+}
+
+@mixin calcOffset($direction, $args, $offset: 'fluid'){
+
+  $breakpoints: map-keys($grid-breakpoints);
+
+    @each $o in map-keys($grid-breakpoints) {
+
+        $i: index($args, $o);
+
+        @if $i {
+
+            $currentArgs: nth($args, $i + 1);
+            $breakpoint: $o;
+
+            $nbColumns: 12;
+            $pixelValue: 0;
+
+            $gutter-width: 0px;
+
+            @if type-of($currentArgs) == string {
+                $split-values: str-split($currentArgs, ' ');
+                $length: length($split-values);
+                @if $length > 1 {
+                    $nbColumns: number(nth($split-values, 1));
+                    $pixelValue: number(nth($split-values, 2));
+                }
+                @else{
+                    $nbColumns: number(nth($split-values, 1));
+                }
+            }
+            @else if type-of($currentArgs) == number {
+                $nbColumns: nth($args, $i + 1);
+            }
+
+            $pixelValue: $pixelValue + 'px';
+
+            $container-width: map-get($container-max-widths, $breakpoint);
+
+            @if ($o == 'xs' or $o == 'xsm' or $o == 'sm'){
+              $gutter-width: $grid-gutter-width;
+            }
+
+            $propertyDirection: 'left';
+            @if ($direction == 'left') {
+                $propertyDirection: 'right';
+            }
+
+            @if ($container-width) {
+                @include breakpoint(#{$o}) {
+                    @if ($o == 'xs' or $o == 'xsm' or $nbColumns == 12) {
+                        width: calc((#{$nbColumns} / #{$grid-columns} * 100%) + #{$pixelValue});
+                        #{$direction}: 0;
+                    } @else {
+                        @if ($offset == 'fluid') {
+                            width: calc((#{$nbColumns} * (#{$container-width} - #{$gutter-width}) / 12 + #{$pixelValue}) + (100% - (#{$container-width} - #{$gutter-width} / 2)) / 2);
+                        } @else {
+                            width: calc((#{$nbColumns} * (#{$container-width} - #{$gutter-width}) / 12 + #{$pixelValue}) + #{$offset}px);
+                        }
+                        #{$propertyDirection}: calc((100% - (#{$container-width} - #{$gutter-width} / 2)) / 2 + ((12 - #{$nbColumns}) * #{$container-width} / 12) - #{$pixelValue});
+                        #{$direction}: inherit;
+                    }
+                }
+            }
+
+            $nextbreakpoint: breakpoint-next($o);
+
+            @if($nextbreakpoint){
+
+                $nextArgs: nth-safe($args, $i + 2, null);
+
+                @if($nextbreakpoint != $nextArgs) {
+                    @include calcOffset($direction, $nextbreakpoint $currentArgs, $offset);
+                }
+
+            }
+
+        }
+
+    }
+
+}
+
+@mixin offsetcontainer($direction, $args, $offset: 'fluid'){
+  $minbreakpoint: nth($args, 1);
+  @include breakpoint($minbreakpoint) {
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+  }
+  @include calcOffset($direction, $args, $offset);
+}
+
+
+@mixin isIE(){
+  @media all and (-ms-high-contrast:none){
+     @content;
+  }
+}
+
+@mixin isEdge(){
+  @supports (-ms-ime-align: auto) {
+    @content;
+  }
+}
+
+@mixin isFirefox(){
+  @-moz-document url-prefix() {
+    @content;
+  }
+}
+
+@mixin isSafari() {
+  @media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0){
+    @content;
+  }
+}
+

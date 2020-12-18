@@ -1,0 +1,155 @@
+$border: rem(2);
+
+.btn {
+  height: rem(40);
+  font-size: rem(16);
+  line-height: rem(40);
+  border-radius: rem(20);
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0 rem(24);
+  outline: none;
+  color: white;
+  font-weight: 700;
+  font-family: $font-primary;
+
+
+  &--primary {
+    text-align: center;
+    border: 0;
+    transition: background 0.5s ease;
+
+    background: linear-gradient(135deg, $secondary-01 0%, transparent 100%);
+    background-color: $secondary-02;
+
+    &:hover {
+      background: linear-gradient(135deg, $secondary-01 0%, transparent 100%);
+      background-color: $secondary-01;
+    }
+
+
+  }
+
+  &--secondary {
+     color: $primary-black;
+    line-height: rem(36);
+
+
+    background: white;
+    background-clip: padding-box;
+    border: solid $border transparent;
+    border-radius: rem(30);
+    transition: color 0.3s ease;
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+      margin: -$border;
+      border-radius: inherit;
+      transition: background 0.5s ease;
+      background: linear-gradient(135deg, $secondary-01 0%, transparent 100%);
+      background-color: $secondary-02;
+    }
+
+    &:after {
+      content: '';
+      background: white;
+      background-clip: padding-box;
+      border-radius: rem(30);
+      transition: color 0.3s ease;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+
+    &:hover {
+      color: $secondary-01;
+
+      &:before {
+        background-color: $secondary-01;
+      }
+    }
+
+    &.btn--big {
+      line-height: rem(44);
+    }
+  }
+
+
+  &--simple {
+    @include font-size(rem(14), rem(22));
+    color: $primary-black;
+    padding-right: rem(20);
+    padding-left: 0;
+    height: auto;
+    position: relative;
+    @include transition-color();
+
+    &:before {
+      @include icon($icon-miniarrowright, rem(16), $secondary-03);
+      position: absolute;
+      right: 0;
+      top: rem(1);
+
+    }
+
+    &:hover {
+      color: $secondary-03;
+    }
+  }
+
+
+
+  &--disabled {
+    background-color: transparent;
+    border: rem(1) solid $gray-02;
+    color: $gray-02;
+    line-height: rem(38);
+
+    &.btn--big {
+      line-height: rem(46);
+    }
+  }
+
+
+  &--big {
+    height: rem(48);
+    padding: 0 rem(32);
+    border-radius: rem(30);
+    line-height: rem(48);
+  }
+}
+
+.on-dark {
+  .btn {
+    &--secondary {
+      color: white;
+      background-clip: padding-box;
+
+      &:hover {
+        color: $secondary-01;
+      }
+
+      &:after {
+        background: $primary-black;
+      }
+    }
+
+
+    &--disabled {
+      color: $gray-02;
+    }
+  }
+}

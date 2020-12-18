@@ -1,0 +1,33 @@
+@mixin transition-default(){
+    @include transition($animation-hover);
+}
+
+@mixin transition-color(){
+    @include transition($animation-hover, color);
+}
+
+@mixin transition($time, $type:all,  $effect:$animation-effect){
+    transition: $type $time  $effect;
+    // -moz-transform: $type $time  $effect;
+    // -webkit-transform: $type $time  $effect;
+    // -o-transform: $type $time  $effect;
+    // -ms-transform: $type $time  $effect;
+}
+
+@mixin keyframes($animation) {
+    @-webkit-keyframes #{$animation} {
+        @content;
+    }
+    @-moz-keyframes #{$animation} {
+        @content;
+    }
+    @-ms-keyframes #{$animation} {
+        @content;
+    }
+    @-o-keyframes #{$animation} {
+        @content;
+    }
+    @keyframes #{$animation} {
+        @content;
+    }
+}

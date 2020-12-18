@@ -1,0 +1,40 @@
+/*--------------------------------
+MIXINS
+--------------------------------*/
+
+@import "./core/starter/starter";
+
+
+/*--------------------------------
+VARIABLES
+--------------------------------*/
+
+@import "./core/helpers/variables";
+
+
+
+/*--------------------------------
+DEFINITIONS
+--------------------------------*/
+
+@import "./core/definitions/definitions";
+
+
+/*--------------------------------
+COMPONENTS
+--------------------------------*/
+
+//newsletter
+@import "./components/sections/sections";
+
+//cards
+@import "./components/cards/cards";
+
+//utils
+@import "./components/utils/utils";
+
+//form
+@import "./components/form/form";
+
+//navigations
+@import "./components/navigation/navigation";

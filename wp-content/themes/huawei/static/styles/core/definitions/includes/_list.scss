@@ -1,0 +1,56 @@
+.primary-list {
+  counter-reset: li;
+}
+
+
+%number-list {
+  counter-increment: li;
+  position: relative;
+  padding-left: rem(40);
+  @include font-size(rem(16), rem(24));
+
+  & + li {
+    margin-top: rem(8);
+  }
+
+  &:before {
+    content: "0" counter(li) ".";
+    position: absolute;
+    left: rem(6);
+    font-size: rem(16);
+    color: $secondary-01;
+    font-weight: 700;
+
+  }
+
+}
+
+%primary-list {
+  position: relative;
+  padding-left: rem(24);
+  @include font-size(rem(16), rem(24));
+
+  & + li {
+    margin-top: rem(8);
+  }
+
+  &:before {
+    content: "\2022";
+    position: absolute;
+    left: rem(6);
+    color: $secondary-01;
+  }
+}
+
+
+ul.primary-list {
+  .li {
+    @extend %primary-list;
+  }
+}
+
+ol {
+  .li {
+    @extend %number-list;
+  }
+}

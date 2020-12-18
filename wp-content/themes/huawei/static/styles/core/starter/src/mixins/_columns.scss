@@ -1,0 +1,186 @@
+/******************************
+**
+** Container/Gutters
+**
+******************************/
+
+@mixin container($with-gutter:false) {
+
+  width: 100%;
+  margin-left:auto;
+  margin-right:auto;
+
+  @if $with-gutter == true {
+    padding-left: $gutter-container-xs;
+    padding-right: $gutter-container-xs;
+    @include breakpoint(sm){
+      padding-left: $gutter-container;
+      padding-right: $gutter-container;
+    }
+    @include breakpoint(md){
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+}
+
+@mixin col($col, $sum: $grid-columns, $with-gutter: true, $float: false) {
+
+  width:percentage($col/$sum);
+
+  @if $float == 'auto' {
+    margin: auto;
+  }
+  @else if $float == true {
+    float: left;
+  }
+  @else if $float == 'left' {
+    float: left;
+  }
+  @else if $float == 'right' {
+    float: right;
+  }
+
+  @if $with-gutter == true {
+    @include gutterize;
+  }
+  @else if $with-gutter == 'left' {
+    @include gutterize(true, false);
+    padding-right: 0;
+  }
+  @else if $with-gutter == 'right' {
+    @include gutterize(false, true);
+    padding-left: 0;
+  }
+  @else if type-of($with-gutter) == string {
+    $split-values: str-split($with-gutter, ' ');
+    $length: length($split-values);
+
+    @if $length > 1 {
+      $padding-left: number(nth($split-values, 1));
+      $padding-right: number(nth($split-values, 2));
+      @if $padding-left > 0 {
+        padding-left: rem($padding-left);
+      }
+      @else{
+        padding-left: 0;
+      }
+      @if $padding-right > 0 {
+        padding-right: rem($padding-right);
+      }
+      @else{
+        padding-right: 0;
+      }
+    }
+    @else{
+      padding-left: rem(number($split-values));
+      padding-right: rem(number($split-values));
+    }
+  }
+  @else {
+    padding-left:0;
+    padding-right:0;
+  }
+
+}
+
+@mixin gutterize($left:true, $right:true) {
+
+  @if $left == true {
+    padding-left: $grid-gutter-width-xs/2;
+    @include breakpoint(sm){
+      padding-left: $grid-gutter-width/2;
+    }
+  }
+  @if $right == true {
+    padding-right: $grid-gutter-width-xs/2;
+    @include breakpoint(sm){
+      padding-right: $grid-gutter-width/2;
+    }
+  }
+
+}
+
+// For each breakpoint, define the maximum width of the container in a media query
+@mixin container-max-widths($max-widths: $container-max-widths, $breakpoints: $grid-breakpoints) {
+  @each $breakpointt, $container-max-width in $max-widths {
+    @include breakpoint($breakpointt, $breakpoints) {
+      max-width: $container-max-width;
+    }
+  }
+}
+
+@mixin flex-row(){
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: ($grid-gutter-width-xs / -2);
+  margin-left: ($grid-gutter-width-xs / -2);
+  @include breakpoint(sm){
+    margin-right: ($grid-gutter-width / -2);
+    margin-left: ($grid-gutter-width / -2);
+  }
+}
+
+@mixin flex-col($col, $sum: $grid-columns, $with-gutter:true, $margin:false) {
+  flex: 0 0 percentage($col / $sum);
+  max-width: percentage($col / $sum);
+  @if $margin == true {
+    margin: auto;
+  }
+  @if $with-gutter == true {
+    @include gutterize;
+  }
+  @else if $with-gutter == 'left' {
+    @include gutterize(true, false);
+    padding-right: 0;
+  }
+  @else if $with-gutter == 'right' {
+    @include gutterize(false, true);
+    padding-left: 0;
+  }
+  @else if type-of($with-gutter) == string {
+    $split-values: str-split($with-gutter, ' ');
+    $length: length($split-values);
+
+    @if $length > 1 {
+      $padding-left: number(nth($split-values, 1));
+      $padding-right: number(nth($split-values, 2));
+      @if $padding-left > 0 {
+        padding-left: rem($padding-left);
+      }
+      @else{
+        padding-left: 0;
+      }
+      @if $padding-right > 0 {
+        padding-right: rem($padding-right);
+      }
+      @else{
+        padding-right: 0;
+      }
+    }
+    @else{
+      padding-left: rem(number($split-values));
+      padding-right: rem(number($split-values));
+    }
+  }
+  @else {
+    padding-left:0;
+    padding-right:0;
+  }
+}
+
+@mixin flex-col-ready() {
+  position: relative;
+  // Prevent columns from becoming too narrow when at smaller grid tiers by
+  // always setting `width: 100%;`. This works because we use `flex` values
+  // later on to override this initial width.
+  width: 100%;
+  min-height: 1px; // Prevent collapsing
+  @include gutterize;
+}
+
+// Sets grid offet margin
+@mixin offset($col, $sum: $grid-columns, $direction:'left') {
+  margin-#{$direction}: percentage($col/$sum);
+}

@@ -1,0 +1,54 @@
+// Grid breakpoints
+$grid-breakpoints: (
+  xs: 0,
+  xsm: 480px, // phone-landscape
+  sm: 720px, // tablet-portrait
+  md: 960px, // tablet-landscape
+  lg: 1280px, // desktop
+  xlg: 1600px, // desktop large
+  xxl: 1920px // desktop extra large
+) !default;
+
+// Height breakpoints
+$height-breakpoints: (
+  xs: 0,
+  xsm: 500px,
+  sm: 800px
+) !default;
+
+// Grid containers
+$container-max-widths: (
+    sm: 720px,
+    md: 940px,
+    lg: 1200px,
+    xlg: 1400px
+) !default;
+
+// Colors
+$colors: () !default;
+
+// Set the number of columns and specify the width of the gutters.
+$gutter-container-xs: 15px !default;
+$gutter-container: 12px !default;
+
+$grid-gutter-width-xs: 12px !default;
+$grid-gutter-width: 24px !default;
+
+$grid-columns: 12 !default;
+
+// Duratin animation hover txt / bg
+$animation-hover: 250ms !default;
+$animation-effect: ease-out !default;
+
+// Framework
+$columns: false !default;
+$sizing: false !default;
+$grid: false !default;
+$order: false !default;
+$direction: false !default;
+$display: false !default;
+$spacing: false !default;
+
+
+// Vendors
+$vendors: true !default;

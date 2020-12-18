@@ -1,0 +1,94 @@
+@import "../fonts/font-ubuntu";
+@import "../fonts/font-gilroy";
+//@import "../fonts/font-icomoon";
+//@import "../../../fonts/icomoon/variables";
+@import "../../../fonts/icomoon/_style";
+
+/* ===================
+	    Colors (Same variables as Figma)
+/* ===================*/
+
+$primary-black      : #141416;
+$primary-white      : #FAFAFA;
+$secondary-01       : #24B5B4;
+$secondary-02       : #774594;
+$secondary-03       : #EE753B;
+$secondary-04       : #F9AF19;
+
+$white              : #fff;
+$black              : #000;
+
+$gray-01            : #616B75;
+$gray-02            : #A6B0B9;
+$gray-03            : #EAEAEA;
+$gray-04            : #E1E7ED;
+
+
+
+$gradient-01: linear-gradient(270deg, $secondary-01 100%,$secondary-02 100%);
+
+
+
+$overlay-color      : #bbb;
+$line-color         : #bbb;
+
+$success-color      : #24B5B4;
+$danger-color       : #FBAA30;
+$warning-color      : #EE753B;
+
+$gradients-primary  : linear-gradient(135deg, #A80014 0%, #DB001A 100%);
+$gradients-secondary: linear-gradient(135deg, #2AE6C4 0%, #2A3DE6 100%);
+
+$box-shadow                : 0 5px 6px 2px rgba($black, 0.15);
+$box-shadow-hover-bottom   : 0 15px 40px -5px rgba($black, 0.35);
+$box-shadow-hover-top      : 0 -5px 40px -5px rgba($black, 0.35);
+$box-shadow-centred        : 0 0 10px rgba($black, 0.35);
+
+
+
+/* ===================
+	    Fonts
+/* ===================*/
+
+$font-secondary : 'gilroy', -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Arial, sans-serif;
+$font-primary : 'Ubuntu', -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Arial, sans-serif;
+
+/* ===================
+    Config
+/* ===================*/
+$debug-rem : true;
+
+/* ===================
+    Dauphine var default
+/* ===================*/
+$columns: false;
+$sizing: false;
+$grid: false;
+$order: false;
+$direction: false;
+$display: false;
+$spacing: false;
+
+/*
+//generate classes colors & bg (.color-secondary-01, .bg-secondary-01)
+$colors: (
+    secondary-01: $secondary-01,
+    secondary-02: $secondary-02,
+);*/
+
+/* ===================
+    FlexContent
+/* ===================*/
+$paddings: (
+  xs : 40,
+  sm : 60,
+  lg : 80
+);
+
+/* ===================
+    Animations
+/* ===================*/
+$animTranslation : 60px;
+$translateTop : translate3d(0, $animTranslation, 0);
+$animCurbe : cubic-bezier(0, 0, 0.58, 1);
+$animTime : 400ms;

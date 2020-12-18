@@ -1,0 +1,98 @@
+.w-card-review{
+    @include flex-col(6);
+
+    @include breakpoint(md){
+        @include flex-col(4);
+    }
+
+}
+ .card-review {
+    width: 100%;
+    height: auto;
+    border-radius: 0.8em;
+    background-color: $primary-white;
+    box-shadow: $box-shadow;
+    box-sizing: border-box;
+    padding: 2.4em 1.6em 2.4em 1.6em;
+
+
+    &__review-head{
+        text-align: center;
+    }
+
+    &__stars-container{
+        margin: 1em auto 1.6em auto;
+        width: 70%;;
+            ul{
+                display: flex;
+                flex-direction: row;
+                list-style-type:none;
+                width: 100%;
+                justify-content: space-between;
+
+            }
+        
+            li{
+                width: 18%;
+                height: auto;
+                display: flex;
+                align-content: center;
+                justify-content: center;
+            }
+        
+        
+
+    }
+    
+
+    &__star{
+        color: $secondary-01;
+        font-size: 1.6em;
+        text-align: center;
+
+        @include breakpoint(md){
+            font-size: 2.4em;
+        }
+    }
+
+
+
+    &__black-bar{
+        width: 30%;
+        height: .15em;
+        background-color: $primary-black;
+        margin: 1.6em auto 2.4em auto;
+    }
+
+    &__desc{
+        margin: 0em auto 0 auto;
+
+            p{
+                margin: .8em 0 0 0;
+            }
+    }
+
+    &__user-container{
+        margin: 2.5em 0 0 0;
+        display: flex;
+        justify-content: flex-end;
+
+        @include breakpoint(md){
+            margin: 4em 0 0 0;
+        }
+    }
+    &__user-name{
+        margin: 0 0 0 1em;
+        display: flex;
+        align-items: center;
+    }
+    &__user-icon{
+        font-size: 1.6em;
+        color: $secondary-01;
+
+        @include breakpoint(md){
+            font-size: 2.4em;
+        }
+    }
+}
+

@@ -1,0 +1,19 @@
+input {
+    border: none;
+    border-bottom: 1px $gray-02 solid;    
+    padding: 5px 0;
+    color: $primary-black;
+    font-family: $font-primary;
+    &::placeholder {
+        color: $gray-02;
+        font-family: $font-primary;
+    }
+    &:focus {
+        outline: none;
+        border-bottom: 2px solid $secondary-01;
+        &::placeholder {
+            color: $primary-black;
+        }
+    }
+}
+

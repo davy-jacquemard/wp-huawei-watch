@@ -1,0 +1,22 @@
+%display-grid{
+    display: grid;
+}
+%display-grid-gutter{
+    display: grid;
+    grid-gap: $grid-gutter-width;
+}
+
+@mixin w-grid($col: 1, $equal: true, $gutter: true){
+    @if($gutter){
+        @extend %display-grid-gutter;
+    }
+    @else{
+        @extend %display-grid;
+    }
+    @if($equal){
+        grid-template-columns: repeat($col, 1fr);
+    }
+    @else{
+        grid-template-columns: $col;
+    }
+}

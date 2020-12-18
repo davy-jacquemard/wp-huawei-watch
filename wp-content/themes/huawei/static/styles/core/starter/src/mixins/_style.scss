@@ -1,0 +1,119 @@
+%naked{ padding:0; margin:0; list-style:none; list-style-image:none; }
+
+%b{ font-weight:bold; }
+%i{ font-style:italic; }
+%u{ text-decoration:underline; }
+%weight-normal{ font-weight:normal; }
+
+%uc{ text-transform:uppercase; }
+%lc{ text-transform:lowercase; }
+%nc{ text-transform:none; }
+
+%txt-center{ text-align:center; }
+%txt-left{ text-align:left; }
+%txt-right{ text-align:right; }
+%txt-justify{ text-align:justify; }
+
+%absolute-full{ position:absolute; top:0; left:0; right:0; bottom:0; }
+@mixin absolute-full(){
+  @extend %absolute-full;
+}
+
+@mixin pseudo($display: block, $pos: absolute, $content: ''){
+  content: $content;
+  display: $display;
+  position: $pos;
+}
+
+@mixin center($position) {
+  position: absolute;
+  @if $position == 'vertical' {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  @else if $position == 'horizontal' {
+    left: 50%;
+    transform: translate(-50%);
+  }
+  @else if $position == 'both' {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@mixin center-vertical(){
+  @include center(vertical);
+}
+
+@mixin center-horizontal(){
+  @include center(horizontal);
+}
+
+@mixin center-both(){
+  @include center(both);
+}
+
+%flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-center(){
+  @extend %flex-center;
+}
+
+%full {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+@mixin full(){
+  @extend %full;
+}
+
+%bg-center {
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+@mixin bg-center($url: null){
+  @if $url{
+    background: url('#{$url}');
+  }
+  @extend %bg-center;
+}
+
+%img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+@mixin img-fluid(){
+  @extend %img-fluid;
+}
+
+@mixin img-homothetic($args){
+  &:before{
+    @include pseudo($pos: relative);
+    width: 100%;
+    @each $o in map-keys($grid-breakpoints) {
+      $i: index($args, $o);
+      @if $i and $i + 1 <= length($args) and type-of(nth($args, $i + 1)) == number {
+        @include breakpoint(#{$o}){
+          $value: nth($args, $i + 1);
+          @if(unit($value) == "%"){
+              padding-top: $value;
+          }
+          @else{
+              padding-top: $value * 100%;
+          }
+        }
+      }
+    }
+  }
+}

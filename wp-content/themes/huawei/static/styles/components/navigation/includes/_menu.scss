@@ -1,0 +1,93 @@
+.menu {
+    height: 100vh;
+    width: 100%;
+    background-color: $primary-white;
+    }
+
+.menu-container {
+    display: flex;
+    justify-content: flex-end;
+
+    &__navigation {
+        width: 60%;
+    }
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: rem(100);
+    }
+    &__nav {
+        &::after {
+            content: '';
+            border-bottom: 3px solid $secondary-01;
+            width: 60%;
+            display: block;
+        }
+        li {
+            margin-top: rem(72);
+            display: block;
+            &:last-child{
+                margin-bottom: rem(96);
+            }
+            
+        }
+    }
+    &__socials {
+        margin-top: rem(48);
+        h3 {
+            margin-top: rem(16);
+        }
+    }
+    }
+
+.menu-watch {
+    width: 35%;
+    display: flex;
+    &__pro {
+        width: 50%;
+        background: $primary-black;
+        height: 100vh;
+        position: relative;
+        background-image: url(https://www.pierre-lannier.fr/media/catalog/product/cache/1/image/1800x/040ec09b1e35df139433887a97daa66f/0/9/cache/460x537/092l966_1.png);
+        background-repeat: no-repeat;
+        background-size: 200%;
+        background-position: left;
+        transition: all 2s;
+        &:hover {
+            background-position-x: 10%;
+        }
+        h2 {
+            width: 100%;
+            position: absolute;
+            color: $primary-white;
+            transform: rotate(-90deg);
+            text-align: right;
+            position: relative;
+            top: rem(200);
+            display: inline-block;
+        }
+    }
+    &__classic {
+        width: 50%;
+        background: $primary-white;
+        height: 100vh;
+        position: relative;
+        background-image: url(https://www.pierre-lannier.fr/media/catalog/product/cache/1/image/1800x/040ec09b1e35df139433887a97daa66f/0/9/cache/460x537/092l966_1.png);
+        background-repeat: no-repeat;
+        background-size: 200%;
+        background-position: left;
+        transition: all 2s;
+        &:hover {
+            background-position-x: 10%;
+        }
+        h2 {
+            width: 100%;
+            display: inline-block;
+            position: absolute;
+            top: rem(200);
+            transform: rotate(-90deg);
+            text-align: right;
+        }
+
+    }
+}

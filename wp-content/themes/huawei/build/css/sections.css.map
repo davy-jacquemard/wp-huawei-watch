@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../../static/styles/components/sections/sections.scss",
+        "../../static/styles/components/sections/includes/newsletter.scss"
+    ],
+    "names": [],
+    "file": "sections.css"
+}
