@@ -1,0 +1,1 @@
+wp-huawei-watch
