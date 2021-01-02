@@ -1,0 +1,40 @@
+.product {
+    &--qualities {
+        .row {
+            @include breakpoint(sm) {
+                 align-items: center 
+            }
+        
+        }
+        &__text {
+            @include flex-col(12,12);
+            @include breakpoint(sm) {
+                @include flex-col(6,12);
+            }
+        }
+
+        &__image {
+            @include flex-col(12,12);
+            @include breakpoint(md) {
+                @include flex-col(6,12);
+            }
+
+            .w-image {
+                width: 100%;
+
+                .img-container {
+                    @include img-homothetic(xs 75%);
+
+                    img {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        top: 0;
+                        left: 0;
+                        object-fit: cover;
+                    }
+                }
+            }
+        }
+    }
+}

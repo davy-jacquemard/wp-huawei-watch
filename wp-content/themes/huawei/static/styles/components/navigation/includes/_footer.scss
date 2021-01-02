@@ -1,105 +1,32 @@
-.flex-footer {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    @include breakpoint(sm) {
-        justify-content: start;
+.footer {
+    padding-top: rem(40);
+    padding-bottom: rem(60);
+
+    &-top {
+
     }
 
-    @include breakpoint(md) {
-        justify-content: start;
-    }
-
-    @include breakpoint(lg) {
-        justify-content: space-between;
-    }
-}
-
-.logo-footer {
-    margin: 1rem 0 1rem 0;
-    width : 50%;
-}
-
-.footer-col {
-
-    @include breakpoint(sm) {
-        width: 50%;
-        padding: 40px 0;
-    }
-
-    @include breakpoint(md) {
-        padding: 60px 0;
-        width: 25%;
-    }
-
-    @include breakpoint(lg) {
-        padding: 0;
-        width: auto;
-    }
-
-    &-large {
+    &-bottom {
+        @include flex-col(12, 12);
+        display: flex;
+        flex-direction: column;
+         align-items: center;
         @include breakpoint(sm) {
-            width: 100%;
+            flex-direction: row;
+            justify-content: space-between;
         }
-
-        @include breakpoint(md) {
-            width: 25%;
-        }
-    }
-
-}
-
-.title-onelign {
-    white-space: nowrap;
-}
-
-
-.footer-line {
-    border-top: 0.5px solid $primary-white;
-    padding: 1rem 0 1rem 0;
-}
-
-
-
-.icon-social {
-
-    &-facebook {
-        transition-duration: $animation-hover;
-
-        &:hover {
-            transition-timing-function: $animation-effect;
-            color: $secondary-01;
+        
+        &__legals {
+            &__list {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                @include breakpoint(sm) {
+                    flex-direction: row;
+                    justify-content: space-between;
+                }
+            }
         }
     }
 
-    &-twitter {
-        transition-duration: $animation-hover;
-
-        &:hover {
-            transition-timing-function: $animation-effect;
-            color: $secondary-01;
-        }
-    }
-
-    &-instagram {
-        transition-duration: $animation-hover;
-
-        &:hover {
-            transition-timing-function: $animation-effect;
-            color: $secondary-01;
-        }
-    }
-}
-
-.footer-icon-socialmedia {
-    font-size: 30px;
-    text-decoration: none;
-    line-height: 4rem;
-    margin-right: 1rem;
-
-}
-
-.footer-link-spacing {
-    margin-right: 2rem;
 }

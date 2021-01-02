@@ -1,24 +1,38 @@
-<section class="fonctions">
-<?php 
-if( have_rows('fonctions') ):
+<section class="product--qualities">
+    <div class="container">
 
-    while( have_rows('fonctions') ) : the_row();
+        <?php
+        if (have_rows('qualities')) :
 
-        $title = get_sub_field('fonctions_title');
-        $desc = get_sub_field('fonctions_description');
-        $image = get_sub_field('fonctions_image'); 
+            while (have_rows('qualities')) : the_row();
+
+                $title = get_sub_field('title');
+                $desc = get_sub_field('description');
+                $image = get_sub_field('image');
         ?>
 
-        <h2 class="h2"><?php echo $title ?></h2>
-        <p class="p"><?php echo $desc ?></p>
-        <img src="<?php echo $image['url'] ?>" alt="<?php echo $image['alt'] ?>">
+
+                <div class="row">
+                    <div class="product--qualities__text">
+                         <h2 class="h2"><?php echo $title ?></h2>
+                    <p class="p"><?php echo $desc ?></p>
+                    </div>
+
+                    <div class="product--qualities__image">
+                        <div class="w-image">
+                            <div class="img-container">
+                                 <img src="<?php echo $image['url'] ?>" alt="<?php echo $image['alt'] ?>">
+                            </div>
+                        </div>
+                    </div>
+                
+                </div>
+
+        <?php endwhile;
+        else :
+        endif;
+        ?>
 
 
-        <?php 
-    endwhile;
-
-else :
-   
-endif;
-?>
+    </div>
 </section>

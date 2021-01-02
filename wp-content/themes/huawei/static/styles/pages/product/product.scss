@@ -2,6 +2,12 @@
 @import "./../../core/helpers/variables";
 @import "./../../core/definitions/includes/utils";
 
+@import "./includes/_product-qualities.scss";
+
+body {
+  background-color: red;
+}
+
 
 .product {
   &--header {
