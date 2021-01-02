@@ -1,8 +1,90 @@
 .footer {
     padding-top: rem(40);
     padding-bottom: rem(60);
-
+    @include breakpoint(sm) {
+        padding-top: rem(60);
+    }
+    @include breakpoint(md) {
+        padding-top: rem(80);
+    }
     &-top {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        padding-bottom: rem(40);
+        &__contact {
+            margin-bottom: rem(48);
+            @include flex-col(12, 12);
+            @include breakpoint(lg) {
+                margin-bottom: 0;
+                @include flex-col(4, 12);
+            }
+            &__title {
+                margin-bottom: rem(8);
+            }
+            &__logo {
+                margin-top: rem(40);
+                width: rem(120);
+                @include breakpoint(md) {
+                    margin-top: rem(48);
+                    width: rem(140);
+                }
+            }
+        }
+
+        &__menu {
+            @include flex-col(6, 12);
+
+            @include breakpoint(md) {
+                @include flex-col(3, 12);
+            }
+            @include breakpoint(lg) {
+                @include flex-col(2, 12);
+            }
+            ul {
+                li {
+                    margin-top: rem(24);
+                    @include breakpoint(md) {
+                        margin-top: rem(16);
+                    }
+                }
+            }
+        }
+
+        &__social {
+            @include flex-col(12, 12);
+            margin-top: rem(48);
+            @include breakpoint(sm) {
+
+            }
+            @include breakpoint(md) {
+                @include flex-col(6, 12);
+                margin-top: 0;
+            }
+            @include breakpoint(lg) {
+                @include flex-col(4, 12);
+            }
+            &__title {
+                margin-top: rem(8);
+            }
+
+            ul {
+                display: flex;
+                flex-direction: row;
+                margin-top: rem(16);
+
+                li {
+                    & + li {
+                        margin-left: rem(24);
+                    }
+                    .footer-icon {
+                        &:before {
+                            @include font-size(rem(24), rem(24));
+                        }
+                    }
+                }
+            }
+         }
 
     }
 
@@ -11,6 +93,8 @@
         display: flex;
         flex-direction: column;
          align-items: center;
+        padding-top: rem(24);
+        border-top: rem(0.5) solid rgba(255, 255, 255, 0.5);
         @include breakpoint(sm) {
             flex-direction: row;
             justify-content: space-between;
@@ -24,9 +108,16 @@
                 @include breakpoint(sm) {
                     flex-direction: row;
                     justify-content: space-between;
+                    li {
+                        margin-right: rem(16);
+                    }
+                }
+                @include breakpoint-max(sm) {
+                    li {
+                        margin-bottom: rem(24);
+                    }
                 }
             }
         }
     }
-
 }
