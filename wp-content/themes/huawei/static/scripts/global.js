@@ -1,3 +1,3 @@
+import './components/_menu'
 
-const header = document.querySelector(header);
-header.classlist.add('header');
+

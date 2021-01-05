@@ -64,26 +64,6 @@
             @include breakpoint(lg) {
                 @include flex-col(4, 12);
             }
-            &__title {
-                margin-top: rem(8);
-            }
-
-            ul {
-                display: flex;
-                flex-direction: row;
-                margin-top: rem(16);
-
-                li {
-                    & + li {
-                        margin-left: rem(24);
-                    }
-                    .footer-icon {
-                        &:before {
-                            @include font-size(rem(24), rem(24));
-                        }
-                    }
-                }
-            }
          }
 
     }
@@ -118,6 +98,50 @@
                     }
                 }
             }
+        }
+    }
+}
+
+.footer-social {
+    &__title {
+        margin-top: rem(8);
+    }
+
+    ul {
+        display: flex;
+        flex-direction: row;
+        margin-top: rem(16);
+
+        li {
+            & + li {
+                margin-left: rem(24);
+            }
+
+            a {
+                color: $primary-black;
+            }
+            .footer-icon {
+                &:before {
+                    @include font-size(rem(32), rem(32));
+                    @include transition-color()
+                }
+
+                @include breakpoint(md) {
+                    &:hover {
+                        &:before {
+                            color: $secondary-01;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.on-dark {
+    .footer-icon {
+        &:before {
+            color: white;
         }
     }
 }

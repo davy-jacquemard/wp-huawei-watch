@@ -20,10 +20,10 @@
                         <li><a href="#" class="p">Nos actualités</a></li>
                     </ul>
                 </div>
-                <div class="footer-top__social">
-                    <div class="headline footer-top__social__headline">Rejoignez-nous</div>
-                    <h3 class="h4 footer-top__social__title">Suivez-nous sur nos réseaux sociaux</h3>
-                    <ul class="footer-top__social__list">
+                <div class="footer-top__social footer-social">
+                    <div class="headline footer-social__headline">Rejoignez-nous</div>
+                    <h3 class="h4 footer-social__title">Suivez-nous sur nos réseaux sociaux</h3>
+                    <ul class="footer-social__list">
                         <li><a href="https://www.facebook.com/HuaweiEuropean" rel="nofollow" target="_blank" class="icon-social-facebook footer-icon"></a></li>
                         <li><a href="https://twitter.com/HuaweiFr" rel="nofollow" target="_blank" class="icon-social-twitter footer-icon"></a></li>
                         <li><a href="https://www.instagram.com/huawei/" rel="nofollow" target="_blank" class="icon-social-instagram footer-icon"></a></li>

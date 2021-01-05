@@ -1143,7 +1143,7 @@ DEFINITIONS
 .on-dark .btn--disabled {
   color: #A6B0B9; }
 
-.h1, .wysiwyg h1, .h2, .wysiwyg h2, .h3, .wysiwyg h3, .h4, .wysiwyg h4, .h5 {
+.h1, .wysiwyg h1, .h2, .wysiwyg h2, .header__menu .menu__item, .h3, .wysiwyg h3, .h4, .wysiwyg h4, .h5 {
   font-family: "gilroy", -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Arial, sans-serif;
   color: #000;
   font-weight: 800; }
@@ -1160,15 +1160,15 @@ DEFINITIONS
       font-size: 56px;
       line-height: 69px; } }
 
-.h2, .wysiwyg h2 {
+.h2, .wysiwyg h2, .header__menu .menu__item {
   font-size: 32px;
   line-height: 39px; }
   @media (min-width: 720px) {
-    .h2, .wysiwyg h2 {
+    .h2, .wysiwyg h2, .header__menu .menu__item {
       font-size: 38px;
       line-height: 46px; } }
   @media (min-width: 960px) {
-    .h2, .wysiwyg h2 {
+    .h2, .wysiwyg h2, .header__menu .menu__item {
       font-size: 46px;
       line-height: 55px; } }
 
@@ -1588,6 +1588,13 @@ COMPONENTS
   .container {
     padding: 0 24px; } }
 
+body, html {
+  overflow-x: hidden; }
+
+body.menu-open {
+  overflow: hidden;
+  height: 100%; }
+
 /* ==========================================================================
 	Margin & paddings
 /* ========================================================================== */
@@ -1631,11 +1638,6 @@ label {
   display: block;
   margin-bottom: 8px; }
 
-.menu {
-  height: 100vh;
-  width: 100%;
-  background-color: #FAFAFA; }
-
 .menu-container {
   display: flex;
   justify-content: flex-end; }
@@ -1668,7 +1670,7 @@ label {
     background: #141416;
     height: 100vh;
     position: relative;
-    background-image: url(https://www.pierre-lannier.fr/media/catalog/product/cache/1/image/1800x/040ec09b1e35df139433887a97daa66f/0/9/cache/460x537/092l966_1.png);
+    background-image: url(../../../../img/watch/elegant/ocre/watch-elegant-ocre.png);
     background-repeat: no-repeat;
     background-size: 200%;
     background-position: left;
@@ -1829,17 +1831,6 @@ label {
   @media (min-width: 1280px) and (min-width: 720px) {
     .footer-top__social {
       padding-right: 12px; } }
-      .footer-top__social__title {
-        margin-top: 8px; }
-      .footer-top__social ul {
-        display: flex;
-        flex-direction: row;
-        margin-top: 16px; }
-        .footer-top__social ul li + li {
-          margin-left: 24px; }
-        .footer-top__social ul li .footer-icon:before {
-          font-size: 24px;
-          line-height: 24px; }
   .footer-bottom {
     flex: 0 0 100%;
     max-width: 100%;
@@ -1873,6 +1864,201 @@ label {
       @media (max-width: 719.98px) {
         .footer-bottom__legals__list li {
           margin-bottom: 24px; } }
+
+.footer-social__title {
+  margin-top: 8px; }
+
+.footer-social ul {
+  display: flex;
+  flex-direction: row;
+  margin-top: 16px; }
+  .footer-social ul li + li {
+    margin-left: 24px; }
+  .footer-social ul li a {
+    color: #141416; }
+  .footer-social ul li .footer-icon:before {
+    font-size: 32px;
+    line-height: 32px;
+    transition: color 250ms ease-out; }
+  @media (min-width: 960px) {
+    .footer-social ul li .footer-icon:hover:before {
+      color: #24B5B4; } }
+
+.on-dark .footer-icon:before {
+  color: white; }
+
+.header {
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
+  @media (min-width: 960px) {
+    .header.menu-open .w-header {
+      width: 45%;
+      transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1); } }
+  @media (min-width: 1280px) {
+    .header.menu-open .w-header {
+      width: 57%; } }
+  .header.menu-open .w-header .header__open-menu {
+    display: none; }
+  .header.menu-open .w-header .header__close-menu {
+    display: block; }
+  .header .w-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 72px;
+    width: 100%;
+    transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1); }
+  .header__logo img {
+    width: 120px; }
+  .header__cart {
+    width: 24px;
+    margin-right: 40px; }
+  .header__open-menu {
+    cursor: pointer;
+    height: 28px; }
+  .header__close-menu {
+    display: none;
+    cursor: pointer;
+    height: 28px; }
+  .header__right {
+    display: flex;
+    align-items: center; }
+  .header__menu {
+    position: absolute;
+    left: 0;
+    z-index: 99;
+    background-color: white;
+    width: 100%;
+    height: calc(100vh - 72px);
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    display: flex;
+    align-items: center; }
+    .header__menu.active {
+      transform: translateX(0);
+      transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1); }
+      .header__menu.active .header__menu__watch--pro {
+        transform: translateX(0); }
+      .header__menu.active .header__menu__watch--classic {
+        transform: translateX(50%); }
+    .header__menu .w-menu {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      flex: 0 0 83.33333%;
+      max-width: 83.33333%;
+      padding-left: 6px;
+      padding-right: 6px;
+      margin-left: 8.33333%; }
+      @media (min-width: 720px) {
+        .header__menu .w-menu {
+          padding-left: 12px; } }
+      @media (min-width: 720px) {
+        .header__menu .w-menu {
+          padding-right: 12px; } }
+      @media (min-width: 720px) {
+        .header__menu .w-menu {
+          flex: 0 0 66.66667%;
+          max-width: 66.66667%;
+          padding-left: 6px;
+          padding-right: 6px;
+          margin-left: 16.66667%; } }
+  @media (min-width: 720px) and (min-width: 720px) {
+    .header__menu .w-menu {
+      padding-left: 12px; } }
+  @media (min-width: 720px) and (min-width: 720px) {
+    .header__menu .w-menu {
+      padding-right: 12px; } }
+      @media (min-width: 960px) {
+        .header__menu .w-menu {
+          flex: 0 0 41.66667%;
+          max-width: 41.66667%;
+          padding-left: 6px;
+          padding-right: 6px;
+          margin-left: 0%; } }
+  @media (min-width: 960px) and (min-width: 720px) {
+    .header__menu .w-menu {
+      padding-left: 12px; } }
+  @media (min-width: 960px) and (min-width: 720px) {
+    .header__menu .w-menu {
+      padding-right: 12px; } }
+      @media (min-width: 1280px) {
+        .header__menu .w-menu {
+          margin-left: 8.33333%; } }
+    .header__menu .menu__item {
+      margin-bottom: 64px; }
+      @media (min-width: 720px) {
+        .header__menu .menu__item {
+          margin-bottom: 56px; } }
+    .header__menu .menu__link {
+      color: black;
+      position: relative; }
+      .header__menu .menu__link:before {
+        transition: 100ms all ease-out;
+        content: '';
+        width: 0;
+        height: 2px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        background-color: #24B5B4; }
+      @media (min-width: 960px) {
+        .header__menu .menu__link:hover:before {
+          width: 100%; } }
+    .header__menu__footer {
+      padding-top: 32px;
+      border-top: 2px solid #24B5B4; }
+      @media (min-width: 720px) {
+        .header__menu__footer {
+          padding-top: 48px; } }
+    .header__menu__watch {
+      width: 50%;
+      position: absolute;
+      right: 0;
+      top: -72px;
+      height: 100vh;
+      background-repeat: no-repeat;
+      background-size: 60vh;
+      background-position: center center;
+      cursor: pointer;
+      transition: transform .3s ease; }
+      @media (max-width: 959.98px) {
+        .header__menu__watch {
+          display: none; } }
+      @media (min-width: 1280px) {
+        .header__menu__watch {
+          width: 40%; } }
+      .header__menu__watch h2 {
+        position: absolute;
+        width: 240px;
+        top: 280px;
+        transform: rotate(-90deg);
+        transform-origin: left;
+        text-align: right;
+        text-transform: uppercase;
+        left: 56px; }
+      .header__menu__watch--pro {
+        transform: translateX(100%);
+        background-color: #141416;
+        background-image: url(../../static/img/watch/pro/gray/watch-gray-front.png); }
+        @media (min-width: 960px) {
+          .header__menu__watch--pro:hover + .header__menu__watch {
+            transform: translateX(60%); } }
+        .header__menu__watch--pro h2 {
+          color: #FAFAFA; }
+      .header__menu__watch--classic {
+        transform: translateX(150%);
+        background-color: white;
+        z-index: 20;
+        background-image: url(../../static/img/watch/elegant/ocre/watch-elegant-ocre.png); }
+        @media (min-width: 960px) {
+          .header__menu__watch--classic:hover {
+            transform: translateX(40%) !important; } }
+        .header__menu__watch--classic h2 {
+          color: #141416; }
 
 
 /*# sourceMappingURL=global.css.map*/
