@@ -36,5 +36,9 @@
     "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^5.11.1",
     "webpack-cli": "^4.3.0"
+  },
+  "dependencies": {
+    "i": "^0.3.6",
+    "npm": "^6.14.10"
   }
 }
