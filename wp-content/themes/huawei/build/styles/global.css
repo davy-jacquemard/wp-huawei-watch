@@ -1898,11 +1898,12 @@ label {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
   @media (min-width: 960px) {
     .header.menu-open .w-header {
-      width: 45%;
+      width: 40%;
+      margin-left: auto;
       transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1); } }
   @media (min-width: 1280px) {
     .header.menu-open .w-header {
-      width: 57%; } }
+      width: 50%; } }
   .header.menu-open .w-header .header__open-menu {
     display: none; }
   .header.menu-open .w-header .header__close-menu {
@@ -1913,6 +1914,8 @@ label {
     align-items: center;
     height: 72px;
     width: 100%;
+    margin-left: auto;
+    margin-right: 0;
     transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1); }
   .header__logo img {
     width: 120px; }
@@ -1936,7 +1939,7 @@ label {
     background-color: white;
     width: 100%;
     height: calc(100vh - 72px);
-    transform: translateX(100%);
+    transform: translateX(-100%);
     transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
     display: flex;
     align-items: center; }
@@ -1946,7 +1949,7 @@ label {
       .header__menu.active .header__menu__watch--pro {
         transform: translateX(0); }
       .header__menu.active .header__menu__watch--classic {
-        transform: translateX(50%); }
+        transform: translateX(-50%); }
     .header__menu .w-menu {
       height: 100%;
       display: flex;
@@ -1981,7 +1984,7 @@ label {
           max-width: 41.66667%;
           padding-left: 6px;
           padding-right: 6px;
-          margin-left: 0%; } }
+          margin-left: 58.33333%; } }
   @media (min-width: 960px) and (min-width: 720px) {
     .header__menu .w-menu {
       padding-left: 12px; } }
@@ -1990,7 +1993,7 @@ label {
       padding-right: 12px; } }
       @media (min-width: 1280px) {
         .header__menu .w-menu {
-          margin-left: 8.33333%; } }
+          margin-left: 50%; } }
     .header__menu .menu__item {
       margin-bottom: 64px; }
       @media (min-width: 720px) {
@@ -2020,7 +2023,7 @@ label {
     .header__menu__watch {
       width: 50%;
       position: absolute;
-      right: 0;
+      left: 0;
       top: -72px;
       height: 100vh;
       background-repeat: no-repeat;
@@ -2037,29 +2040,29 @@ label {
       .header__menu__watch h2 {
         position: absolute;
         width: 240px;
-        top: 280px;
+        top: 72px;
         transform: rotate(-90deg);
-        transform-origin: left;
+        transform-origin: right;
         text-align: right;
         text-transform: uppercase;
-        left: 56px; }
+        right: 72px; }
       .header__menu__watch--pro {
-        transform: translateX(100%);
+        transform: translateX(-100%);
         background-color: #141416;
         background-image: url(../../static/img/watch/pro/gray/watch-gray-front.png); }
         @media (min-width: 960px) {
           .header__menu__watch--pro:hover + .header__menu__watch {
-            transform: translateX(60%); } }
+            transform: translateX(-60%); } }
         .header__menu__watch--pro h2 {
           color: #FAFAFA; }
       .header__menu__watch--classic {
-        transform: translateX(150%);
+        transform: translateX(-150%);
         background-color: white;
         z-index: 20;
         background-image: url(../../static/img/watch/elegant/ocre/watch-elegant-ocre.png); }
         @media (min-width: 960px) {
           .header__menu__watch--classic:hover {
-            transform: translateX(40%) !important; } }
+            transform: translateX(-40%) !important; } }
         .header__menu__watch--classic h2 {
           color: #141416; }
 
