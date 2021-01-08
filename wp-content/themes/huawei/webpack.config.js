@@ -16,6 +16,7 @@ const entry = {
 		STYLES_DIR + '/global.scss',
 	],
 	product: STYLES_DIR + '/pages/product/product.scss',
+	//gamme: STYLES_DIR + '/pages/gamme/gamme.scss',
 
 };
 const output = {
