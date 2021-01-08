@@ -10,15 +10,19 @@ const JS_DIR = path.resolve( __dirname, 'static/scripts' );
 const STYLES_DIR = path.resolve( __dirname, 'static/styles' );
 const IMG_DIR = path.resolve( __dirname, 'static/img' );
 const BUILD_DIR = path.resolve( __dirname, 'build' );
+
+
 const entry = {
 	global: [
 		JS_DIR + '/global.js',
-		STYLES_DIR + '/global.scss',
+		//STYLES_DIR + '/global.scss',
 	],
-	product: STYLES_DIR + '/pages/product/product.scss',
+//	product: STYLES_DIR + '/pages/product/product.scss',
 	//gamme: STYLES_DIR + '/pages/gamme/gamme.scss',
 
 };
+
+
 const output = {
 	publicPath: '',
 	path: BUILD_DIR,

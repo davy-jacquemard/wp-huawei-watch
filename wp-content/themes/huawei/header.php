@@ -10,7 +10,14 @@
 
 </head>
 
-<body <?php body_class(); ?>>
+
+<?php if ((get_field('gamme_settings')) && (get_field('gamme_settings')['theme'] == 'black')) : 
+    $theme = 'black';
+    else :
+        $theme = 'white';
+endif; ?>
+
+<body <?php body_class($theme); ?>>
 
 <?php wp_body_open(); ?>
 
