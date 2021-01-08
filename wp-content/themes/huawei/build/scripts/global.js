@@ -144,6 +144,7 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	// Load entry module
 /******/ 	__webpack_require__("./static/scripts/global.js");
 /******/ 	// This entry module used 'exports' so it can't be inlined
+/******/ 	__webpack_require__("./static/styles/global.scss");
 /******/ })()
 ;
 //# sourceMappingURL=global.js.map
