@@ -47,7 +47,7 @@ endif; ?>
 
 
     </div>
-    <div class="header__menu    " js-menu-content>
+    <div class="header__menu" js-menu-content>
         <div class="container">
             <div class="row">
                 <div class="w-menu">

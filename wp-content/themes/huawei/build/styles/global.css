@@ -2030,7 +2030,7 @@ label {
       background-size: 60vh;
       background-position: center center;
       cursor: pointer;
-      transition: transform .3s ease; }
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
       @media (max-width: 959.98px) {
         .header__menu__watch {
           display: none; } }
@@ -2047,22 +2047,24 @@ label {
         text-transform: uppercase;
         right: 72px; }
       .header__menu__watch--pro {
-        transform: translateX(-100%);
+        transform: translateX(-100%) translateZ(0);
         background-color: #141416;
-        background-image: url(../../static/img/watch/pro/gray/watch-gray-front.png); }
+        background-image: url(../../static/img/watch/pro/gray/watch-gray-front.png);
+        transition-delay: .1s; }
         @media (min-width: 960px) {
           .header__menu__watch--pro:hover + .header__menu__watch {
-            transform: translateX(-60%); } }
+            transform: translateX(-60%) translateZ(0); } }
         .header__menu__watch--pro h2 {
           color: #FAFAFA; }
       .header__menu__watch--classic {
-        transform: translateX(-150%);
+        transform: translateX(-150%) translateZ(0);
         background-color: white;
         z-index: 20;
-        background-image: url(../../static/img/watch/elegant/ocre/watch-elegant-ocre.png); }
+        background-image: url(../../static/img/watch/elegant/ocre/watch-elegant-ocre.png);
+        transition-delay: .2s; }
         @media (min-width: 960px) {
           .header__menu__watch--classic:hover {
-            transform: translateX(-40%) !important; } }
+            transform: translateX(-40%) translateZ(0) !important; } }
         .header__menu__watch--classic h2 {
           color: #141416; }
 
