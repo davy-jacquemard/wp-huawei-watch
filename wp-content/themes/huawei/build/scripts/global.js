@@ -37,8 +37,12 @@ closeMenu.addEventListener('click', () => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_menu__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/_menu */ "./static/scripts/components/_menu.js");
-/* harmony import */ var _components_menu__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_components_menu__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _static_styles_global_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../static/styles/global.scss */ "./static/styles/global.scss");
+/* harmony import */ var _static_styles_pages_gamme_gamme_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../static/styles/pages/gamme/gamme.scss */ "./static/styles/pages/gamme/gamme.scss");
+/* harmony import */ var _components_menu__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/_menu */ "./static/scripts/components/_menu.js");
+/* harmony import */ var _components_menu__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_components_menu__WEBPACK_IMPORTED_MODULE_2__);
+
+
 
 
 /***/ }),
@@ -47,6 +51,19 @@ __webpack_require__.r(__webpack_exports__);
 /*!***********************************!*\
   !*** ./static/styles/global.scss ***!
   \***********************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./static/styles/pages/gamme/gamme.scss":
+/*!**********************************************!*\
+  !*** ./static/styles/pages/gamme/gamme.scss ***!
+  \**********************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -127,7 +144,6 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	// Load entry module
 /******/ 	__webpack_require__("./static/scripts/global.js");
 /******/ 	// This entry module used 'exports' so it can't be inlined
-/******/ 	__webpack_require__("./static/styles/global.scss");
 /******/ })()
 ;
 //# sourceMappingURL=global.js.map
