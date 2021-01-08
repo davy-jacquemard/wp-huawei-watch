@@ -1588,6 +1588,9 @@ COMPONENTS
   .container {
     padding: 0 24px; } }
 
+.main {
+  padding-top: 72px; }
+
 body, html {
   overflow-x: hidden; }
 

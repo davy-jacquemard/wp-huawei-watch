@@ -33,6 +33,7 @@
       <list>
         <option value="SCSS File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -45,12 +46,13 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../huawei-watch-theme/Huawei Watch" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
-    <property name="settings.editor.selected.configurable" value="reference.idesettings.emmet.xml" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -74,6 +76,7 @@
       <workItem from="1609831004562" duration="3256000" />
       <workItem from="1609919749594" duration="1009000" />
       <workItem from="1609939075705" duration="4370000" />
+      <workItem from="1610021880703" duration="2062000" />
     </task>
     <servers />
   </component>
@@ -105,10 +108,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1609966445900" />
-    <state x="828" y="274" key="SettingsEditor" timestamp="1609693983873">
+    <state x="828" y="274" key="SettingsEditor" timestamp="1610022649037">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="828" y="274" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1609693983873" />
+    <state x="828" y="274" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1610022649037" />
     <state x="667" y="255" width="585" height="530" key="find.popup" timestamp="1609708120843">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
