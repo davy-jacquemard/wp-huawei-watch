@@ -3251,5 +3251,18 @@ $colors: (
     .gamme--header__switch__right {
       width: auto; }
 
+.gamme--video {
+  position: relative;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+  max-width: 100%;
+  height: auto; }
+  .gamme--video iframe, .gamme--video object, .gamme--video embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+
 
 /*# sourceMappingURL=global.css.map*/

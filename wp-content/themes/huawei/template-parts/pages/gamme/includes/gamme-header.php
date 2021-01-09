@@ -11,7 +11,7 @@ $image = $header['image'];
 
 ?>
 
-<div class="gamme--header" style="background-image: url('<?php echo $image['url'] ?>') ;">
+<section class="gamme--header" style="background-image: url('<?php echo $image['url'] ?>') ;">
     <div class="container">
         <div class="row">
             <div class="gamme--header__inner">
@@ -43,4 +43,4 @@ $image = $header['image'];
     <?php endif; ?>
 
 
-</div>
+</section>
