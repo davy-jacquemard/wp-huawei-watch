@@ -4,6 +4,14 @@
   font-weight: 800;
 }
 
+%h1--big {
+  @extend %headings-default;
+  @include font-size(rem(48), rem(59));
+  @include breakpoint(md) {
+    @include font-size(rem(56), rem(69));
+  }
+}
+
 %h1 {
   @extend %headings-default;
   @include font-size(rem(34), rem(42));
@@ -71,6 +79,9 @@
 
 .h1 {
   @extend %h1;
+  &--big {
+    @extend %h1--big;
+  }
 }
 .h2 {
   @extend %h2;

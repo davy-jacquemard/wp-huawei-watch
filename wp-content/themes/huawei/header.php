@@ -12,7 +12,7 @@
 
 
 <?php if ((get_field('gamme_settings')) && (get_field('gamme_settings')['theme'] == 'black')) : 
-    $theme = 'black';
+    $theme = 'on-dark on-dark-bg';
     else :
         $theme = 'white';
 endif; ?>
@@ -21,7 +21,7 @@ endif; ?>
 
 <?php wp_body_open(); ?>
 
-<header class="header" js-header>
+<header class="header on-white" js-header>
     <div class="container">
         <div class="w-header">
             <div class="header__logo">

@@ -1,2 +1,6 @@
-@import "./includes/_gamme-header.scss";
+@import "./../../core/starter/starter";
+@import "./../../core/helpers/variables";
+@import "./../../core/definitions/includes/utils";
+
+@import "./includes/gamme-header";
 
