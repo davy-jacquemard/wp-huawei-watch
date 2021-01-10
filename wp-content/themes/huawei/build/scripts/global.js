@@ -1,6 +1,50 @@
 /******/ (function() { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./static/scripts/components/_marquee.js":
+/*!***********************************************!*\
+  !*** ./static/scripts/components/_marquee.js ***!
+  \***********************************************/
+/***/ (function() {
+
+const $scrollingText = document.querySelector(".js-marquee");
+const thresholdBase = window.innerHeight;
+let translateRatio = 2;
+let containerDistance = 0;
+window.addEventListener("scroll", onScroll);
+
+function onScroll() {
+  const containerTop = $scrollingText.getBoundingClientRect().top;
+  const containerStartThreshold = containerTop - thresholdBase;
+  containerDistance = containerStartThreshold;
+
+  if (containerDistance < window.innerHeight * -1) {
+    containerDistance = $scrollingText.offsetHeight * -1;
+  } else if (containerDistance > 0) {
+    containerDistance = 0;
+  }
+}
+
+let lerpRatio = 0.08;
+let distanceLerp = 0;
+let targetLerp = 0;
+
+function applyTranslateLerp(containerDistance) {
+  const offsetX = containerDistance * 1 * translateRatio;
+  targetLerp = offsetX;
+  distanceLerp += (targetLerp - distanceLerp) * lerpRatio;
+  $scrollingText.style.transform = "translateX(" + distanceLerp + "px)";
+}
+
+function onUpdate() {
+  applyTranslateLerp(containerDistance);
+  requestAnimationFrame(onUpdate);
+}
+
+onUpdate();
+
+/***/ }),
+
 /***/ "./static/scripts/components/_menu.js":
 /*!********************************************!*\
   !*** ./static/scripts/components/_menu.js ***!
@@ -41,6 +85,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _static_styles_pages_gamme_gamme_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../static/styles/pages/gamme/gamme.scss */ "./static/styles/pages/gamme/gamme.scss");
 /* harmony import */ var _components_menu__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/_menu */ "./static/scripts/components/_menu.js");
 /* harmony import */ var _components_menu__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_components_menu__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _components_marquee__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/_marquee */ "./static/scripts/components/_marquee.js");
+/* harmony import */ var _components_marquee__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_components_marquee__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 

@@ -3388,5 +3388,17 @@ $colors: (
     object-fit: cover;
     object-position: left; }
 
+.gamme--marquee__text {
+  font-size: 48px;
+  line-height: 58px;
+  color: #A6B0B9;
+  font-family: "gilroy", -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Arial, sans-serif;
+  font-weight: 800;
+  white-space: nowrap; }
+  @media (min-width: 960px) {
+    .gamme--marquee__text {
+      font-size: 98px;
+      line-height: 118px; } }
+
 
 /*# sourceMappingURL=global.css.map*/

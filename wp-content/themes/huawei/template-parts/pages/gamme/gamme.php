@@ -8,5 +8,8 @@
       
     <!--Concept-->
     <?php get_template_part( 'template-parts/pages/gamme/includes/gamme-concept' ); ?>
+          
+    <!--Marquee-->
+    <?php get_template_part( 'template-parts/pages/gamme/includes/gamme-marquee' ); ?>
 
 </div>
