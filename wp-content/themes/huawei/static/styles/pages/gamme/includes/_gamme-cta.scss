@@ -1,0 +1,133 @@
+.gamme {
+    &--cta {
+        &__inner {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+
+            @include breakpoint(lg) {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+
+        &__watch {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            @include breakpoint(lg) {
+                width: 50%;
+                justify-content: space-between;
+            }
+
+            &--left {
+                position: relative;
+                flex-direction: column;
+                padding-bottom: rem(24);
+                @include breakpoint(md) {
+                    padding-bottom: rem(40);
+                }
+                @include breakpoint(lg) {
+                    padding-bottom: 0;
+                    padding-right: rem(32);
+                    flex-direction: row;
+                }
+
+                .gamme--cta__watch__image {
+                    @include breakpoint-max(lg) {
+                        margin-bottom: rem(48);
+                        .radial-bg {
+                            background: radial-gradient(
+                                172.83% 89.89% at 49.9% 100%,
+                                rgba(20, 20, 22, 0) 0%,
+                                #141416 100%
+                            );
+                        }
+                    }
+                    @include breakpoint(lg) {
+                        margin-right: rem(56);
+
+                        .radial-bg {
+                            background: radial-gradient(100% 50% at 100% 50%, rgba(20, 20, 22, 0.1) 0%, #141416 100%);
+                        }
+                    }
+                }
+
+                &:after {
+                    content: "";
+                    position: absolute;
+                    background-color: rgba(white, 0.5);
+
+                    @include breakpoint-max(lg) {
+                        bottom: 0;
+                        width: rem(100);
+                        height: rem(1);
+                        left: 50%;
+                        transform: translateX(-50%);
+                    }
+
+                    @include breakpoint(lg) {
+                        right: 0;
+                        top: 25%;
+                        height: 50%;
+                        width: rem(1);
+                    }
+                }
+            }
+
+            &--right {
+                flex-direction: column-reverse;
+                padding-top: rem(24);
+                @include breakpoint(md) {
+                    padding-top: rem(40);
+                }
+                @include breakpoint(lg) {
+                    padding-top: 0;
+                    padding-left: rem(32);
+                    flex-direction: row-reverse;
+                }
+
+                .gamme--cta__watch__image {
+                    @include breakpoint-max(lg) {
+                        margin-top: rem(48);
+                        .radial-bg {
+                            background: radial-gradient(
+                                110.06% 91.7% at 50% 0%,
+                                rgba(20, 20, 22, 0) 0.52%,
+                                #141416 100%
+                            );
+                        }
+                    }
+                    @include breakpoint(lg) {
+                        margin-left: rem(56);
+
+                        .radial-bg {
+                            background: radial-gradient(100% 50% at 0% 50%, rgba(20, 20, 22, 0.1) 0.52%, #141416 100%);
+                        }
+                    }
+                }
+            }
+
+            &__image {
+                height: rem(320);
+                position: relative;
+                @include breakpoint(sm) {
+                    height: rem(390);
+                }
+
+                .radial-bg {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                }
+
+                img {
+                    height: 100%;
+                }
+            }
+        }
+    }
+}
