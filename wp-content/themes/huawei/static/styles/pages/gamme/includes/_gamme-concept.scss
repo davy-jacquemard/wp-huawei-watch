@@ -1,0 +1,75 @@
+.gamme {
+    &--concept {
+        position: relative;
+        &__inner {
+            width: 100%;
+        }
+
+        &__intro, &__reviews {
+            @include flex-col(12,12);
+            @include breakpoint(md) {
+                @include flex-col(6,12);
+            }
+        }
+
+        &__intro {
+            &__btn {
+                margin-top: rem(40);
+            }
+        }
+
+        &__reviews {
+            margin-top: rem(40);
+
+            .review {
+                &:not(first-of-type) {
+                    margin-top: rem(16);
+                }
+
+                &__text {
+                    font-style: italic;
+                }
+
+                &__author {
+                    text-align: end;
+                    margin-top: rem(8);
+                }
+            }
+        }
+
+        &__image {
+            &--mobile {
+                margin-top: rem(40);
+                position: relative;
+                @include img-homothetic(xs 78% sm 60%);
+                img {
+                    position: absolute;
+                    top: 0;
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                }
+
+                @include breakpoint(md) {
+                    display: none;
+                }
+            }
+
+            &--desktop {
+                @include offsetcontainer("right", md 6, "fluid");
+                @include breakpoint-max(md) {
+                    display: none;
+                }
+
+                img {
+                    position: absolute;
+                    top: 0;
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                    object-position: left;
+                }
+            }
+        }
+    }
+}

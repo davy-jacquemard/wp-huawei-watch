@@ -25,6 +25,7 @@ add_action( 'wp_enqueue_scripts', 'theme_scripts_styles' );
 
 
 
+
 if ( is_page( 'single-product' ) ) {
 
     function product_scripts_styles() {

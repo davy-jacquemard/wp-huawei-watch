@@ -1,4 +1,3 @@
-
 /* ==========================================================================
 	Overlay
 /* ========================================================================== */
@@ -12,8 +11,9 @@
   padding-top: rem(72);
 }
 
-body, html {
-  overflow-x: hidden;
+body,
+html {
+  //overflow-x: hidden;
 }
 
 body.menu-open {
@@ -24,19 +24,68 @@ body.menu-open {
 /* ==========================================================================
 	Margin & paddings
 /* ========================================================================== */
-.w-flex{
+.w-flex {
   @include padding();
 }
 
-
 .on-dark {
-  .h1, .h2, .h3, .h4, .h5,
-  p, a, ul li, ol li {
+  .h1,
+  h1,
+  .h2,
+  .h3,
+  .h4,
+  .h5,
+  p,
+  a,
+  ul li,
+  ol li {
     color: $white;
   }
 
+  .w-title {
+    &:after {
+      background-color: $white;
+    }
+  }
 }
 
 .on-dark-bg {
   background-color: $primary-black;
+}
+
+.on-white {
+  .h1,
+  .h2,
+  .h3,
+  .h4,
+  .h5,
+  p,
+  a,
+  ul li,
+  ol li {
+    color: $black;
+  }
+}
+
+.on-white-bg {
+  background-color: $white;
+}
+
+.w-title {
+  padding-bottom: rem(24);
+  position: relative;
+
+  &:after {
+    content: "";
+    width: rem(80);
+    display: block;
+    height: rem(2);
+    position: absolute;
+    background-color: $primary-black;
+    bottom: 0;
+  }
+
+  & + p {
+    margin-top: rem(24);
+  }
 }

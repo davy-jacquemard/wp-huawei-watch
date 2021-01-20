@@ -1,2 +1,14 @@
-@import "./includes/_gamme-header.scss";
+@import "./../../core/starter/starter";
+@import "./../../core/helpers/variables";
+@import "./../../core/definitions/includes/utils";
+
+@import "./includes/gamme-header";
+@import "./includes/gamme-video";
+@import "./includes/gamme-concept";
+@import "./includes/gamme-marquee";
+@import "./includes/gamme-sticky-scroll";
+@import "./includes/gamme-fonctionality";
+@import "./includes/gamme-finitions";
+
+
 

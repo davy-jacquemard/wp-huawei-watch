@@ -25,10 +25,13 @@ $border: rem(2);
     background: linear-gradient(135deg, $secondary-01 0%, transparent 100%);
     background-color: $secondary-02;
 
+    @include breakpoint(md) {
     &:hover {
       background: linear-gradient(135deg, $secondary-01 0%, transparent 100%);
       background-color: $secondary-01;
     }
+    }
+
 
 
   }
@@ -36,6 +39,7 @@ $border: rem(2);
   &--secondary {
      color: $primary-black;
     line-height: rem(36);
+    text-align: center;
 
 
     background: white;
@@ -73,14 +77,18 @@ $border: rem(2);
       z-index: -1;
     }
 
-
-    &:hover {
+    @include breakpoint(md) {
+      &:hover {
       color: $secondary-01;
 
       &:before {
         background-color: $secondary-01;
       }
     }
+    }
+
+
+    
 
     &.btn--big {
       line-height: rem(44);
@@ -105,9 +113,13 @@ $border: rem(2);
 
     }
 
-    &:hover {
+    @include breakpoint(md) {
+        &:hover {
       color: $secondary-03;
     }
+    }
+
+  
   }
 
 
@@ -117,6 +129,8 @@ $border: rem(2);
     border: rem(1) solid $gray-02;
     color: $gray-02;
     line-height: rem(38);
+
+    text-align: center;
 
     &.btn--big {
       line-height: rem(46);
@@ -138,9 +152,14 @@ $border: rem(2);
       color: white;
       background-clip: padding-box;
 
-      &:hover {
+      @include breakpoint(md) {
+        &:hover {
         color: $secondary-01;
       }
+      }
+  
+
+    
 
       &:after {
         background: $primary-black;

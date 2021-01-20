@@ -1,0 +1,115 @@
+.gamme--finitions {
+    overflow: hidden;
+    &__finitions {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-top: rem(48);
+
+        @include breakpoint(md) {
+            flex-direction: row;
+        }
+    }
+
+    &__item {
+        height: 50vh;
+
+        background: white;
+        position: relative;
+        width: inherit;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        padding: rem(80) rem(24) rem(24) rem(24);
+
+        // @include transition(400ms, transform);
+        transition: transform 400ms ease, box-shadow 250ms ease;
+
+        @include breakpoint(md) {
+            padding: rem(160) rem(48) rem(48) rem(48);
+        }
+
+        @include breakpoint(lg) {
+            height: 70vh;
+        }
+
+        &__image {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            transform: translateX(50%);
+            @include transition(400ms, transform);
+        }
+
+        &__title {
+            position: absolute;
+            width: rem(220);
+            top: rem(244);
+            transform: rotate(-90deg);
+            transform-origin: left;
+            text-align: right;
+            text-transform: uppercase;
+
+            left: rem(38);
+
+            @include breakpoint(md) {
+                left: rem(70);
+            }
+        }
+
+        &__text {
+            width: 50%;
+        }
+
+        &__btn {
+            margin-top: rem(32);
+        }
+
+        &.hidden {
+            justify-content: flex-end;
+            .gamme--finitions__item {
+                &__text {
+                    display: none;
+                    @include breakpoint-only(sm) {
+                        display: block;
+                    }
+                }
+                &__image {
+                    transform: translateX(0);
+                }
+            }
+        }
+
+        @include breakpoint(md) {
+            &:hover {
+                box-shadow: -22px 0px 35px 5px rgba(0, 0, 0, 0.25);
+                &:not(:first-of-type) {
+                    transform: translateX(-10%);
+                }
+                &:not(:last-of-type) {
+                    & + .gamme--finitions__item {
+                        transform: translateX(10%);
+                    }
+                }
+            }
+
+            &.visible {
+                &:hover {
+                    .gamme--finitions__item__image {
+                        //transform: translateX(40%);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.on-dark-bg {
+    .gamme--finitions {
+        &__item {
+            background-color: $primary-black;
+        }
+    }
+}

@@ -178,7 +178,7 @@
       background-position: center center;
       cursor: pointer;
 
-      transition: transform .3s ease;
+      transition: transform .5s $primary-ease;
 
       @include breakpoint-max(md) {
         display: none;
@@ -201,14 +201,16 @@
       }
 
       &--pro {
-        transform: translateX(-100%);
+        transform: translateX(-100%) translateZ(0);
         background-color: $primary-black;
         background-image: url(../../static/img/watch/pro/gray/watch-gray-front.png);
+
+        transition-delay: .1s;
 
         @include breakpoint(md) {
           &:hover {
             & + .header__menu__watch {
-              transform: translateX(-60%);
+              transform: translateX(-60%) translateZ(0);
             }
           }
         }
@@ -216,20 +218,22 @@
 
 
         h2 {
-          color: $primary-white;
+          color: $primary-white !important;
         }
 
       }
 
       &--classic {
-        transform: translateX(-150%);
+        transform: translateX(-150%) translateZ(0);
         background-color: white;
         z-index: 20;
         background-image: url(../../static/img/watch/elegant/ocre/watch-elegant-ocre.png);
 
+        transition-delay: .2s;
+
         @include breakpoint(md) {
           &:hover {
-              transform: translateX(-40%) !important;
+              transform: translateX(-40%) translateZ(0) !important;
           }
         }
 
