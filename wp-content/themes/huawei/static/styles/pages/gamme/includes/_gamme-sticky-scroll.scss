@@ -1,0 +1,68 @@
+.gamme {
+    &--sticky-scroll {
+        position: relative;
+
+        .row {
+            margin-top: -60vh;
+        }
+
+        &__blocs {
+            width: 100%;
+           
+            @include breakpoint(md) {
+                 padding-top: 10vh;
+            padding-bottom: 10vh;
+            }
+
+            .bloc {
+                @include flex-col(8, 12);
+                height: 60vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+
+                @include breakpoint-max(md) {
+                    padding-right: 16px;
+                }
+
+                @include breakpoint(md) {
+                    height: 40vh;
+                    @include flex-col(4, 12);
+
+                    &:nth-of-type(2n) {
+                        @include offset(8, 12);
+                        text-align: end;
+
+                        .w-title {
+                            &:after {
+                                left: auto;
+                                right: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &__img-container {
+            position: sticky;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            top: calc(20vh + 35px);
+            overflow: hidden;
+
+            @include breakpoint(md) {
+                justify-content: center;
+            }
+
+            img {
+                height: 60vh;
+                @include breakpoint-max(md) {
+                  transform: translateX(50%);  
+                }
+                
+            }
+        }
+    }
+}

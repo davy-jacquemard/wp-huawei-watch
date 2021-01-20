@@ -1,5 +1,6 @@
 .gamme {
     &--marquee {
+        overflow: hidden;
         &__text {
             @include font-size(rem(48), rem(58));
             color: $gray-02;

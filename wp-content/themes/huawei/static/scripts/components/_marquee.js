@@ -3,7 +3,7 @@ const $scrollingText = document.querySelector(".js-marquee");
 
 const thresholdBase = window.innerHeight;
 
-let translateRatio = 2;
+let translateRatio = 1;
 
 let containerDistance = 0;
 

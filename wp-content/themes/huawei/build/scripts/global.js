@@ -1,6 +1,41 @@
 /******/ (function() { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./static/scripts/components/_home-horizontal-slider.js":
+/*!**************************************************************!*\
+  !*** ./static/scripts/components/_home-horizontal-slider.js ***!
+  \**************************************************************/
+/***/ (function() {
+
+const slider = document.querySelector('[js-home-vertical-slider-w]');
+const items = document.querySelectorAll('[js-home-vertical-slider-item]');
+const dots = document.querySelectorAll('[js-home-vertical-slider-dot]');
+const texts = document.querySelectorAll('[js-home-vertical-slider-text]');
+const activeClass = 'is-active';
+window.addEventListener('scroll', () => {
+  items.forEach((item, index) => {
+    let itemPosTop = item.getBoundingClientRect().top;
+    let itemHeight = item.offsetHeight;
+
+    if (itemPosTop - window.innerHeight / 2 < 0 && itemPosTop - window.innerHeight / 2 > -itemHeight) {
+      dots.forEach(dot => {
+        if (dot.classList.contains(activeClass)) {
+          dot.classList.remove(activeClass);
+        }
+      });
+      dots[index].classList.add(activeClass);
+      texts.forEach(text => {
+        if (text.classList.contains(activeClass)) {
+          text.classList.remove(activeClass);
+        }
+      });
+      texts[index].classList.add(activeClass);
+    }
+  });
+});
+
+/***/ }),
+
 /***/ "./static/scripts/components/_marquee.js":
 /*!***********************************************!*\
   !*** ./static/scripts/components/_marquee.js ***!
@@ -9,7 +44,7 @@
 
 const $scrollingText = document.querySelector(".js-marquee");
 const thresholdBase = window.innerHeight;
-let translateRatio = 2;
+let translateRatio = 1;
 let containerDistance = 0;
 window.addEventListener("scroll", onScroll);
 
@@ -73,6 +108,30 @@ closeMenu.addEventListener('click', () => {
 
 /***/ }),
 
+/***/ "./static/scripts/components/_smooth-scroll-anchor.js":
+/*!************************************************************!*\
+  !*** ./static/scripts/components/_smooth-scroll-anchor.js ***!
+  \************************************************************/
+/***/ (function() {
+
+const links = document.querySelectorAll('a[href*="#"]');
+
+for (const link of links) {
+  link.addEventListener("click", clickHandler);
+}
+
+function clickHandler(e) {
+  e.preventDefault();
+  const href = this.getAttribute("href");
+  const offsetTop = document.querySelector(href).getBoundingClientRect().top + window.scrollY;
+  scroll({
+    top: offsetTop,
+    behavior: "smooth"
+  });
+}
+
+/***/ }),
+
 /***/ "./static/scripts/global.js":
 /*!**********************************!*\
   !*** ./static/scripts/global.js ***!
@@ -87,6 +146,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_menu__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_components_menu__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _components_marquee__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/_marquee */ "./static/scripts/components/_marquee.js");
 /* harmony import */ var _components_marquee__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_components_marquee__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _components_smooth_scroll_anchor__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/_smooth-scroll-anchor */ "./static/scripts/components/_smooth-scroll-anchor.js");
+/* harmony import */ var _components_smooth_scroll_anchor__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_components_smooth_scroll_anchor__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _components_home_horizontal_slider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/_home-horizontal-slider */ "./static/scripts/components/_home-horizontal-slider.js");
+/* harmony import */ var _components_home_horizontal_slider__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_components_home_horizontal_slider__WEBPACK_IMPORTED_MODULE_5__);
+
+
 
 
 
