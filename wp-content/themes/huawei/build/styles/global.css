@@ -3652,13 +3652,22 @@ $colors: (
             display: block; } }
       .gamme--finitions__item.hidden .gamme--finitions__item__image {
         transform: translateX(0); }
+        @media (min-width: 960px) {
+          .gamme--finitions__item.hidden .gamme--finitions__item__image {
+            transform: translateX(50%); } }
+        @media (min-width: 1600px) {
+          .gamme--finitions__item.hidden .gamme--finitions__item__image {
+            transform: translateX(40%); } }
     @media (min-width: 960px) {
       .gamme--finitions__item:hover {
         box-shadow: -22px 0px 35px 5px rgba(0, 0, 0, 0.25); }
         .gamme--finitions__item:hover:not(:first-of-type) {
           transform: translateX(-10%); }
         .gamme--finitions__item:hover:not(:last-of-type) + .gamme--finitions__item {
-          transform: translateX(10%); } }
+          transform: translateX(10%); }
+        .gamme--finitions__item:hover .btn {
+          background: linear-gradient(135deg, #24B5B4 0%, transparent 100%);
+          background-color: #24B5B4; } }
 
 .on-dark-bg .gamme--finitions__item {
   background-color: #141416; }
