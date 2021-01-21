@@ -24,7 +24,7 @@ $card = array(
 
 </div>
 <div class="row">
-    <div class="news-container">
+    <div class="w-news">
         <?php 
         set_query_var( 'card', $card );
         get_template_part( 'template-parts/components/cards/card', 'news'); ?>

@@ -13,7 +13,7 @@
 /* ===================
 	   Padding
 /* ===================*/
-@mixin padding(){
+@mixin padding() {
   padding: rem(40) 0;
   @include breakpoint(sm) {
     padding: rem(60) 0;
@@ -21,4 +21,13 @@
   @include breakpoint(lg) {
     padding: rem(80) 0;
   }
+}
+
+@mixin img-full {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  object-fit: cover;
 }

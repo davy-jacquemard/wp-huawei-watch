@@ -5,10 +5,32 @@
         display: flex;
         flex-direction: column;
 
+        @include breakpoint-max(sm) {
+            .btn-container {
+                margin-top: rem(24);
+            }
+        }
+
         @include breakpoint(sm) {
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
+        }
+    }
+
+    &__list {
+        margin-top: rem(48);
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        .w-news {
+            @include breakpoint-only(md) {
+                &:last-of-type {
+                    display: none;
+                }
+            }
         }
     }
 }
