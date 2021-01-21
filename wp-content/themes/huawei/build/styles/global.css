@@ -1697,6 +1697,17 @@ label {
   display: block;
   margin-bottom: 8px; }
 
+.last-news {
+  position: relative; }
+  .last-news__header {
+    display: flex;
+    flex-direction: column; }
+    @media (min-width: 720px) {
+      .last-news__header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center; } }
+
 .menu-container {
   display: flex;
   justify-content: flex-end; }

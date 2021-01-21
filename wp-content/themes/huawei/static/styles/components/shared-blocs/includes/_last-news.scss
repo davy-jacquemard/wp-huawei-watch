@@ -1,0 +1,14 @@
+.last-news {
+    position: relative;
+
+    &__header {
+        display: flex;
+        flex-direction: column;
+
+        @include breakpoint(sm) {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+}
