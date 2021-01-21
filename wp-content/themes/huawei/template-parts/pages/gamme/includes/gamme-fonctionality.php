@@ -22,11 +22,6 @@ $fonctionalities = get_field('gamme_feature');
         endif; ?>
     </div>
 
-
-
-
-
-
     <div class="gamme--fonctionality__inner">
         <div class="gamme--fonctionality__w-images" js-home-vertical-slider-w>
             <?php if (have_rows('gamme_feature')) : while (have_rows('gamme_feature')) : the_row(); ?>
@@ -45,14 +40,5 @@ $fonctionalities = get_field('gamme_feature');
             <?php endwhile;
             endif; ?>
         </div>
-
-
-
-
-
     </div>
-
-
-
-
 </section>

@@ -24,4 +24,8 @@
     <!--Call to action-->
     <?php get_template_part('template-parts/pages/gamme/includes/gamme-cta'); ?>
 
+     
+    <!--Last news-->
+    <?php get_template_part('template-parts/components/shared-block/last-news'); ?>
+
 </div>
