@@ -13,3 +13,15 @@
         height: auto;
     }
 }
+
+.flexible-txt-img{
+
+    display: flex;
+    &__side-text{
+        max-width: 45%;
+    }
+
+    &__side-img{
+        max-width: 45%;
+    }
+}

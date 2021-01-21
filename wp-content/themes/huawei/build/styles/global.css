@@ -2132,6 +2132,13 @@ label {
   width: 100%;
   height: auto; }
 
+.flexible-txt-img {
+  display: flex; }
+  .flexible-txt-img__side-text {
+    max-width: 45%; }
+  .flexible-txt-img__side-img {
+    max-width: 45%; }
+
 @charset "UTF-8";
 /**
  * modified version of eric meyer's reset 2.0
