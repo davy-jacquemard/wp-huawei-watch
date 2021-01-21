@@ -78,6 +78,12 @@
                 }
                 &__image {
                     transform: translateX(0);
+                    @include breakpoint(md) {
+                        transform: translateX(50%);
+                    }
+                    @include breakpoint(xlg) {
+                        transform: translateX(40%);
+                    }
                 }
             }
         }
@@ -93,15 +99,19 @@
                         transform: translateX(10%);
                     }
                 }
+                .btn {
+                    background: linear-gradient(135deg, $secondary-01 0%, transparent 100%);
+                    background-color: $secondary-01;
+                }
             }
 
-            &.visible {
+         /*    &.visible {
                 &:hover {
                     .gamme--finitions__item__image {
                         //transform: translateX(40%);
                     }
                 }
-            }
+            } */
         }
     }
 }

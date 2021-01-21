@@ -1,0 +1,15 @@
+.flexible-centered-image{
+    &__img{
+        margin-left: 50%;
+        transform: translate(-50%, 0px);
+    }
+}
+
+
+.flexible-img-full{
+
+    &__img{
+        width: 100%;
+        height: auto;
+    }
+}

@@ -12,27 +12,30 @@ const items = document.querySelectorAll('[js-home-vertical-slider-item]');
 const dots = document.querySelectorAll('[js-home-vertical-slider-dot]');
 const texts = document.querySelectorAll('[js-home-vertical-slider-text]');
 const activeClass = 'is-active';
-window.addEventListener('scroll', () => {
-  items.forEach((item, index) => {
-    let itemPosTop = item.getBoundingClientRect().top;
-    let itemHeight = item.offsetHeight;
 
-    if (itemPosTop - window.innerHeight / 2 < 0 && itemPosTop - window.innerHeight / 2 > -itemHeight) {
-      dots.forEach(dot => {
-        if (dot.classList.contains(activeClass)) {
-          dot.classList.remove(activeClass);
-        }
-      });
-      dots[index].classList.add(activeClass);
-      texts.forEach(text => {
-        if (text.classList.contains(activeClass)) {
-          text.classList.remove(activeClass);
-        }
-      });
-      texts[index].classList.add(activeClass);
-    }
+if (slider) {
+  window.addEventListener('scroll', () => {
+    items.forEach((item, index) => {
+      let itemPosTop = item.getBoundingClientRect().top;
+      let itemHeight = item.offsetHeight;
+
+      if (itemPosTop - window.innerHeight / 2 < 0 && itemPosTop - window.innerHeight / 2 > -itemHeight) {
+        dots.forEach(dot => {
+          if (dot.classList.contains(activeClass)) {
+            dot.classList.remove(activeClass);
+          }
+        });
+        dots[index].classList.add(activeClass);
+        texts.forEach(text => {
+          if (text.classList.contains(activeClass)) {
+            text.classList.remove(activeClass);
+          }
+        });
+        texts[index].classList.add(activeClass);
+      }
+    });
   });
-});
+}
 
 /***/ }),
 
@@ -256,7 +259,6 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	// Load entry module
 /******/ 	__webpack_require__("./static/scripts/global.js");
 /******/ 	// This entry module used 'exports' so it can't be inlined
-/******/ 	__webpack_require__("./static/styles/global.scss");
 /******/ })()
 ;
 //# sourceMappingURL=global.js.map

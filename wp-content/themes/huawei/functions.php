@@ -14,6 +14,12 @@ if ( ! defined( 'BUILD_URI' ) ) {
 // Walker Nav Menu.
 require_once get_template_directory() . '/classes/class-crd-walker-menu.php';
 
+// ACF 
+require_once( __DIR__ . '/functions/acf.php');
+
+
+
+
 function theme_scripts_styles() {
 
     wp_enqueue_style( 'global', get_template_directory_uri() . '/build/styles/global.css' );
@@ -24,19 +30,6 @@ add_action( 'wp_enqueue_scripts', 'theme_scripts_styles' );
 
 
 
-
-
-if ( is_page( 'single-product' ) ) {
-
-    function product_scripts_styles() {
-
-        wp_enqueue_style( 'product', get_template_directory_uri() . '/build/styles/product.css' );
-
-       // wp_enqueue_script( 'global', get_template_directory_uri() . '/build/scripts/global.js', array(), '', true );
-    }
-
-    add_action( 'wp_enqueue_scripts', 'product_scripts_styles' );
-}
 
 add_action( 'admin_menu', 'remove_default_post_type' );
 

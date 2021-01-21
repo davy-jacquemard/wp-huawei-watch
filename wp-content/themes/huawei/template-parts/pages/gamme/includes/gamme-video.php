@@ -10,10 +10,8 @@
 
     // Add extra parameters to src and replcae HTML.
     $params = array(
-        'controls'  => 0,
         'hd'        => 1,
         'autohide'  => 1,
-        'autoplay'  => 1,
         'loop'      => 1,
         'modestbranding' => 1,
     );

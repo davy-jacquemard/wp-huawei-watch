@@ -7,8 +7,8 @@ const texts = document.querySelectorAll('[js-home-vertical-slider-text]');
 const activeClass = 'is-active'
 
 
-
-window.addEventListener('scroll', () => {
+if(slider) {
+    window.addEventListener('scroll', () => {
 
      items.forEach((item, index) => {
 
@@ -35,3 +35,4 @@ window.addEventListener('scroll', () => {
         }
     }) 
 })
+}
