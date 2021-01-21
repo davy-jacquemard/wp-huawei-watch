@@ -1667,6 +1667,12 @@ body.menu-open {
   .w-title + p {
     margin-top: 24px; }
 
+/* ==========================================================================
+Text positionning
+/* ========================================================================== */
+.flexible-centered-text {
+  text-align: center; }
+
 /*--------------------------------
 FORM
 --------------------------------*/
@@ -2117,6 +2123,21 @@ label {
             transform: translateX(-40%) translateZ(0) !important; } }
         .header__menu__watch--classic h2 {
           color: #141416; }
+
+.flexible-centered-image__img {
+  margin-left: 50%;
+  transform: translate(-50%, 0px); }
+
+.flexible-img-full__img {
+  width: 100%;
+  height: auto; }
+
+.flexible-txt-img {
+  display: flex; }
+  .flexible-txt-img__side-text {
+    max-width: 45%; }
+  .flexible-txt-img__side-img {
+    max-width: 45%; }
 
 @charset "UTF-8";
 /**

@@ -11,9 +11,6 @@
 
     $strap_colors = $attributes[$attributes_strap_color]["options"];
 
-    echo "<pre>";   
-        print_r($product);
-    echo "</pre>";
 
 ?>
 
