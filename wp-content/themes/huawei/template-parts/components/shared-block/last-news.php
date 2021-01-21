@@ -3,7 +3,7 @@ yo
 <?php
 
     // The Query
-    $next_args = array(
+    $args = array(
                     'post_type' => 'articles',
                     'post_status' => 'publish',
                     'posts_per_page'=>4,
