@@ -5,23 +5,24 @@ Template Name: Archives articles
 ?>
 
 <?php get_header(); ?>
-<div class="main">
+    <div class="main">
+    <?php if ( have_posts() ) : ?>
+        <h1 class="h1">Retrouvez tous les articles</h1>
+    <?php
+    /* Start the Loop */
+    while ( have_posts() ) :
+        the_post();
+        get_template_part( 'template-parts/pages/archive/archive' );
+        
+    endwhile;
 
+    the_posts_navigation();
 
-<?php
-/*
-Template Name: Page d'archives
-*/
-?>
-<div class="main">
-    <h1 class="h1">Page archive</h1>
-    <div id="content" role="main">
+    else :
 
-        <?php the_post(); ?>
-        <h1 class="entry-title"><?php the_title(); ?></h1>
+    get_template_part( 'template-parts/content', 'none' );
 
-    </div><!-- #content -->
-
-    
-</div>
+    endif;
+    ?>
+    </div>
 <?php get_footer() ?>
