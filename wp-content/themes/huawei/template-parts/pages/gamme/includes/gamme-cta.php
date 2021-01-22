@@ -4,6 +4,10 @@ $section_right = get_field('gamme_cta')['right'];
 
 ?>
 
+<pre>
+    <?php echo  $section_left ?>
+</pre>
+
 <section class="gamme--cta w-flex on-dark on-dark-bg">
     <div class="gamme--cta__inner">
         <div class="gamme--cta__watch gamme--cta__watch--left">
