@@ -8,21 +8,23 @@ Template Name: Archives articles
     <div class="main">
     <?php if ( have_posts() ) : ?>
         <h1 class="h1">Retrouvez tous les articles</h1>
-    <?php
-    /* Start the Loop */
-    while ( have_posts() ) :
-        the_post();
-        get_template_part( 'template-parts/pages/archive/archive' );
-        
-    endwhile;
+        <div class="row archive-container">
+            <?php
+            /* Start the Loop */
+            while ( have_posts() ) :
+                the_post();
+                get_template_part( 'template-parts/pages/archive/archive' );
+                
+            endwhile;
 
-    the_posts_navigation();
+            the_posts_navigation();
 
-    else :
+            else :
 
-    get_template_part( 'template-parts/content', 'none' );
+            get_template_part( 'template-parts/content', 'none' );
 
-    endif;
-    ?>
+            endif;
+            ?>            
+        </div>  
     </div>
 <?php get_footer() ?>
