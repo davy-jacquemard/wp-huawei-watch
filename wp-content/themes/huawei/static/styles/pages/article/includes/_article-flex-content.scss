@@ -1,27 +1,202 @@
 .flexible-centered-image{
     &__img{
-        margin-left: 50%;
-        transform: translate(-50%, 0px);
+        width : 100%;
+        height: auto;
     }
+
+    &__row{
+        display: flex;
+        justify-content: center;
+    }
+
+    &__inner{
+        display: flex;
+        justify-content: center;
+        @include flex-col(10, 12);
+        @include breakpoint(sm) {
+        @include flex-col(8, 12);
+        }
+        @include breakpoint(md) {
+            @include flex-col(8, 12);
+        }
+        @include breakpoint(lg) {
+            @include flex-col(6, 12);
+        }
+        
+    }
+
 }
 
 
 .flexible-img-full{
 
-    &__img{
-        width: 100%;
-        height: auto;
+    &__img-container{
+        @include img-homothetic(xs 50%);
+        overflow: hidden;
+        position: relative;
+
+        @include breakpoint(sm) {
+            @include img-homothetic(sm 35%);
+        }
+        @include breakpoint(md) {
+            @include img-homothetic(md 35%);
+        }
+        @include breakpoint(lg) {
+            @include img-homothetic(lg 45%);
+        }
+
+        img{
+            width : 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            object-fit: cover;
+        }
     }
 }
 
 .flexible-txt-img{
 
+    
+    &--margin-left{
+        margin-left: rem(10);
+    }
+        
+    &--margin-right{
+        margin-right: rem(10);
+    }
+    
+    &__inner{  
     display: flex;
+    justify-content: space-between;
+
+        &--left{
+            flex-direction: column;
+
+
+            @include breakpoint(sm) {
+                flex-direction: row;
+
+
+            }
+            
+            
+        }
+    
+        &--right{
+            flex-direction: column-reverse;
+            @include breakpoint(sm) {
+                flex-direction: row-reverse;
+
+                &__side-text{
+                    padding-top: rem(0) ;
+                }
+            }
+
+            &__side-text{
+                padding-top: rem(20) ;
+                padding-left: rem(20);
+            }
+        }
+    }
+
     &__side-text{
-        max-width: 45%;
+        
+        &--margin-position-left{
+            @include breakpoint(sm) {
+                margin: rem(0) rem(20) rem(0) rem(0);
+            }
+        }
+        &--margin-position-right{
+            @include breakpoint(sm) {
+                margin: rem(0) rem(0) rem(0) rem(20);
+            }
+        }
+        margin: rem(20) rem(0) rem(0) rem(0);
+
+        p{
+            width: 100%;
+        }
+
+        @include flex-col(12, 12);
+
+        @include breakpoint(sm) {
+            @include flex-col(6, 12);
+        }
+
+        @include breakpoint(lg) {
+            @include flex-col(6, 12);
+        }
+
+        @include breakpoint(xlg) {
+            @include flex-col(6, 12);
+        }
     }
 
     &__side-img{
-        max-width: 45%;
+
+        &--margin-position-left{
+            @include breakpoint(sm) {
+                margin: rem(0) rem(0) rem(0) rem(20);
+            }
+        }
+        &--margin-position-right{
+            @include breakpoint(sm) {
+                margin: rem(0) rem(20) rem(0) rem(0);
+            }
+        }
+
+        margin: rem(20) rem(0) rem(0) rem(0);
+
+        @include img-homothetic(xs 50%);
+        overflow: hidden;
+        position: relative;
+
+        @include breakpoint(sm) {
+            @include img-homothetic(sm 30%);
+            margin-top: rem(0);
+        }
+        @include breakpoint(md) {
+            @include img-homothetic(md 40%);
+        }
+        @include breakpoint(lg) {
+            @include img-homothetic(lg 60%);
+        }
+
+        img{        
+            width : 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            object-fit: cover;
+
+        }
+        
+
+
+        @include flex-col(12, 12);
+
+
+        @include breakpoint(sm) {
+            @include flex-col(6, 12);
+        }
+
+        @include breakpoint(lg) {
+            @include flex-col(6, 12);
+        }
+
+        @include breakpoint(xlg) {
+            @include flex-col(6, 12);
+        }
+
+
+    }
+
+    &__btn{
+        margin: 0 auto 0 auto;
     }
 }
+
+
