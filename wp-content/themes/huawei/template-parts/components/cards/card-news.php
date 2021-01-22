@@ -1,6 +1,6 @@
 <div class="card-news">
     <div class="card-news__inner">
-        <a href="<?php echo $card->link ?>" class="full-link"></a>
+        <a href="<?php echo $card['link'] ?>" class="full-link"></a>
         <div class="card-news__container-img">
             <img src="<?php echo $card['image_url']; ?>" alt="<?php echo $card['image_alt']; ?>">
         </div>

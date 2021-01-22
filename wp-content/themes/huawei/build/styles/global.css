@@ -1493,10 +1493,20 @@ COMPONENTS
     border-radius: 8px;
     background: #FAFAFA;
     height: 100%;
-    transition: box-shadow 0.3s ease; }
+    transition: box-shadow 0.3s ease;
+    position: relative; }
+    .card-news__inner:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 4px;
+      background-color: #EE753B; }
   .card-news__container-img {
     position: relative;
-    overflow: hidden; }
+    overflow: hidden;
+    z-index: 1; }
     .card-news__container-img:before {
       content: "";
       display: block;
@@ -1515,9 +1525,10 @@ COMPONENTS
   .card-news__container-text {
     padding: 24px;
     background: #FAFAFA;
-    /*  border-left: rem(4) solid $secondary-03; */
+    /*  border-left: rem(4) solid $secondary-03;  */
     position: relative; }
   .card-news__category {
+    z-index: 2;
     margin: 0;
     position: absolute;
     top: 0;

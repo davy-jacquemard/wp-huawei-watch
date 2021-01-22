@@ -55,6 +55,17 @@
         background: $primary-white;
         height: 100%;
         transition: box-shadow 0.3s ease;
+        position: relative;
+
+        &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: rem(4);
+            background-color: $secondary-03;
+        }
 
     }
 
@@ -62,6 +73,7 @@
         @include img-homothetic(xs 66%);
         position: relative;
         overflow: hidden;
+        z-index: 1;
 
         img {
             @include img-full;
@@ -74,11 +86,12 @@
     &__container-text {
         padding: rem(24);
         background: $primary-white;
-       /*  border-left: rem(4) solid $secondary-03; */
+        /*  border-left: rem(4) solid $secondary-03;  */
         position: relative;
 
     }
     &__category {
+        z-index: 2;
         margin: 0;
         position: absolute;
         top: 0;
