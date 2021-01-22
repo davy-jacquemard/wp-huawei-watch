@@ -1418,74 +1418,120 @@ ul.primary-list .li, .wysiwyg ul li {
 /*--------------------------------
 COMPONENTS
 --------------------------------*/
-.news-container {
+.w-news {
   border-radius: 8px;
   flex: 0 0 100%;
   max-width: 100%;
   padding-left: 6px;
   padding-right: 6px;
-  margin-top: 36px; }
+  margin-bottom: 36px; }
   @media (min-width: 720px) {
-    .news-container {
+    .w-news {
       padding-left: 12px; } }
   @media (min-width: 720px) {
-    .news-container {
+    .w-news {
       padding-right: 12px; } }
   @media (min-width: 720px) {
-    .news-container {
+    .w-news {
       flex: 0 0 50%;
       max-width: 50%;
       padding-left: 6px;
       padding-right: 6px; } }
   @media (min-width: 720px) and (min-width: 720px) {
-    .news-container {
+    .w-news {
       padding-left: 12px; } }
   @media (min-width: 720px) and (min-width: 720px) {
-    .news-container {
+    .w-news {
       padding-right: 12px; } }
   @media (min-width: 960px) {
-    .news-container .card-news {
-      transition: all 0.5s; }
-      .news-container .card-news:hover {
-        transform: translateY(-10px); } }
+    .w-news {
+      flex: 0 0 33.33333%;
+      max-width: 33.33333%;
+      padding-left: 6px;
+      padding-right: 6px; } }
+  @media (min-width: 960px) and (min-width: 720px) {
+    .w-news {
+      padding-left: 12px; } }
+  @media (min-width: 960px) and (min-width: 720px) {
+    .w-news {
+      padding-right: 12px; } }
   @media (min-width: 1280px) {
-    .news-container {
+    .w-news {
       flex: 0 0 25%;
       max-width: 25%;
       padding-left: 6px;
       padding-right: 6px;
       margin-top: 0; } }
   @media (min-width: 1280px) and (min-width: 720px) {
-    .news-container {
+    .w-news {
       padding-left: 12px; } }
   @media (min-width: 1280px) and (min-width: 720px) {
-    .news-container {
+    .w-news {
       padding-right: 12px; } }
 
 .card-news {
   box-shadow: 0 5px 6px 2px rgba(0, 0, 0, 0.15);
   width: 100%;
+  height: 100%;
   border-radius: 8px;
-  position: relative; }
-  .card-news__container-img {
-    width: 100%;
-    height: 200px;
+  position: relative;
+  transition: transform 0.3s ease;
+  max-width: 340px;
+  margin-right: auto;
+  margin-left: auto; }
+  @media (min-width: 960px) {
+    .card-news:hover {
+      transform: translateY(-8px); }
+      .card-news:hover .card-news__inner {
+        box-shadow: 0 15px 40px -5px rgba(0, 0, 0, 0.35); }
+      .card-news:hover .card-news__container-img img {
+        transform: scale(1.1); }
+      .card-news:hover .card-news__links {
+        color: #EE753B; } }
+  .card-news__inner {
     overflow: hidden;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px; }
-  .card-news__box-shadow {
-    border-radius: 8px; }
-  .card-news img {
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px; }
-  .card-news__container-text {
-    padding-left: 24px;
+    border-radius: 8px;
     background: #FAFAFA;
-    border-left: 4px solid #EE753B;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px; }
+    height: 100%;
+    transition: box-shadow 0.3s ease;
+    position: relative; }
+    .card-news__inner:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 4px;
+      background-color: #EE753B; }
+  .card-news__container-img {
+    position: relative;
+    overflow: hidden;
+    z-index: 1; }
+    .card-news__container-img:before {
+      content: "";
+      display: block;
+      position: relative;
+      width: 100%;
+      padding-top: 66%; }
+    .card-news__container-img img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+      transform: scale(1); }
+  .card-news__container-text {
+    padding: 24px;
+    background: #FAFAFA;
+    /*  border-left: rem(4) solid $secondary-03;  */
+    position: relative; }
   .card-news__category {
+    z-index: 2;
     margin: 0;
+    position: absolute;
+    top: 0;
     padding: 8px 16px;
     background: #EE753B;
     transform: translateY(-50%);
@@ -1500,12 +1546,7 @@ COMPONENTS
     margin: 16px 0;
     font-family: "Ubuntu", -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Arial, sans-serif; }
   .card-news__links {
-    margin: 16px 0 32px 0;
-    display: inline-block;
-    color: #141416 !important;
-    padding-left: 0 !important; }
-    .card-news__links i {
-      color: #EE753B; }
+    margin-top: 16px; }
 
 .full-link {
   width: 100%;
@@ -1696,6 +1737,77 @@ label {
   color: #141416;
   display: block;
   margin-bottom: 8px; }
+
+.last-news {
+  position: relative;
+  overflow: hidden; }
+  .last-news__header {
+    display: flex;
+    flex-direction: column; }
+    @media (max-width: 719.98px) {
+      .last-news__header .btn-container {
+        margin-top: 24px; } }
+    @media (min-width: 720px) {
+      .last-news__header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center; } }
+  @media (max-width: 1279.98px) {
+    .last-news .row {
+      margin: 0; } }
+  .last-news__list {
+    margin-top: 48px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; }
+    .last-news__list .swiper-container {
+      overflow: visible;
+      width: 280px;
+      margin-left: 0; }
+      @media (min-width: 1280px) {
+        .last-news__list .swiper-container {
+          margin: 0;
+          width: 100%; } }
+    @media (min-width: 1280px) {
+      .last-news__list .swiper-wrapper {
+        width: 100%; } }
+    @media (min-width: 960px) and (max-width: 1279.98px) {
+      .last-news__list .w-news:last-of-type {
+        display: none; } }
+  @media (min-width: 1280px) {
+    .last-news__w-card {
+      margin: auto;
+      flex: 0 0 25%;
+      max-width: 25%;
+      padding-left: 6px;
+      padding-right: 6px;
+      margin-top: 0; } }
+  @media (min-width: 1280px) and (min-width: 720px) {
+    .last-news__w-card {
+      padding-left: 12px; } }
+  @media (min-width: 1280px) and (min-width: 720px) {
+    .last-news__w-card {
+      padding-right: 12px; } }
+  .last-news__pagination {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 24px; }
+    @media (min-width: 1280px) {
+      .last-news__pagination {
+        display: none; } }
+    .last-news__pagination .swiper-pagination-bullet {
+      width: 12px;
+      height: 12px;
+      border: 2px solid #24B5B4;
+      border-radius: 50%;
+      background-color: transparent;
+      transition: 250ms background-color ease-out; }
+      .last-news__pagination .swiper-pagination-bullet-active {
+        background-color: #24B5B4; }
+      .last-news__pagination .swiper-pagination-bullet + .swiper-pagination-bullet {
+        margin-left: 8px; }
 
 .menu-container {
   display: flex;
@@ -2409,6 +2521,1039 @@ label {
 
 .flexible-txt-img__btn {
   margin: 0 auto 0 auto; }
+
+/**
+ * modified version of eric meyer's reset 2.0
+ * http://meyerweb.com/eric/tools/css/reset/
+ */
+/**
+     * basic reset
+     */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, main,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  list-style-type: none;
+  text-decoration: none; }
+
+/**
+     * HTML5 display-role reset for older browsers
+     */
+article, aside, details, figcaption, figure,
+footer, header, menu, nav, section,
+main, summary {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/**
+ * modified version of normalize.css 3.0.2
+ * http://necolas.github.io/normalize.css/
+ */
+/**
+     * 1. Set default font family to sans-serif.
+     * 2. Prevent iOS text size adjust after orientation change, without disabling
+     *    user zoom.
+     */
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%; }
+
+/**
+     * HTML5 display definitions
+     * =============================================================================
+     */
+/**
+     * 1. Correct `inline-block` display not defined in IE 8/9.
+     * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+     */
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  vertical-align: baseline; }
+
+/**
+     * Prevent modern browsers from displaying `audio` without controls.
+     * Remove excess height in iOS 5 devices.
+     */
+audio:not([controls]) {
+  display: none;
+  height: 0; }
+
+/**
+     * Address `[hidden]` styling not present in IE 8/9/10.
+     * Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.
+     */
+[hidden],
+template {
+  display: none; }
+
+/**
+     * Links
+     * =============================================================================
+     */
+/**
+     * Remove the gray background color from active links in IE 10.
+     */
+a {
+  background-color: transparent; }
+
+/**
+     * Improve readability when focused and also mouse hovered in all browsers.
+     */
+a:active,
+a:hover {
+  outline: 0; }
+
+/**
+     * Text-level semantics
+     * =============================================================================
+     */
+/**
+     * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+     */
+abbr[title] {
+  border-bottom: 1px dotted; }
+
+/**
+     * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+     */
+b,
+strong {
+  font-weight: bold; }
+
+/**
+     * 1. Address styling not present in Safari and Chrome.
+     * 2. Set previously resetted italic font-style
+     */
+dfn,
+i, em {
+  font-style: italic; }
+
+/**
+     * Address styling not present in IE 8/9.
+     */
+mark {
+  background: #ff0;
+  color: #000; }
+
+/**
+     * Address inconsistent and variable font size in all browsers.
+     */
+small {
+  font-size: 80%; }
+
+/**
+     * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+     */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative; }
+
+sup {
+  top: -0.5em; }
+
+sub {
+  bottom: -0.25em; }
+
+/**
+     * Embedded content
+     * =============================================================================
+     */
+/**
+     * Remove border when inside `a` element in IE 8/9/10.
+     */
+img {
+  border: 0; }
+
+/**
+     * Correct overflow not hidden in IE 9/10/11.
+     */
+svg:not(:root) {
+  overflow: hidden; }
+
+/**
+     * Grouping content
+     * =============================================================================
+     */
+/**
+     * Address differences between Firefox and other browsers.
+     */
+hr {
+  box-sizing: content-box;
+  height: 0; }
+
+/**
+     * Contain overflow in all browsers.
+     */
+pre {
+  overflow: auto; }
+
+/**
+     * Address odd `em`-unit font size rendering in all browsers.
+     */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace; }
+
+/**
+     * Forms
+     * =============================================================================
+     */
+/**
+     * Known limitation: by default, Chrome and Safari on OS X allow very limited
+     * styling of `select`, unless a `border` property is set.
+     */
+/**
+     * 1. Correct color not being inherited.
+     *    Known issue: affects color of disabled elements.
+     * 2. Correct font properties not being inherited.
+     * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+     */
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0; }
+
+/**
+     * Address `overflow` set to `hidden` in IE 8/9/10/11.
+     */
+button {
+  overflow: visible; }
+
+/**
+     * Address inconsistent `text-transform` inheritance for `button` and `select`.
+     * All other form control elements do not inherit `text-transform` values.
+     * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+     * Correct `select` style inheritance in Firefox.
+     */
+button,
+select {
+  text-transform: none; }
+
+/**
+     * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+     *    and `video` controls.
+     * 2. Correct inability to style clickable `input` types in iOS.
+     * 3. Improve usability and consistency of cursor style between image-type
+     *    `input` and others.
+     */
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer; }
+
+/**
+     * Re-set default cursor for disabled elements.
+     */
+button[disabled],
+html input[disabled] {
+  cursor: default; }
+
+/**
+     * Remove inner padding and border in Firefox 4+.
+     */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0; }
+
+/**
+     * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+     * the UA stylesheet.
+     */
+input {
+  line-height: normal; }
+
+/**
+     * It's recommended that you don't attempt to style these elements.
+     * Firefox's implementation doesn't respect box-sizing, padding, or width.
+     *
+     * 1. Address box sizing set to `content-box` in IE 8/9/10.
+     * 2. Remove excess padding in IE 8/9/10.
+     */
+input[type="checkbox"],
+input[type="radio"] {
+  padding: 0; }
+
+/**
+     * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+     * `font-size` values of the `input`, it causes the cursor style of the
+     * decrement button to change from `default` to `text`.
+     */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto; }
+
+/**
+     * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
+     * 2. Address `box-sizing` set to `border-box` in Safari and Chrome
+     *    (include `-moz` to future-proof).
+     */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  box-sizing: content-box; }
+
+/**
+     * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+     * Safari (but not Chrome) clips the cancel button when the search input has
+     * padding (and `textfield` appearance).
+     */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none; }
+
+/**
+     * Remove default vertical scrollbar in IE 8/9/10/11.
+     */
+textarea {
+  overflow: auto; }
+
+/**
+     * Don't inherit the `font-weight` (applied by a rule above).
+     * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+     */
+optgroup {
+  font-weight: bold; }
+
+/**
+ * responsive viewport
+ */
+@viewport {
+  width: device-width; }
+
+/**
+     * inherit box model
+     */
+*,
+*::before,
+*::after {
+  box-sizing: inherit; }
+
+/**
+     * iOS "clickable elements" fix for role="button"
+     *
+     * Fixes "clickability" issue (and more generally, the firing of events such as focus as well)
+     * for traditionally non-focusable elements with role="button"
+     * see https://developer.mozilla.org/en-US/docs/Web/Events/click#Safari_Mobile
+     */
+[role="button"] {
+  cursor: pointer; }
+
+/**
+     * Avoid 300ms click delay on touch devices that support the `touch-action` CSS property.
+     *
+     * In particular, unlike most other browsers, IE11+Edge on Windows 10 on touch devices and IE Mobile 10-11
+     * DON'T remove the click delay when `<meta name="viewport" content="width=device-width">` is present.
+     * However, they DO support removing the click delay via `touch-action: manipulation`.
+     * See:
+     * - http://v4-alpha.getbootstrap.com/content/reboot/#click-delay-optimization-for-touch
+     * - http://caniuse.com/#feat=css-touch-action
+     * - http://patrickhlauke.github.io/touch/tests/results/#suppressing-300ms-delay
+     */
+a,
+area,
+button,
+[role="button"],
+input,
+label,
+select,
+summary,
+textarea {
+  touch-action: manipulation; }
+
+/**
+     * Always hide an element with the `hidden` HTML attribute (from PureCSS).
+     */
+[hidden] {
+  display: none !important; }
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+body {
+  -webkit-font-smoothing: antialiased;
+  font-smooth: always; }
+
+.clearfix::after {
+  display: block;
+  clear: both;
+  content: ""; }
+
+/******************************
+**
+** Container/Gutters
+**
+******************************/
+.full-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%; }
+
+.img-fluid {
+  max-width: 100%;
+  height: auto; }
+
+.container {
+  position: relative;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px; }
+  @media (min-width: 720px) {
+    .container {
+      padding-left: 12px;
+      padding-right: 12px; } }
+  @media (min-width: 960px) {
+    .container {
+      padding-left: 0;
+      padding-right: 0; } }
+  @media (min-width: 720px) {
+    .container {
+      max-width: 720px; } }
+  @media (min-width: 960px) {
+    .container {
+      max-width: 940px; } }
+  @media (min-width: 1280px) {
+    .container {
+      max-width: 1200px; } }
+  @media (min-width: 1600px) {
+    .container {
+      max-width: 1400px; } }
+
+.container-fluid {
+  position: relative;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px; }
+  @media (min-width: 720px) {
+    .container-fluid {
+      padding-left: 12px;
+      padding-right: 12px; } }
+  @media (min-width: 960px) {
+    .container-fluid {
+      padding-left: 0;
+      padding-right: 0; } }
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -6px;
+  margin-left: -6px; }
+  @media (min-width: 720px) {
+    .row {
+      margin-right: -12px;
+      margin-left: -12px; } }
+  .row .no-gutters {
+    margin-right: 0;
+    margin-left: 0; }
+    .row .no-gutters > .col,
+    .row .no-gutters > [class*="col-"] {
+      padding-right: 0;
+      padding-left: 0; }
+
+.container.test {
+  position: fixed;
+  top: 0;
+  transform: translateX(-50%);
+  pointer-events: none;
+  opacity: .15;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  background: #FF9800;
+  z-index: 9999999;
+  left: 50%;
+  display: flex; }
+  .container.test > div {
+    position: relative;
+    margin: 0 12px;
+    width: 100%;
+    height: 100%;
+    background: #009688; }
+    .container.test > div:first-child {
+      margin-left: 0; }
+    .container.test > div:last-child {
+      margin-right: 0; }
+
+/* latin-ext */
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/ubuntu/v15/4iCp6KVjbNBYlgoKejZftVyBN4Ffgg.woff2) format("woff2");
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+/* latin */
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/ubuntu/v15/4iCp6KVjbNBYlgoKejZftVyPN4E.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+/* latin-ext */
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/ubuntu/v15/4iCu6KVjbNBYlgoKej76l0mwFg.woff2) format("woff2");
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+/* latin */
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/ubuntu/v15/4iCu6KVjbNBYlgoKej70l0k.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+/* latin-ext */
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/ubuntu/v15/4iCp6KVjbNBYlgoKejYHtFyBN4Ffgg.woff2) format("woff2");
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+/* latin */
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/ubuntu/v15/4iCp6KVjbNBYlgoKejYHtFyPN4E.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+/* latin-ext */
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/ubuntu/v15/4iCp6KVjbNBYlgoKejZPslyBN4Ffgg.woff2) format("woff2");
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+/* latin */
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/ubuntu/v15/4iCp6KVjbNBYlgoKejZPslyPN4E.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+/* latin-ext */
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/ubuntu/v15/4iCv6KVjbNBYlgoC1CzjvmyNL4U.woff2) format("woff2");
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+/* latin */
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/ubuntu/v15/4iCv6KVjbNBYlgoC1CzjsGyN.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+/* latin-ext */
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/ubuntu/v15/4iCs6KVjbNBYlgoKcQ72j00.woff2) format("woff2");
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+/* latin */
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/ubuntu/v15/4iCs6KVjbNBYlgoKfw72.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+/* latin-ext */
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/ubuntu/v15/4iCv6KVjbNBYlgoCjC3jvmyNL4U.woff2) format("woff2");
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+/* latin */
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/ubuntu/v15/4iCv6KVjbNBYlgoCjC3jsGyN.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+/* latin-ext */
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/ubuntu/v15/4iCv6KVjbNBYlgoCxCvjvmyNL4U.woff2) format("woff2");
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+/* latin */
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/ubuntu/v15/4iCv6KVjbNBYlgoCxCvjsGyN.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+@font-face {
+  font-family: 'gilroy';
+  src: url("../../static/fonts/gilroy/gilroy-ExtraBold.otf") format("otf");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: "icomoon";
+  src: url("./../../static/fonts/icomoon/fonts/icomoon.eot?xkcdrb");
+  src: url("./../../static/fonts/icomoon/fonts/icomoon.eot?xkcdrb#iefix") format("embedded-opentype"), url("./../../static/fonts/icomoon/fonts/icomoon.ttf?xkcdrb") format("truetype"), url("./../../static/fonts/icomoon/fonts/icomoon.woff?xkcdrb") format("woff"), url("./../../static/fonts/icomoon/fonts/icomoon.svg?xkcdrb#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block; }
+
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.icon-add:before {
+  content: ""; }
+
+.icon-addlocation:before {
+  content: ""; }
+
+.icon-arrowback:before {
+  content: ""; }
+
+.icon-arrowbotom:before {
+  content: ""; }
+
+.icon-arrowright:before {
+  content: ""; }
+
+.icon-arrowup:before {
+  content: ""; }
+
+.icon-avatar:before {
+  content: ""; }
+
+.icon-bullet:before {
+  content: ""; }
+
+.icon-calendar:before {
+  content: ""; }
+
+.icon-cards:before {
+  content: ""; }
+
+.icon-chat:before {
+  content: ""; }
+
+.icon-check:before {
+  content: ""; }
+
+.icon-close:before {
+  content: ""; }
+
+.icon-comments:before {
+  content: ""; }
+
+.icon-creditcard:before {
+  content: ""; }
+
+.icon-date:before {
+  content: ""; }
+
+.icon-delete:before {
+  content: ""; }
+
+.icon-doc:before {
+  content: ""; }
+
+.icon-download:before {
+  content: ""; }
+
+.icon-edit:before {
+  content: ""; }
+
+.icon-electric:before {
+  content: ""; }
+
+.icon-euros:before {
+  content: ""; }
+
+.icon-eye:before {
+  content: ""; }
+
+.icon-eye-blind:before {
+  content: ""; }
+
+.icon-filter:before {
+  content: ""; }
+
+.icon-home:before {
+  content: ""; }
+
+.icon-huawei-add-user .path1:before {
+  content: "";
+  color: #24b5b4; }
+
+.icon-huawei-add-user .path2:before {
+  content: "";
+  margin-left: -1em;
+  color: #ee753b; }
+
+.icon-huawei-chat .path1:before {
+  content: "";
+  color: #26b4b2; }
+
+.icon-huawei-chat .path2:before {
+  content: "";
+  margin-left: -1em;
+  color: #26b4b2; }
+
+.icon-huawei-chat .path3:before {
+  content: "";
+  margin-left: -1em;
+  color: #ed753c; }
+
+.icon-huawei-contact-list .path1:before {
+  content: "";
+  color: #24b5b4; }
+
+.icon-huawei-contact-list .path2:before {
+  content: "";
+  margin-left: -1em;
+  color: #ee753b; }
+
+.icon-huawei-edit .path1:before {
+  content: "";
+  color: #24b5b4; }
+
+.icon-huawei-edit .path2:before {
+  content: "";
+  margin-left: -1em;
+  color: #ee753b; }
+
+.icon-huawei-email .path1:before {
+  content: "";
+  color: #24b5b4; }
+
+.icon-huawei-email .path2:before {
+  content: "";
+  margin-left: -1em;
+  color: #ee753b; }
+
+.icon-huawei-group-chat .path1:before {
+  content: "";
+  color: #24b5b4; }
+
+.icon-huawei-group-chat .path2:before {
+  content: "";
+  margin-left: -1em;
+  color: #ee753b; }
+
+.icon-huawei-link .path1:before {
+  content: "";
+  color: #24b5b4; }
+
+.icon-huawei-link .path2:before {
+  content: "";
+  margin-left: -1em;
+  color: #ee753b; }
+
+.icon-huawei-notification .path1:before {
+  content: "";
+  color: #26b4b2; }
+
+.icon-huawei-notification .path2:before {
+  content: "";
+  margin-left: -1em;
+  color: #ed753c; }
+
+.icon-huawei-review .path1:before {
+  content: "";
+  color: #24b5b4; }
+
+.icon-huawei-review .path2:before {
+  content: "";
+  margin-left: -1em;
+  color: #ee753b; }
+
+.icon-huawei-search .path1:before {
+  content: "";
+  color: #24b5b4; }
+
+.icon-huawei-search .path2:before {
+  content: "";
+  margin-left: -1em;
+  color: #ee753b; }
+
+.icon-huawei-smartphone .path1:before {
+  content: "";
+  color: #24b5b4; }
+
+.icon-huawei-smartphone .path2:before {
+  content: "";
+  margin-left: -1em;
+  color: #ee753b; }
+
+.icon-huawei-thumbs-up .path1:before {
+  content: "";
+  color: #24b5b4; }
+
+.icon-huawei-thumbs-up .path2:before {
+  content: "";
+  margin-left: -1em;
+  color: #ee753b; }
+
+.icon-huawei-thumbs-up .path3:before {
+  content: "";
+  margin-left: -1em;
+  color: #24b5b4; }
+
+.icon-huawei-user .path1:before {
+  content: "";
+  color: #24b5b4; }
+
+.icon-huawei-user .path2:before {
+  content: "";
+  margin-left: -1em;
+  color: #ee753b; }
+
+.icon-huawei-video-player .path1:before {
+  content: "";
+  color: #24b5b4; }
+
+.icon-huawei-video-player .path2:before {
+  content: "";
+  margin-left: -1em;
+  color: #ee753b; }
+
+.icon-info:before {
+  content: ""; }
+
+.icon-lightbulb:before {
+  content: ""; }
+
+.icon-link:before {
+  content: ""; }
+
+.icon-list:before {
+  content: ""; }
+
+.icon-mail:before {
+  content: ""; }
+
+.icon-menu:before {
+  content: ""; }
+
+.icon-miniarrowbottom:before {
+  content: ""; }
+
+.icon-miniarrowleft:before {
+  content: ""; }
+
+.icon-miniarrowright:before {
+  content: ""; }
+
+.icon-miniarrowup:before {
+  content: ""; }
+
+.icon-minicards:before {
+  content: ""; }
+
+.icon-minimize:before {
+  content: ""; }
+
+.icon-more:before {
+  content: ""; }
+
+.icon-mylocation:before {
+  content: ""; }
+
+.icon-navigation:before {
+  content: ""; }
+
+.icon-phone:before {
+  content: ""; }
+
+.icon-play:before {
+  content: ""; }
+
+.icon-question:before {
+  content: ""; }
+
+.icon-reload:before {
+  content: ""; }
+
+.icon-satisfaction:before {
+  content: ""; }
+
+.icon-schedule:before {
+  content: ""; }
+
+.icon-search:before {
+  content: ""; }
+
+.icon-share:before {
+  content: ""; }
+
+.icon-social-facebook:before {
+  content: ""; }
+
+.icon-social-instagram:before {
+  content: ""; }
+
+.icon-social-linkedin:before {
+  content: ""; }
+
+.icon-social-pinterest:before {
+  content: ""; }
+
+.icon-social-twitter:before {
+  content: ""; }
+
+.icon-social-viadeo:before {
+  content: ""; }
+
+.icon-social-vimeo:before {
+  content: ""; }
+
+.icon-social-youtube:before {
+  content: ""; }
+
+.icon-star:before {
+  content: ""; }
+
+.icon-star-empty:before {
+  content: ""; }
+
+.icon-star-half:before {
+  content: ""; }
+
+.icon-touch:before {
+  content: ""; }
+
+.icon-work:before {
+  content: ""; }
+
+/* ===================
+	    Colors (Same variables as Figma)
+/* ===================*/
+/* ===================
+	    Fonts
+/* ===================*/
+/* ===================
+    Config
+/* ===================*/
+/* ===================
+    Dauphine var default
+/* ===================*/
+/*
+//generate classes colors & bg (.color-secondary-01, .bg-secondary-01)
+$colors: (
+    secondary-01: $secondary-01,
+    secondary-02: $secondary-02,
+);*/
+/* ===================
+    FlexContent
+/* ===================*/
+/* ===================
+    Animations
+/* ===================*/
+/* ===================
+	    Icomoon
+/* ===================*/
+/* ===================
+	   Padding
+/* ===================*/
+.archive-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between; }
 
 @charset "UTF-8";
 /**

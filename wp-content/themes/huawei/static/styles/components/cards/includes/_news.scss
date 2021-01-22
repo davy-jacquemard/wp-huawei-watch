@@ -1,22 +1,16 @@
-
 // container review
-.news-container {
-    border-radius: 8px;
+.w-news {
+    border-radius: rem(8);
     @include flex-col(12);
-    margin-top: rem(36);
-    
-    @include breakpoint(sm){
+    margin-bottom: rem(36);
+
+    @include breakpoint(sm) {
         @include flex-col(6);
     }
-    @include breakpoint(md){
-        .card-news {
-            transition: all 0.5s;
-            &:hover {
-                transform: translateY(-10px);
-            }
-        }
+    @include breakpoint(md) {
+        @include flex-col(4);
     }
-    @include breakpoint(lg){
+    @include breakpoint(lg) {
         @include flex-col(3);
         margin-top: 0;
     }
@@ -25,38 +19,87 @@
 .card-news {
     box-shadow: $box-shadow;
     width: 100%;
-    border-radius: 8px;
+    height: 100%;
+    border-radius: rem(8);
     position: relative;
-    &__container-img {
-        width: 100%;
-        height: 200px;
-        overflow: hidden;
-        border-top-left-radius: 8px;
-        border-top-right-radius: 8px;
-    }
-    &__box-shadow {
-        border-radius: 8px;
-    }
-    img {
-        border-top-left-radius: 8px;
-        border-top-right-radius: 8px;
-    }
-    &__container-text {
-        padding-left: rem(24);
-        background: $primary-white;
-        border-left: 4px solid $secondary-03;
-        border-bottom-left-radius: 8px;
-        border-bottom-right-radius: 8px;
+    transition: transform 0.3s ease;
 
+    max-width: rem(340);
+    margin-right: auto;
+    margin-left: auto;
+
+    @include breakpoint(md) {
+        &:hover {
+            transform: translateY(rem(-8));
+
+            .card-news {
+                &__inner {
+                    box-shadow: $box-shadow-hover-bottom;
+                }
+                &__container-img {
+                    img {
+                        transform: scale(1.1);
+                    }
+                }
+
+                &__links {
+                    color: $secondary-03;
+                }
+            }
+        }
+    }
+
+    &__inner {
+        overflow: hidden;
+        border-radius: rem(8);
+        background: $primary-white;
+        height: 100%;
+        transition: box-shadow 0.3s ease;
+        position: relative;
+
+        &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: rem(4);
+            background-color: $secondary-03;
+        }
+
+    }
+
+    &__container-img {
+        @include img-homothetic(xs 66%);
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+
+        img {
+            @include img-full;
+            transition: transform 0.3s ease;
+            transform: scale(1);
+        }
+    }
+
+  
+    &__container-text {
+        padding: rem(24);
+        background: $primary-white;
+        /*  border-left: rem(4) solid $secondary-03;  */
+        position: relative;
 
     }
     &__category {
+        z-index: 2;
         margin: 0;
+        position: absolute;
+        top: 0;
         padding: rem(8) rem(16);
         background: $secondary-03;
         transform: translateY(-50%);
         display: inline-block;
-        border-radius: 8px;
+        border-radius: rem(8);
         text-transform: uppercase;
         color: $primary-white;
         font-family: $font-secondary;
@@ -68,16 +111,9 @@
         font-family: $font-primary;
     }
     &__links {
-        margin: rem(16) 0 rem(32) 0;
-        display: inline-block;
-        color: $primary-black!important;
-        padding-left: 0!important;
-        i {
-            color: $secondary-03;
-        }
+        margin-top: rem(16);
+      
     }
-
-
 }
 
 .full-link {

@@ -5,4 +5,6 @@ import './components/_menu'
 import './components/_marquee'
 import './components/_smooth-scroll-anchor'
 import './components/_home-horizontal-slider'
+import './components/_sliders'
+
 

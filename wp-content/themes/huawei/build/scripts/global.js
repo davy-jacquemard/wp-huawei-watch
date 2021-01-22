@@ -111,6 +111,49 @@ closeMenu.addEventListener('click', () => {
 
 /***/ }),
 
+/***/ "./static/scripts/components/_sliders.js":
+/*!***********************************************!*\
+  !*** ./static/scripts/components/_sliders.js ***!
+  \***********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+Object(function webpackMissingModule() { var e = new Error("Cannot find module 'swiper'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+Object(function webpackMissingModule() { var e = new Error("Cannot find module 'swiper/swiper.scss'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+
+
+Object(function webpackMissingModule() { var e = new Error("Cannot find module 'swiper'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())([Object(function webpackMissingModule() { var e = new Error("Cannot find module 'swiper'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), Object(function webpackMissingModule() { var e = new Error("Cannot find module 'swiper'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), Object(function webpackMissingModule() { var e = new Error("Cannot find module 'swiper'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())]);
+const settings = {
+  newsSliderSelector: '[js-slider-news]'
+};
+let newsSlider = new Object(function webpackMissingModule() { var e = new Error("Cannot find module 'swiper'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())(settings.newsSliderSelector, {
+  slidesPerView: 'auto',
+  spaceBetween: 16,
+  pagination: {
+    el: '[js-slider-news-pagination]',
+    clickable: true
+  },
+  breakpoints: {
+    720: {
+      spaceBetween: 24
+    },
+    960: {
+      spaceBetween: 32
+    },
+    1280: {
+      spaceBetween: 0
+    }
+  }
+});
+
+if (document.body.clientWidth >= 1280) {
+  newsSlider.params.spaceBetween = 0;
+  newsSlider.params.noSwiping = true;
+}
+
+/***/ }),
+
 /***/ "./static/scripts/components/_smooth-scroll-anchor.js":
 /*!************************************************************!*\
   !*** ./static/scripts/components/_smooth-scroll-anchor.js ***!
@@ -153,6 +196,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_smooth_scroll_anchor__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_components_smooth_scroll_anchor__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _components_home_horizontal_slider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/_home-horizontal-slider */ "./static/scripts/components/_home-horizontal-slider.js");
 /* harmony import */ var _components_home_horizontal_slider__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_components_home_horizontal_slider__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _components_sliders__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/_sliders */ "./static/scripts/components/_sliders.js");
+
 
 
 

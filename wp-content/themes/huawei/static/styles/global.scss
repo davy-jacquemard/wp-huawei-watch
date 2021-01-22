@@ -36,10 +36,16 @@ COMPONENTS
 //form
 @import "./components/form/form";
 
+//shared blocs
+@import "./components/shared-blocs/shared-blocs";
+
 //navigations
 @import "./components/navigation/navigation";
 
 //Flex-content
 @import "./pages/article/article";
+
+//archive
+@import "./pages/archive/archive";
 
 
