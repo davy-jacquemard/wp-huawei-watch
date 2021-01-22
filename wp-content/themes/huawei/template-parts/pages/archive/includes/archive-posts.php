@@ -12,21 +12,9 @@ $card = array(
     'date'      => $date,
 )
  ?>
-<div>
-<!--     <pre>
-     <?php print_r ($card); ?> </br>
-     </pre> -->
 
-    
-     
-
-  <!--    <?php print_r(get_the_category($id)); ?> -->
-
-</div>
-<div class="row">
-    <div class="w-news">
-        <?php 
-        set_query_var( 'card', $card );
-        get_template_part( 'template-parts/components/cards/card', 'news'); ?>
-    </div>
+<div class="w-news">
+    <?php 
+    set_query_var( 'card', $card );
+    get_template_part( 'template-parts/components/cards/card', 'news'); ?>
 </div>

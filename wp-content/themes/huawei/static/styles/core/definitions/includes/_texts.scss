@@ -18,7 +18,7 @@ html{
 
 // polices des textes courants 
 
-.p {
+%p {
     @extend %texts-default;
     @include font-size(rem(14), rem(24));
 
@@ -51,5 +51,25 @@ html{
 
     &--bold {
         font-weight: 700;
+    }
+}
+
+.p, p {
+    @extend %p;
+    
+    &--small{
+        @extend %p--small;
+    }
+
+    &--medium{
+        @extend %p--medium;
+    }
+
+    &--large{
+        @extend %p--large;
+    }
+
+    &--bold{
+        @extend %p--bold;
     }
 }
