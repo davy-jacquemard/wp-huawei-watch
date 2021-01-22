@@ -18,6 +18,9 @@
     <!--Fonctionnalités-->
     <?php get_template_part('template-parts/pages/gamme/includes/gamme-fonctionality'); ?>
 
+    <!-- App Huawei Health-->
+    <?php get_template_part('template-parts/pages/gamme/includes/gamme-app'); ?>
+
     <!--Finitions-->
     <?php get_template_part('template-parts/pages/gamme/includes/gamme-finitions'); ?>
     
