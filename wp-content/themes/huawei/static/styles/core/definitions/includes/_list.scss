@@ -4,10 +4,10 @@
 
 
 %number-list {
+  @extend %p;
   counter-increment: li;
   position: relative;
   padding-left: rem(40);
-  @include font-size(rem(16), rem(24));
 
   & + li {
     margin-top: rem(8);
@@ -28,7 +28,7 @@
 %primary-list {
   position: relative;
   padding-left: rem(24);
-  @include font-size(rem(16), rem(24));
+  @extend %p;
 
   & + li {
     margin-top: rem(8);

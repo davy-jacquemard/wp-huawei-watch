@@ -1,21 +1,73 @@
 .gamme {
     &--insta {
+        overflow: hidden;
         &__header {
             display: flex;
             flex-direction: column;
-    
+
             @include breakpoint-max(sm) {
                 .btn-container {
                     margin-top: rem(24);
                 }
             }
-    
+
             @include breakpoint(sm) {
                 flex-direction: row;
                 justify-content: space-between;
                 align-items: center;
             }
         }
+
+        &__sliders {
+            margin-top: rem(48);
+            .swiper-wrapper {
+                -webkit-transition-timing-function: linear !important;
+                -o-transition-timing-function: linear !important;
+                transition-timing-function: linear !important;
+            }
+        }
+
+        &__slider {
+            cursor: grab;
+            overflow: visible !important;
+
+            &--bottom {
+                margin-top: rem(32);
+            }
+        }
+
+        &__w-item {
+            width: rem(268) !important;
+            box-shadow: $box-shadow-light ;
+            position: relative;
+            border-radius: rem(8);
+            @include breakpoint(sm) {
+                width: rem(312) !important;
+            }
+            @include breakpoint(md) {
+                width: rem(420) !important;
+            }
+            @include breakpoint(lg) {
+                width: rem(518) !important;
+            }
+
+            &:after {
+                @include icon($icon-social-instagram, rem(32), $white);
+                position: absolute;
+                top: rem(8);
+                right: rem(8);
+            }
+
+            .img-container {
+                @include img-homothetic(xs 80%);
+                position: relative;
+                overflow: hidden;
+                border-radius: rem(8);
+
+                img {
+                    @include img-full();
+                }
+            }
+        }
     }
 }
-    
