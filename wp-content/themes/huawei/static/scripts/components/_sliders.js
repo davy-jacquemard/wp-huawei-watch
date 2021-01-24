@@ -1,11 +1,14 @@
-import Swiper, {Navigation, Pagination, Autoplay, Thumbs} from 'swiper';
+import Swiper, {Navigation, Pagination, Autoplay, Thumbs, EffectFade} from 'swiper';
 import 'swiper/swiper.scss'
+import 'swiper/components/effect-fade/effect-fade.scss'
 
-Swiper.use([Navigation, Pagination, Autoplay, Thumbs]);
+Swiper.use([Navigation, Pagination, Autoplay, Thumbs, EffectFade]);
 
 const settings = {
     newsSliderSelector: '[js-slider-news]',
     instaSliderSelector: '[js-slider-insta]',
+    appImagesSliderSelector: '[js-slider-app-images]',
+    appTextSliderSelector: '[js-slider-app-text]',
     
 }
 
@@ -60,4 +63,33 @@ if (document.body.clientWidth >= 1280) {
         spaceBetween: 32,
       },
     }
+  });
+
+
+  /*--------------------------
+ Slider app images
+  --------------------------*/
+
+ let appImagesSlider = new Swiper(settings.appImagesSliderSelector, {
+    slidesPerView: 1,
+    spaceBetween: 0,
+    effect: 'fade',
+    navigation: {
+      nextEl: '[js-slider-app-next]',
+      prevEl: '[js-slider-app-prev]',
+    },
+  });
+
+
+  /*--------------------------
+ Slider app TEXT
+  --------------------------*/
+
+ let appTextSlider = new Swiper(settings.appTextSliderSelector, {
+    spaceBetween: 0,
+ //   direction: 'vertical',
+    navigation: {
+      nextEl: '[js-slider-app-next]',
+      prevEl: '[js-slider-app-prev]',
+    },
   });

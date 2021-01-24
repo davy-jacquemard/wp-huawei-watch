@@ -1,5 +1,98 @@
 .gamme {
     &--app {
-        
+&__subtitle {
+    margin-top: rem(36);
+}
+
+        &__sliders {
+            align-items: center;
+            margin-top: rem(16);
+        }
+
+
+        &__w-slider-image {
+            position: relative;
+            @include flex-col(12);
+
+            @include breakpoint(sm) {
+                @include flex-col(10);
+                @include offset(1);
+            }
+            @include breakpoint(md) {
+                @include flex-col(7);
+                @include offset(0);
+            }
+        }
+
+        &__slider-image {
+            margin: 0 rem(40) !important;
+
+            @include breakpoint(sm) {
+                margin: 0 rem(56) !important;
+            }
+
+            &__container {
+                width: 100%;
+                position: relative;
+                transition-property: opacity !important;
+                @include transition(300ms, opacity);
+
+                img {
+                    object-fit: contain;
+                    width: 100%;
+                    height: auto;
+                }
+            }
+        }
+        &__btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 5;
+            cursor: pointer;
+            @include transition(100ms, opacity);
+
+            &--prev {
+                left: 0;
+
+                transform: translateY(-50%) rotate(-180deg);
+            }
+            &--next {
+                right: 0;
+            }
+
+            &.swiper-button-disabled {
+                cursor: default;
+                opacity: 0.4;
+            }
+        }
+
+        &__w-slider-text {
+            position: relative;
+            @include flex-col(12);
+
+            @include breakpoint(sm) {
+                @include flex-col(10);
+                @include offset(1);
+            }
+            @include breakpoint(md) {
+                @include flex-col(5);
+                @include offset(0);
+                padding-left: rem(24);
+            }
+            @include breakpoint(lg) {
+                padding-left: rem(48);
+            }
+        }
+
+        &__slider-text {
+            height: 100%;
+
+            .title {
+                color: $secondary-01;
+                margin-bottom: rem(24);
+            }
+          
+        }
     }
 }
