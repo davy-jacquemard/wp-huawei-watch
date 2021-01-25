@@ -206,7 +206,8 @@ Slider app TEXT
 
 let appTextSlider = new swiper__WEBPACK_IMPORTED_MODULE_1__.default(settings.appTextSliderSelector, {
   spaceBetween: 0,
-  //   direction: 'vertical',
+  slidesPerView: 1,
+  effect: 'fade',
   navigation: {
     nextEl: '[js-slider-app-next]',
     prevEl: '[js-slider-app-prev]'

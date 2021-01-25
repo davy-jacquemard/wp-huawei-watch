@@ -1,14 +1,13 @@
 .gamme {
     &--app {
-&__subtitle {
-    margin-top: rem(36);
-}
+        &__subtitle {
+            margin-top: rem(36);
+        }
 
         &__sliders {
             align-items: center;
             margin-top: rem(16);
         }
-
 
         &__w-slider-image {
             position: relative;
@@ -88,11 +87,44 @@
         &__slider-text {
             height: 100%;
 
+            .swiper-wrapper {
+                display: flex;
+                align-items: center;
+            }
+
+            .swiper-slide {
+                opacity: 0 !important;
+                transform: translate3d(0, rem(20), 0);
+                transition: transform 0.4s ease, opacity 0.4s ease-out;
+                > * {
+                    opacity: 0;
+                    transform: translate3d(0, rem(20), 0);
+                    transition: transform 0.3s ease, opacity 0.3s ease-out;
+
+                  
+
+                }
+
+                &-active {
+                    opacity: 1 !important;
+                    transform: translate3d(0, 0, 0);
+                    > * {
+                        opacity: 1;
+                        transform: translate3d(0, 0, 0);
+                        
+                        @for $i from 0 to 15 {
+                        &:nth-child(#{$i + 1}) {
+                            transition-delay: $i * 0.1 + 0.3s;
+                        }
+                    }
+                    }
+                }
+            }
+
             .title {
                 color: $secondary-01;
                 margin-bottom: rem(24);
             }
-          
         }
     }
 }

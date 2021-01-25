@@ -78,7 +78,7 @@ if (document.body.clientWidth >= 1280) {
       nextEl: '[js-slider-app-next]',
       prevEl: '[js-slider-app-prev]',
     },
-  });
+  }); 
 
 
   /*--------------------------
@@ -87,7 +87,9 @@ if (document.body.clientWidth >= 1280) {
 
  let appTextSlider = new Swiper(settings.appTextSliderSelector, {
     spaceBetween: 0,
- //   direction: 'vertical',
+    slidesPerView: 1,
+    effect: 'fade',
+
     navigation: {
       nextEl: '[js-slider-app-next]',
       prevEl: '[js-slider-app-prev]',

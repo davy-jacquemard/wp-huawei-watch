@@ -60,7 +60,7 @@ $the_query = new WP_Query($args);
                                     'date'      => $date,
                                 )
                         ?>
-                                <div class="swiper-slide last-news__w-card">
+                                <div class="swiper-slide last-news__w-card on-white">
                                     <?php
                                     set_query_var('card', $card);
                                     get_template_part('template-parts/components/cards/card', 'news'); ?>

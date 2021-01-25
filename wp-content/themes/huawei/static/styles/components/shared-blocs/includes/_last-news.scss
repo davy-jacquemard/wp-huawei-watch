@@ -64,6 +64,10 @@
             @include flex-col(3);
             margin-top: 0;
         }
+
+        .card-news__category {
+            color: white;
+        }
     }
 
     &__pagination {
