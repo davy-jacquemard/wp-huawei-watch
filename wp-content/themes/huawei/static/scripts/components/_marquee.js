@@ -7,23 +7,27 @@ let translateRatio = 1;
 
 let containerDistance = 0;
 
-window.addEventListener("scroll", onScroll);
+if ($scrollingText) {
+    window.addEventListener("scroll", onScroll);
 
-function onScroll() {
-    const containerTop = $scrollingText.getBoundingClientRect().top;
+    function onScroll() {
+        const containerTop = $scrollingText.getBoundingClientRect().top;
 
-    const containerStartThreshold = containerTop - thresholdBase;
+        const containerStartThreshold = containerTop - thresholdBase;
 
-    containerDistance = containerStartThreshold;
-   
+        containerDistance = containerStartThreshold;
 
-    if (containerDistance < window.innerHeight * -1) {
-        containerDistance = $scrollingText.offsetHeight * -1;
-    } else if (containerDistance > 0) {
-        containerDistance = 0;
+
+        if (containerDistance < window.innerHeight * -1) {
+            containerDistance = $scrollingText.offsetHeight * -1;
+        } else if (containerDistance > 0) {
+            containerDistance = 0;
+        }
+
     }
 
 }
+
 
 let lerpRatio = 0.08;
 let distanceLerp = 0;
@@ -42,5 +46,8 @@ function onUpdate() {
     requestAnimationFrame(onUpdate);
 }
 
-onUpdate();
+if ($scrollingText) {
+    onUpdate();
+}
+
 

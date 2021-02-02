@@ -1,97 +1,124 @@
-import Swiper, {Navigation, Pagination, Autoplay, Thumbs, EffectFade} from 'swiper';
+import Swiper, { Navigation, Pagination, Autoplay, Thumbs, EffectFade } from 'swiper';
 import 'swiper/swiper.scss'
 import 'swiper/components/effect-fade/effect-fade.scss'
 
 Swiper.use([Navigation, Pagination, Autoplay, Thumbs, EffectFade]);
 
 const settings = {
-    newsSliderSelector: '[js-slider-news]',
-    instaSliderSelector: '[js-slider-insta]',
-    appImagesSliderSelector: '[js-slider-app-images]',
-    appTextSliderSelector: '[js-slider-app-text]',
-    
+  newsSliderSelector: '[js-slider-news]',
+  instaSliderSelector: '[js-slider-insta]',
+  appImagesSliderSelector: '[js-slider-app-images]',
+  appTextSliderSelector: '[js-slider-app-text]',
+  productImagesSliderSelector: '[js-main-image-container]',
+  productThumbsSliderSelector: '[js-product-thumbs]',
+
 }
 
-  /*--------------------------
- Slider last news
-  --------------------------*/
+/*--------------------------
+Slider last news
+--------------------------*/
 
 let newsSlider = new Swiper(settings.newsSliderSelector, {
-    slidesPerView: 'auto',
-    spaceBetween: 16,
+  slidesPerView: 'auto',
+  spaceBetween: 16,
 
-    pagination: {
-        el: '[js-slider-news-pagination]',
-        clickable: true,
+  pagination: {
+    el: '[js-slider-news-pagination]',
+    clickable: true,
+  },
+  breakpoints: {
+    720: {
+      spaceBetween: 24,
     },
-    breakpoints: {
-        720: {
-            spaceBetween: 24,
-        },
-        960: {
-            spaceBetween: 32,
-        },
-        1280: {
-            spaceBetween: 0,
-        },
-    }
+    960: {
+      spaceBetween: 32,
+    },
+    1280: {
+      spaceBetween: 0,
+    },
+  }
 });
 if (document.body.clientWidth >= 1280) {
-    newsSlider.params.spaceBetween = 0;
-    newsSlider.params.noSwiping = true;
+  newsSlider.params.spaceBetween = 0;
+  newsSlider.params.noSwiping = true;
 }
 
 
-  /*--------------------------
- Slider top instagram gamme
-  --------------------------*/
+/*--------------------------
+Slider top instagram gamme
+--------------------------*/
 
- let instaSlider = new Swiper(settings.instaSliderSelector, {
-    slidesPerView: 'auto',
-    spaceBetween: 24,
-    loop: true,
-    loopedSlides: 10,
-    freeMode: true,
-    autoplay: {
-      delay: 1,
-      disableOnInteraction: false,
-      reverserDirection: true,
+let instaSlider = new Swiper(settings.instaSliderSelector, {
+  slidesPerView: 'auto',
+  spaceBetween: 24,
+  loop: true,
+  loopedSlides: 10,
+  freeMode: true,
+  autoplay: {
+    delay: 1,
+    disableOnInteraction: false,
+    reverserDirection: true,
+  },
+  speed: 15000,
+  breakpoints: {
+    960: {
+      spaceBetween: 32,
     },
-    speed: 15000,
-    breakpoints: {
-      960: {
-        spaceBetween: 32,
-      },
-    }
-  });
+  }
+});
 
 
-  /*--------------------------
- Slider app images
-  --------------------------*/
+/*--------------------------
+Slider app images
+--------------------------*/
 
- let appImagesSlider = new Swiper(settings.appImagesSliderSelector, {
-    slidesPerView: 1,
-    spaceBetween: 0,
-    effect: 'fade',
-    navigation: {
-      nextEl: '[js-slider-app-next]',
-      prevEl: '[js-slider-app-prev]',
-    },
-  }); 
+let appImagesSlider = new Swiper(settings.appImagesSliderSelector, {
+  slidesPerView: 1,
+  spaceBetween: 0,
+  effect: 'fade',
+  navigation: {
+    nextEl: '[js-slider-app-next]',
+    prevEl: '[js-slider-app-prev]',
+  },
+});
 
 
-  /*--------------------------
- Slider app TEXT
-  --------------------------*/
+/*--------------------------
+Slider app TEXT
+--------------------------*/
 
- let appTextSlider = new Swiper(settings.appTextSliderSelector, {
-    spaceBetween: 0,
-    slidesPerView: 1,
-    effect: 'fade',
+let appTextSlider = new Swiper(settings.appTextSliderSelector, {
+  spaceBetween: 0,
+  slidesPerView: 1,
+  effect: 'fade',
 
-    navigation: {
-      nextEl: '[js-slider-app-next]',
-      prevEl: '[js-slider-app-prev]',
-    },
-  });
+  navigation: {
+    nextEl: '[js-slider-app-next]',
+    prevEl: '[js-slider-app-prev]',
+  },
+});
+
+
+
+/*--------------------------
+Slider images product
+--------------------------*/
+let productThumbsSlider = new Swiper(settings.productThumbsSliderSelector, {
+  spaceBetween: 24,
+  slidesPerView: 3,
+  freeMode: true,
+  watchSlidesVisibility: true,
+  watchSlidesProgress: true,
+});
+
+let productImagestSlider = new Swiper(settings.productImagesSliderSelector, {
+  spaceBetween: 0,
+  slidesPerView: 1,
+
+  thumbs: {
+    swiper: productThumbsSlider,
+  }
+
+
+});
+

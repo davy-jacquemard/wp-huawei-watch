@@ -49,17 +49,20 @@ const $scrollingText = document.querySelector(".js-marquee");
 const thresholdBase = window.innerHeight;
 let translateRatio = 1;
 let containerDistance = 0;
-window.addEventListener("scroll", onScroll);
 
-function onScroll() {
-  const containerTop = $scrollingText.getBoundingClientRect().top;
-  const containerStartThreshold = containerTop - thresholdBase;
-  containerDistance = containerStartThreshold;
+if ($scrollingText) {
+  window.addEventListener("scroll", onScroll);
 
-  if (containerDistance < window.innerHeight * -1) {
-    containerDistance = $scrollingText.offsetHeight * -1;
-  } else if (containerDistance > 0) {
-    containerDistance = 0;
+  function onScroll() {
+    const containerTop = $scrollingText.getBoundingClientRect().top;
+    const containerStartThreshold = containerTop - thresholdBase;
+    containerDistance = containerStartThreshold;
+
+    if (containerDistance < window.innerHeight * -1) {
+      containerDistance = $scrollingText.offsetHeight * -1;
+    } else if (containerDistance > 0) {
+      containerDistance = 0;
+    }
   }
 }
 
@@ -79,7 +82,9 @@ function onUpdate() {
   requestAnimationFrame(onUpdate);
 }
 
-onUpdate();
+if ($scrollingText) {
+  onUpdate();
+}
 
 /***/ }),
 
@@ -134,7 +139,9 @@ const settings = {
   newsSliderSelector: '[js-slider-news]',
   instaSliderSelector: '[js-slider-insta]',
   appImagesSliderSelector: '[js-slider-app-images]',
-  appTextSliderSelector: '[js-slider-app-text]'
+  appTextSliderSelector: '[js-slider-app-text]',
+  productImagesSliderSelector: '[js-main-image-container]',
+  productThumbsSliderSelector: '[js-product-thumbs]'
 };
 /*--------------------------
 Slider last news
@@ -211,6 +218,24 @@ let appTextSlider = new swiper__WEBPACK_IMPORTED_MODULE_1__.default(settings.app
   navigation: {
     nextEl: '[js-slider-app-next]',
     prevEl: '[js-slider-app-prev]'
+  }
+});
+/*--------------------------
+Slider images product
+--------------------------*/
+
+let productThumbsSlider = new swiper__WEBPACK_IMPORTED_MODULE_1__.default(settings.productThumbsSliderSelector, {
+  spaceBetween: 24,
+  slidesPerView: 3,
+  freeMode: true,
+  watchSlidesVisibility: true,
+  watchSlidesProgress: true
+});
+let productImagestSlider = new swiper__WEBPACK_IMPORTED_MODULE_1__.default(settings.productImagesSliderSelector, {
+  spaceBetween: 0,
+  slidesPerView: 1,
+  thumbs: {
+    swiper: productThumbsSlider
   }
 });
 

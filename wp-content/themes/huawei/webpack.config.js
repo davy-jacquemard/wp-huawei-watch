@@ -17,6 +17,10 @@ const entry = {
 		JS_DIR + '/global.js',
 		//STYLES_DIR + '/global.scss',
 	],
+	product: [
+		JS_DIR + '/page/product.js',
+	],
+
 //	product: STYLES_DIR + '/pages/product/product.scss',
 	//gamme: STYLES_DIR + '/pages/gamme/gamme.scss',
 

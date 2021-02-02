@@ -25,8 +25,13 @@ function theme_scripts_styles() {
     wp_enqueue_style( 'global', get_template_directory_uri() . '/build/styles/global.css' );
 
     wp_enqueue_script( 'global', get_template_directory_uri() . '/build/scripts/global.js', array(), '', true );
+
+    if( is_single() && get_post_type() === 'product' ) {
+        wp_enqueue_script( 'product', get_template_directory_uri() . '/build/scripts/product.js', array(), '', true );
+    }
 }
 add_action( 'wp_enqueue_scripts', 'theme_scripts_styles' );
+
 
 
 
