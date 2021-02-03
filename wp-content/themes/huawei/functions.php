@@ -66,4 +66,18 @@ function remove_editor() {
 }
 add_action('init', 'remove_editor');
 
+
+
+add_action( 'current_screen', 'remove_editor_support' );
+function remove_editor_support() {
+
+    $get_screen = get_current_screen();
+    $current_screen = $get_screen->post_type;
+    $post_type = 'product'; // change post type here
+
+    if ($current_screen == $post_type ) {   
+        remove_post_type_support( $current_screen, 'editor' ); // remove editor from support argument
+    }   
+
+}
  ?>
