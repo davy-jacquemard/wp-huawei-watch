@@ -3,6 +3,7 @@
         &__inner {
             display: flex;
             flex-direction: column-reverse;
+            width: 100%;
             margin-bottom: rem(56);
             @include breakpoint(md) {
                  align-items: center;

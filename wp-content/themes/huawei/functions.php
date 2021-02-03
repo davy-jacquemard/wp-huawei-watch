@@ -17,6 +17,9 @@ require_once get_template_directory() . '/classes/class-crd-walker-menu.php';
 // ACF 
 require_once( __DIR__ . '/functions/acf.php');
 
+// SVG support 
+require_once( __DIR__ . '/functions/svg-support.php');
+
 
 
 

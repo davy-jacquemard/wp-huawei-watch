@@ -11,7 +11,7 @@ $currentIndex = 0;
                 $currentIndex++;
                 $title = get_sub_field('title');
                 $desc = get_sub_field('description');
-                $image = get_sub_field('image');
+                $imageID = get_sub_field('image')['id'];
                 $image_pos = get_sub_field('img_position');
         ?>
 
@@ -26,7 +26,8 @@ $currentIndex = 0;
                         <div class="product--qualities__image">
                             <div class="w-image">
                                 <div class="img-container">
-                                    <img src="<?php echo $image['url'] ?>" alt="<?php echo $image['alt'] ?>">
+                                    <?php echo wp_get_attachment_image($imageID, 'large') ?>
+
                                 </div>
                             </div>
                         </div>
