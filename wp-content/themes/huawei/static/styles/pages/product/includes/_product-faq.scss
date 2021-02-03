@@ -1,3 +1,51 @@
 .product--faq {
     position: relative;
+
+    &__title {
+        margin-bottom: rem(40);
+    }
+
+    &__item {
+        @include flex-col(12);
+        border-bottom: rem(1) solid $gray-02;
+        position: relative;
+        overflow: hidden;
+
+        &.is-open {
+            .product--faq__question {
+                color: $secondary-01;
+                &:after {
+                    color: $secondary-01;
+                    transform: rotate(315deg);
+                }
+            }
+        }
+    }
+
+    &__question {
+        padding: rem(16);
+        cursor: pointer;
+        display: inline-flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        @include transition-color();
+        &:after {
+            @include icon($icon-add, rem(24), $gray-01);
+            transform: rotate(0);
+            transition: color 250ms ease, transform 200ms ease;
+        }
+    }
+
+    &__answer {
+        width: 100%;
+        padding-left: rem(16);
+        padding-right: rem(48);
+        height: 0;
+        transition: height 0.25s cubic-bezier(0, 0, 0.58, 1);
+
+        .force-margin {
+            height: rem(16);
+        }
+    }
 }

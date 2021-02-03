@@ -5181,6 +5181,51 @@ $colors: (
 
 .product--faq {
   position: relative; }
+  .product--faq__title {
+    margin-bottom: 40px; }
+  .product--faq__item {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding-left: 6px;
+    padding-right: 6px;
+    border-bottom: 1px solid #A6B0B9;
+    position: relative;
+    overflow: hidden; }
+    @media (min-width: 720px) {
+      .product--faq__item {
+        padding-left: 12px; } }
+    @media (min-width: 720px) {
+      .product--faq__item {
+        padding-right: 12px; } }
+    .product--faq__item.is-open .product--faq__question {
+      color: #24B5B4; }
+      .product--faq__item.is-open .product--faq__question:after {
+        color: #24B5B4;
+        transform: rotate(315deg); }
+  .product--faq__question {
+    padding: 16px;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    transition: color 250ms ease-out; }
+    .product--faq__question:after {
+      content: "";
+      font-family: "icomoon";
+      font-size: 24px;
+      color: #616B75;
+      font-weight: 400;
+      transform: rotate(0);
+      transition: color 250ms ease, transform 200ms ease; }
+  .product--faq__answer {
+    width: 100%;
+    padding-left: 16px;
+    padding-right: 48px;
+    height: 0;
+    transition: height 0.25s cubic-bezier(0, 0, 0.58, 1); }
+    .product--faq__answer .force-margin {
+      height: 16px; }
 
 .product--reviews {
   position: relative; }
