@@ -215,7 +215,8 @@ let newsSlider = new swiper__WEBPACK_IMPORTED_MODULE_1__.default(settings.newsSl
       spaceBetween: 32
     },
     1280: {
-      spaceBetween: 0
+      spaceBetween: 0,
+      noSwiping: true
     }
   }
 });

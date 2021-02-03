@@ -1,98 +1,74 @@
-.w-card-review{
-    @include flex-col(6);
-
-    @include breakpoint(md){
-        @include flex-col(4);
-    }
-
-}
- .card-review {
+.card--review {
     width: 100%;
-    height: auto;
-    border-radius: 0.8em;
-    background-color: $primary-white;
+    height: 100%;
     box-shadow: $box-shadow;
-    box-sizing: border-box;
-    padding: 2.4em 1.6em 2.4em 1.6em;
+    border-radius: rem(8);
 
+    &__inner {
+        width: 100%;
+        height: 100%;
+        border-radius: rem(8);
+        background-color: white;
+        padding: rem(16);
 
-    &__review-head{
-        text-align: center;
-    }
-
-    &__stars-container{
-        margin: 1em auto 1.6em auto;
-        width: 70%;;
-            ul{
-                display: flex;
-                flex-direction: row;
-                list-style-type:none;
-                width: 100%;
-                justify-content: space-between;
-
-            }
-        
-            li{
-                width: 18%;
-                height: auto;
-                display: flex;
-                align-content: center;
-                justify-content: center;
-            }
-        
-        
-
-    }
-    
-
-    &__star{
-        color: $secondary-01;
-        font-size: 1.6em;
-        text-align: center;
-
-        @include breakpoint(md){
-            font-size: 2.4em;
+        @include breakpoint(md) {
+            padding: rem(24);
         }
     }
 
-
-
-    &__black-bar{
-        width: 30%;
-        height: .15em;
-        background-color: $primary-black;
-        margin: 1.6em auto 2.4em auto;
+    &__title {
+        text-align: center;
     }
 
-    &__desc{
-        margin: 0em auto 0 auto;
-
-            p{
-                margin: .8em 0 0 0;
-            }
-    }
-
-    &__user-container{
-        margin: 2.5em 0 0 0;
-        display: flex;
-        justify-content: flex-end;
-
-        @include breakpoint(md){
-            margin: 4em 0 0 0;
-        }
-    }
-    &__user-name{
-        margin: 0 0 0 1em;
+    &__stars-container {
+        margin-top: rem(8);
         display: flex;
         align-items: center;
+        justify-content: center;
     }
-    &__user-icon{
-        font-size: 1.6em;
-        color: $secondary-01;
 
-        @include breakpoint(md){
-            font-size: 2.4em;
+    &__star {
+        &:before {
+                font-size: rem(28);
+                color: $secondary-01;
+        }
+    }
+
+    &__model {
+        text-align: center;
+        margin-top: rem(16);
+        font-style: italic;
+        color: $gray-01;
+        padding-bottom: rem(16);
+        position: relative;
+
+        &:after {
+            content: '';
+            position: absolute;
+            width: rem(50);
+            height: rem(1);
+            background-color: $secondary-01;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
+    &__text {
+        margin-top: rem(24);
+    }
+
+    &__author {
+        margin-top: rem(32);
+        display: inline-flex;
+        align-items: center;
+        width: 100%;
+    justify-content: flex-end;
+
+        &:before {
+            font-size: rem(24);
+            color: $secondary-01;
+            margin-right: rem(8);
         }
     }
 }
-

@@ -35,6 +35,7 @@ let newsSlider = new Swiper(settings.newsSliderSelector, {
     },
     1280: {
       spaceBetween: 0,
+      noSwiping: true,
     },
   }
 });
