@@ -1,22 +1,62 @@
 .product {
     &--qualities {
-        .row {
+        &__inner {
+            display: flex;
+            flex-direction: column-reverse;
+            margin-bottom: rem(56);
+            @include breakpoint(md) {
+                 align-items: center;
+                 flex-direction: row;
+            }
+
+            &--left {
+                @include breakpoint(md) {
+                      flex-direction: row-reverse
+                }
+
+                .product--qualities {
+                    &__text {
+                        @include breakpoint(md) {
+                            @include flex-col(5,12);
+                            @include offset(1);
+                            text-align: right;
+                        }
+                    }
+
+                    &__image {
+                        @include breakpoint(md) {
+                            @include flex-col(6,12);
+                            @include offset(0);
+                        }
+                    }
+                }
+            }
+        }
+
+        &__image, &__text {
+            @include flex-col(12,12);
             @include breakpoint(sm) {
-                 align-items: center 
+                @include flex-col(10,12);
+                @include offset(1);
             }
         
         }
+      
         &__text {
-            @include flex-col(12,12);
-            @include breakpoint(sm) {
-                @include flex-col(6,12);
+            @include breakpoint-max(md) {
+                margin-top: rem(24);
+            }
+
+            @include breakpoint(md) {
+                @include flex-col(5,12);
+                @include offset(0);
             }
         }
 
         &__image {
-            @include flex-col(12,12);
             @include breakpoint(md) {
                 @include flex-col(6,12);
+                @include offset(1);
             }
 
             .w-image {
@@ -24,6 +64,8 @@
 
                 .img-container {
                     @include img-homothetic(xs 75%);
+                    position: relative;
+                    overflow: hidden;
 
                     img {
                         position: absolute;
