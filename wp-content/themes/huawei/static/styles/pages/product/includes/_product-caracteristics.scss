@@ -1,0 +1,50 @@
+.product--caracteristics {
+    position: relative;
+
+    &__inner {
+        margin-top: rem(40);
+    }
+
+    &__item {
+        @include flex-col(12);
+
+        @include breakpoint(sm) {
+            @include flex-col(10);
+            @include offset(1);
+        }
+        @include breakpoint-max(md) {
+            &:not(:first-of-type) {
+                margin-top: rem(32);
+            }
+        }
+        @include breakpoint(md) {
+            @include flex-col(6);
+            @include offset(0);
+            padding-right: rem(32) !important;
+            padding-left: rem(32) !important;
+            &:nth-child(2n) {
+                border-left: rem(1) solid $gray-02;
+            }
+        }
+        @include breakpoint-only(md) {
+            &:nth-child(n + 3) {
+                margin-top: rem(24);
+            }
+        }
+        @include breakpoint(lg) {
+            @include flex-col(4);
+            @include offset(0);
+            &:nth-child(3n) {
+                border-left: rem(1) solid $gray-02;
+            }
+            margin-top: 0;
+            &:nth-child(n + 4) {
+                margin-top: rem(16);
+            }
+        }
+    }
+
+    &__list {
+        margin-top: rem(16);
+    }
+}

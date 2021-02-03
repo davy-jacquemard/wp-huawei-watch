@@ -37,6 +37,22 @@ if( function_exists('acf_add_options_page') ) {
 		'position'       => false,
 		'icon_url'       => false,
 	));
+	acf_add_options_sub_page(array(
+		'page_title'     => 'FAQ',
+		'menu_title'     => 'FAQ',
+		'menu_slug'      => 'shared-blocs-faq',
+		'parent_slug'    => 'shared-blocs',
+		'position'       => false,
+		'icon_url'       => false,
+	));
+	acf_add_options_sub_page(array(
+		'page_title'     => 'Découvrir produit',
+		'menu_title'     => 'Découvrir produit',
+		'menu_slug'      => 'shared-blocs-discover-product',
+		'parent_slug'    => 'shared-blocs',
+		'position'       => false,
+		'icon_url'       => false,
+	));
 
 	
 	
