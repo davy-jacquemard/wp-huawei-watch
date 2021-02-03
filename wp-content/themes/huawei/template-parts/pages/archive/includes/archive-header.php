@@ -15,16 +15,27 @@ $image = $header['image']['url'];
 
 
 
-echo '<pre>';
-  print_r($header);
-echo '</pre>';
+// echo '<pre>';
+//   print_r($header);
+// echo '</pre>';
 
 
 
 ?>
 
-<p> <?php echo $titre; ?></p>
+<div class="head ">
+  <div class="container">
+    <h1 class="h1"> <?php echo $titre; ?></h1>
+    <p> <?php echo $intro; ?></p>
+    <a class="btn btn--primary btn--big" href="<?php $link; ?>">Bouton</a>
+  </div>
+</div>
 
-<p> <?php echo $intro; ?></p>
-<a href="<?php $link; ?>">Bouton</a>
-<img src="<?php echo esc_url($image); ?>" alt="">
+
+<style>
+.head {background: url("<?php echo esc_url($image); ?>"); min-height: 40vh; display:flex; align-items: center; background-size: cover no-repeat; background-position: right;}
+.head h1.h1, .head p {color: white; margin: 20px 0;}
+
+</style>
+
+<!-- <img src="<?php echo esc_url($image); ?>" alt=""> -->
