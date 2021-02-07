@@ -51,6 +51,24 @@
   &__cart {
     width: rem(24);
     margin-right: rem(40);
+    position: relative;
+
+    &__count {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: rem(22);
+      height: rem(22);
+      background-color: $secondary-03;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-family: $font-secondary;
+      font-size: rem(12);
+      transform: translate(-50%, -50%);
+    }
   }
 
   &__open-menu {

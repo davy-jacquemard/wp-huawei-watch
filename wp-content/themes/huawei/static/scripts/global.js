@@ -10,3 +10,8 @@ import './components/_accordions'
 
 
 
+//CART 
+import './components/_product-cart'
+
+
+

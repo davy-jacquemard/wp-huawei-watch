@@ -169,6 +169,26 @@ closeMenu.addEventListener('click', () => {
 
 /***/ }),
 
+/***/ "./static/scripts/components/_product-cart.js":
+/*!****************************************************!*\
+  !*** ./static/scripts/components/_product-cart.js ***!
+  \****************************************************/
+/***/ (function() {
+
+var timeout;
+console.log('chnaged');
+jQuery('.woocommerce').on('change', 'input.qty', function () {
+  if (timeout !== undefined) {
+    clearTimeout(timeout);
+  }
+
+  timeout = setTimeout(function () {
+    jQuery("[name='update_cart']").trigger("click");
+  }, 1000); // 1 second delay, half a second (500) seems comfortable too
+});
+
+/***/ }),
+
 /***/ "./static/scripts/components/_sliders.js":
 /*!***********************************************!*\
   !*** ./static/scripts/components/_sliders.js ***!
@@ -340,12 +360,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_sliders__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/_sliders */ "./static/scripts/components/_sliders.js");
 /* harmony import */ var _components_accordions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/_accordions */ "./static/scripts/components/_accordions.js");
 /* harmony import */ var _components_accordions__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_components_accordions__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _components_product_cart__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/_product-cart */ "./static/scripts/components/_product-cart.js");
+/* harmony import */ var _components_product_cart__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_components_product_cart__WEBPACK_IMPORTED_MODULE_8__);
 
 
 
 
 
 
+
+ //CART 
 
 
 

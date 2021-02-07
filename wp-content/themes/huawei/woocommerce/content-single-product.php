@@ -36,7 +36,9 @@ $args = array(
     ),
 );
 $allGt2 = query_posts($args);
-$productGamme = get_term_by('id', $cat_id, 'product_cat', 'ARRAY_A')['name']
+$productGamme = get_term_by('id', $cat_id, 'product_cat', 'ARRAY_A')['name'];
+
+do_action( 'woocommerce_before_single_product' );
 
 ?>
 
@@ -151,7 +153,7 @@ echo '</pre>';
                             <?php echo $price ?>€
                         </div>
                         <!--  <?php echo do_shortcode('[add_to_cart id=' . $idProduct . ']'); ?> -->
-                        <a href="#" class="product--header__infos__cta__button btn btn--primary">
+                        <a href="#" class="product--header__infos__cta__button btn btn--primary" js-add-to-cart>
                             Ajouter au panier
                         </a>
                     </div>

@@ -18,7 +18,10 @@
     }
 
     &__img-container {
-        height: rem(300);
+        height: rem(200);
+        @include breakpoint(sm) {
+            height: rem(300);
+        }
         @include breakpoint(md) {
             height: auto;
             @include offsetcontainer('left', md 6, 'fluid');

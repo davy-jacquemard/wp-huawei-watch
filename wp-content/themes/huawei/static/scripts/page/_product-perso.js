@@ -56,13 +56,13 @@ let changeImage = function (color) {
 
 }
 
-/*
-let addToCartSelector = "add-product-to-cart";
-let buttonAddToCart = document.getElementById(addToCartSelector);
+
+let addToCartSelector = "[js-add-to-cart]";
+let buttonAddToCart = document.querySelector(addToCartSelector);
 
 buttonAddToCart.addEventListener("click", function(){
     document.querySelector(".variations_form").submit();
-}) */
+})
 const updatePrice = () => {
     let selector = ".woocommerce-variation-price .woocommerce-Price-amount";
     let price = document.querySelector(selector).innerHTML;
