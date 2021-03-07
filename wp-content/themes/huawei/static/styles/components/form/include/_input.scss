@@ -1,19 +1,57 @@
 input {
-    border: none;
-    border-bottom: 1px $gray-02 solid;    
-    padding: 5px 0;
-    color: $primary-black;
+  border: none;
+  border-bottom: 1px $gray-02 solid;
+  padding: rem(12) 0;
+  color: $primary-black;
+  font-family: $font-primary;
+
+  &::placeholder {
+    color: $gray-02;
     font-family: $font-primary;
+  }
+
+  &:focus {
+    outline: none;
+    border-bottom: 2px solid $secondary-01;
+
     &::placeholder {
-        color: $gray-02;
-        font-family: $font-primary;
+      color: $primary-black;
     }
-    &:focus {
-        outline: none;
-        border-bottom: 2px solid $secondary-01;
-        &::placeholder {
-            color: $primary-black;
-        }
-    }
+  }
 }
 
+//woocommerce
+
+.select2-container {
+  margin-top: rem(8);
+}
+
+.select2-selection {
+  padding: rem(8);
+  height: rem(44) !important;
+  margin-top: rem(8);
+
+  &__arrow {
+    height: rem(44) !important;
+  }
+}
+
+.woocommerce form .form-row {
+  margin-bottom: rem(16);
+}
+
+.woocommerce-additional-fields {
+  .woocommerce-input-wrapper {
+    .input-text {
+      padding: rem(12) rem(8);
+      margin-top: rem(8) !important;
+      font-family: $font-primary;
+    }
+  }
+}
+
+.woocommerce-checkout p.woocommerce-invalid-required-field span.error {
+  color: #e2401c;
+  display: block !important;
+  font-weight: bold;
+}

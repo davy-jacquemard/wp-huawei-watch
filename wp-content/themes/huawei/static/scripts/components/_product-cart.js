@@ -1,6 +1,5 @@
 var timeout;
- 
-console.log('chnaged');
+
 	jQuery('.woocommerce').on('change', 'input.qty', function(){
  
 		if ( timeout !== undefined ) {

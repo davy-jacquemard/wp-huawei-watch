@@ -42,6 +42,9 @@ COMPONENTS
 //navigations
 @import "./components/navigation/navigation";
 
+//woocommerce
+@import "./components/woocommerce/woocommerce";
+
 //Flex-content
 @import "./pages/article/article";
 
@@ -53,5 +56,9 @@ COMPONENTS
 
 //cart
 @import "./pages/cart/cart";
+
+//cart
+@import "./pages/checkout/checkout";
+
 
 

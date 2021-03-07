@@ -176,7 +176,6 @@ closeMenu.addEventListener('click', () => {
 /***/ (function() {
 
 var timeout;
-console.log('chnaged');
 jQuery('.woocommerce').on('change', 'input.qty', function () {
   if (timeout !== undefined) {
     clearTimeout(timeout);
@@ -362,6 +361,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_accordions__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_components_accordions__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var _components_product_cart__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/_product-cart */ "./static/scripts/components/_product-cart.js");
 /* harmony import */ var _components_product_cart__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_components_product_cart__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _page_checkout__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./page/_checkout */ "./static/scripts/page/_checkout.js");
+/* harmony import */ var _page_checkout__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_page_checkout__WEBPACK_IMPORTED_MODULE_9__);
 
 
 
@@ -371,7 +372,29 @@ __webpack_require__.r(__webpack_exports__);
 
  //CART 
 
+ //CHECKOUT
 
+
+
+/***/ }),
+
+/***/ "./static/scripts/page/_checkout.js":
+/*!******************************************!*\
+  !*** ./static/scripts/page/_checkout.js ***!
+  \******************************************/
+/***/ (function() {
+
+let checkboxContainer = document.querySelector('#ship-to-different-address .woocommerce-form__label');
+let checkbox = document.getElementById('ship-to-different-address-checkbox');
+let shippingForm = document.querySelector('[js-shipping-form] .shipping_address');
+console.log(checkboxContainer);
+checkboxContainer.addEventListener('click', () => {
+  if (checkbox.checked) {
+    shippingForm.classList.remove('is-hidden');
+  } else {
+    shippingForm.classList.add('is-hidden');
+  }
+});
 
 /***/ }),
 

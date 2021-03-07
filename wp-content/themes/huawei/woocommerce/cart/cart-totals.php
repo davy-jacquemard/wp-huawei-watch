@@ -37,28 +37,6 @@ defined( 'ABSPATH' ) || exit;
 			</div>
 		<?php endforeach; ?>
 
-		<?php // if ( WC()->cart->needs_shipping() && WC()->cart->show_shipping() ) : ?>
-
-			<?php// do_action( 'woocommerce_cart_totals_before_shipping' ); ?>
-
-			<?php //wc_cart_totals_shipping_html(); ?>
-
-			<?php// do_action( 'woocommerce_cart_totals_after_shipping' ); ?> 
-
-		<?php //elseif ( WC()->cart->needs_shipping() && 'yes' === get_option( 'woocommerce_enable_shipping_calc' ) ) : ?>
-
-	<!-- 		<div class="summary__shipping">
-				<p><?php //esc_html_e( 'Envoi', 'woocommerce' ); ?>&nbsp;: </p>
-				<p data-title="<?php //esc_attr_e( 'Envoi', 'woocommerce' ); ?>"></p>
-			</div>
-			<div>
-				<p>
-					<?php// woocommerce_shipping_calculator(); ?>	
-				</p>
-			</div> -->
-
-		<?php// endif; ?>
-
 		<?php foreach ( WC()->cart->get_fees() as $fee ) : ?>
 			<div class="summary__fee">
 				<p><?php echo esc_html( $fee->name ); ?>&nbsp;: </p>

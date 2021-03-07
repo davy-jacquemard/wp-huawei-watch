@@ -1,0 +1,60 @@
+
+
+.woocommerce-notices-wrapper {
+  position: fixed;
+  bottom: rem(16);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+
+.woocommerce-message, .woocommerce-info {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  border: none;
+  color: white;
+  font-family: $font-primary;
+  font-weight: bold;
+
+  // border: rem(2) solid $success-color;
+  background-color: $success-color;
+  border-radius: rem(8);
+
+  @extend %p--bold;
+  @extend %p;
+
+  a.restore-item {
+    margin-right: rem(16);
+    color: white;
+    text-decoration: underline;
+  }
+
+  a.wc-forward {
+    display: none;
+  }
+
+  &:before {
+    color: white;
+  }
+}
+.woocommerce-form-coupon-toggle {
+  display: none;
+}
+
+
+.woocommerce-error {
+  font-family: $font-primary;
+  background: $danger-color;
+  color: white;
+  text-align: center;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-bottom: 0;
+
+  &:before {
+    color: white;
+  }
+}
