@@ -12,12 +12,12 @@
 }(function ($, undefined) {
     $(document).ready(function (){
         // Open file selector on div click
-        $("#upload-file").click(function(){
+        $(document).on("click", "#upload-file", function(e){
             $("#media_file").click();
         });
 
         // file selected
-        $("#media_file").change(function(){
+        $(document).on("change", "#media_file", function(e){
             var fd = new FormData();
 
             var files = $('#media_file')[0].files[0];
@@ -26,15 +26,23 @@
 
             uploadData(this);
         });
+
+        $(document).on("click", ".upgrade-btn-box a", function(e){
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+        });
     });
 
     function uploadData(input) {
         if($("#media_file").val() != "") {
+            $(".new-image-box .file-size").addClass("hide-it");
+            $("#upload-file").removeClass("active");
 
             var fileName = $("#media_file").val();
             fileName = fileName.toLowerCase();
             fileName = fileName.split(".");
             var fileExt = fileName[fileName.length - 1];
+            $(".new-image-box .image-size").remove();
             if(fileExt == "jpg" || fileExt == "png" || fileExt == "jpeg" || fileExt == "gif") {
                 if (input.files && input.files[0]) {
                     var reader = new FileReader();
@@ -42,6 +50,12 @@
                     reader.onload = function (e) {
                         $(".drag-and-drop-title").html("<img class='pre-image' id='pre-image' >");
                         $('#pre-image').attr('src', e.target.result);
+
+                        var image = new Image();
+                        image.src = e.target.result;
+                        image.onload = function () {
+                            $(".new-image-box img").after('<span class="image-size">Height x Width</span>').show();
+                        };
                     }
 
                     reader.readAsDataURL(input.files[0]); // convert to base64 string
@@ -74,7 +88,8 @@
         } else {
             fileSize = fileSize+" B";
         }
-        $(".new-image-box .file-size").html(fileSize);
+        $(".new-image-box .file-size").removeClass("hide-it");
+        $("#upload-file").addClass("active");
     }
 
 }));

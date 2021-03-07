@@ -47,6 +47,7 @@
             top: 0;
             right: 0;
             height: 100%;
+            width: auto;
             transform: translateX(50%);
             @include transition(400ms, transform);
         }

@@ -26,14 +26,11 @@ $border: rem(2);
     background-color: $secondary-02;
 
     @include breakpoint(md) {
-    &:hover {
-      background: linear-gradient(135deg, $secondary-01 0%, transparent 100%);
-      background-color: $secondary-01;
+      &:hover {
+        background: linear-gradient(135deg, $secondary-01 0%, transparent 100%);
+        background-color: $secondary-01;
+      }
     }
-    }
-
-
-
   }
 
   &--secondary {
@@ -172,3 +169,4 @@ $border: rem(2);
     }
   }
 }
+

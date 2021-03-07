@@ -26,8 +26,7 @@ $fonctionalities = get_field('gamme_feature');
         <div class="gamme--fonctionality__w-images" js-home-vertical-slider-w>
             <?php if (have_rows('gamme_feature')) : while (have_rows('gamme_feature')) : the_row(); ?>
                     <div class="gamme--fonctionality__image" id="image-<?php echo get_row_index(); ?>" js-home-vertical-slider-item>
-                        <img src="<?php echo get_sub_field('image')['url'] ?>" alt="<?php echo get_sub_field('image')['alt'] ?>">
-
+                        <?php echo wp_get_attachment_image(get_sub_field('image')['id'], 'large') ?>
                     </div>
             <?php endwhile;
             endif; ?>

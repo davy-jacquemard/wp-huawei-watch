@@ -1,14 +1,9 @@
 <?php
 $header = get_field('gamme_header');
-
 $btn_primary = $header['primary_btn'];
 $btn_secondary = $header['secondary_btn'];
-
 $btn_switch = $header['switch_section']['link'];
-
 $image = $header['image'];
-
-
 ?>
 
 <section class="gamme--header" style="background-image: url('<?php echo $image['url'] ?>') ;">
@@ -41,6 +36,4 @@ $image = $header['image'];
             </div>
         </div>
     <?php endif; ?>
-
-
 </section>

@@ -4,13 +4,13 @@
  * Plugin URI: https://wordpress.org/plugins/woo-variation-swatches/
  * Description: Beautiful colors, images and buttons variation swatches for woocommerce product attributes. Requires WooCommerce 3.2+
  * Author: Emran Ahmed
- * Version: 1.1.6
+ * Version: 1.1.12
  * Domain Path: /languages
  * Requires PHP: 5.6
  * Requires at least: 4.8
  * WC requires at least: 4.5
  * Tested up to: 5.6
- * WC tested up to: 4.9
+ * WC tested up to: 5.0
  * Text Domain: woo-variation-swatches
  * Author URI: https://getwooplugins.com/
  */
@@ -21,7 +21,7 @@ if ( ! class_exists( 'Woo_Variation_Swatches' ) ):
 
 	final class Woo_Variation_Swatches {
 
-		protected $_version = '1.1.6';
+		protected $_version = '1.1.12';
 
 		protected static $_instance = null;
 		private $_settings_api;
@@ -61,7 +61,7 @@ if ( ! class_exists( 'Woo_Variation_Swatches' ) ):
 		}
 
 		public function includes() {
-			if ( $this->is_required_php_version() ) {
+			if ( $this->is_required_php_version() && $this->is_wc_active() ) {
 				require_once $this->include_path( 'class-woo-variation-swatches-cache.php' );
 				require_once $this->include_path( 'class-wvs-customizer.php' );
 				require_once $this->include_path( 'class-wvs-settings-api.php' );
@@ -325,7 +325,7 @@ if ( ! class_exists( 'Woo_Variation_Swatches' ) ):
 			// array_push( $classes, sprintf( 'woo-variation-swatches-stylesheet-%s', $this->get_option( 'stylesheet' ) ? 'enabled' : 'disabled' ) );
 			array_push( $classes, sprintf( 'wvs%s-css', $this->get_option( 'stylesheet' ) ? '' : '-no' ) );
 
-			if ( (bool) woo_variation_swatches()->get_option( 'show_variation_label' ) ) {
+			if ( wc_string_to_bool( $this->get_option( 'show_variation_label' ) ) ) {
 				$classes[] = 'wvs-show-label';
 			}
 
@@ -353,17 +353,29 @@ if ( ! class_exists( 'Woo_Variation_Swatches' ) ):
 				wp_enqueue_script( 'bluebird', $this->assets_uri( "/js/bluebird{$suffix}.js" ), array(), '3.5.3' );
 			}
 
-			$is_defer                  = (bool) woo_variation_swatches()->get_option( 'defer_load_js' );
-			$show_variation_label      = (bool) woo_variation_swatches()->get_option( 'show_variation_label' );
-			$variation_label_separator = esc_html( woo_variation_swatches()->get_option( 'variation_label_separator' ) );
-			//$hide_disabled_variation = (bool) woo_variation_swatches()->get_option( 'hide_disabled_variation' );
+			$is_defer                  = wc_string_to_bool( $this->get_option( 'defer_load_js' ) );
+			$show_variation_label      = wc_string_to_bool( $this->get_option( 'show_variation_label' ) );
+			$variation_label_separator = esc_html( $this->get_option( 'variation_label_separator' ) );
+			//$hide_disabled_variation = wc_string_to_bool( woo_variation_swatches()->get_option( 'hide_disabled_variation' ));
 
 			// If defer enable we want to load this script to top
-			wp_register_script( 'woo-variation-swatches', $this->assets_uri( "/js/frontend{$suffix}.js" ), array(
-				'jquery',
-				'underscore',
-				'wp-util'
-			), $this->version(), ! $is_defer );
+			if ( $this->is_pro_active() ) {
+				// Register
+				wp_register_script( 'woo-variation-swatches', $this->assets_uri( "/js/frontend{$suffix}.js" ), array(
+					'jquery',
+					'wp-util',
+					'underscore',
+					'wc-add-to-cart-variation'
+				), $this->version(), ! $is_defer );
+			} else {
+				// Enqueue
+				wp_enqueue_script( 'woo-variation-swatches', $this->assets_uri( "/js/frontend{$suffix}.js" ), array(
+					'jquery',
+					'wp-util',
+					'underscore',
+					'wc-add-to-cart-variation'
+				), $this->version(), ! $is_defer );
+			}
 
 			wp_localize_script(
 				'woo-variation-swatches', 'woo_variation_swatches_options', apply_filters(
@@ -377,25 +389,12 @@ if ( ! class_exists( 'Woo_Variation_Swatches' ) ):
 				)
 			);
 
-			// On Free Version
-			if ( ! $this->is_pro_active() ) {
-				wp_deregister_script( 'wc-add-to-cart-variation' );
-				wp_register_script( 'wc-add-to-cart-variation', $this->get_wc_asset_url( 'assets/js/frontend/add-to-cart-variation' . $suffix . '.js' ),
-					apply_filters( 'woo_variation_swatches_script_dependency', array(
-						'jquery',
-						'underscore',
-						'wp-util',
-						'jquery-blockui',
-						'woo-variation-swatches'
-					) ), WC_VERSION, true );
-			}
-
-			if ( $this->get_option( 'stylesheet' ) ) {
+			if ( wc_string_to_bool( $this->get_option( 'stylesheet' ) ) ) {
 				wp_enqueue_style( 'woo-variation-swatches', $this->assets_uri( "/css/frontend{$suffix}.css" ), array(), $this->version() );
 				wp_enqueue_style( 'woo-variation-swatches-theme-override', $this->assets_uri( "/css/wvs-theme-override{$suffix}.css" ), array( 'woo-variation-swatches' ), $this->version() );
 			}
 
-			if ( $this->get_option( 'tooltip' ) ) {
+			if ( wc_string_to_bool( $this->get_option( 'tooltip' ) ) ) {
 				wp_enqueue_style( 'woo-variation-swatches-tooltip', $this->assets_uri( "/css/frontend-tooltip{$suffix}.css" ), array(), $this->version() );
 			}
 

@@ -35,7 +35,7 @@ if ($count > 2) {
         ?>
                         <div class="gamme--finitions__item <?php echo $class ?>">
 
-                            <img class="gamme--finitions__item__image" src="<?php echo $image['url'] ?>" alt="<?php echo $image['alt'] ?>">
+                            <?php echo wp_get_attachment_image($image['id'], 'large gamme--finitions__item__image') ?>
                             <div class="h1 gamme--finitions__item__title"><?php echo $title ?></div>
                             <?php if ($text) : ?>
                                 <p class="p gamme--finitions__item__text"><?php echo $text ?></p>

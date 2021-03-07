@@ -9,7 +9,7 @@ $section_right = get_field('gamme_cta')['right'];
     <div class="gamme--cta__inner">
         <div class="gamme--cta__watch gamme--cta__watch--left">
             <div class="gamme--cta__watch__image">
-                <img src="<?php echo $section_left['image']['url'] ?>" alt="<?php echo $section_left['image']['alt'] ?>">
+                <?php echo wp_get_attachment_image($section_left['image']['id'], 'medium') ?>
                 <div class="radial-bg"></div>
             </div>
             <div class="gamme--cta__watch__btn">
@@ -19,7 +19,7 @@ $section_right = get_field('gamme_cta')['right'];
         <div class="gamme--cta__watch gamme--cta__watch--right">
             <!--  -->
             <div class="gamme--cta__watch__image">
-                <img src="<?php echo $section_right['image']['url'] ?>" alt="<?php echo $section_right['image']['alt'] ?>">
+                <?php echo wp_get_attachment_image($section_right['image']['id'], 'medium') ?>
                 <div class="radial-bg"></div>
             </div>
             <div class="gamme--cta__watch__btn">

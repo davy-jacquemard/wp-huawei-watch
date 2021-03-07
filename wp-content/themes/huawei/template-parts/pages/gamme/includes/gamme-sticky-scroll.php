@@ -1,12 +1,11 @@
 <?php
 $advantages = get_field('gamme_advantages');
 
-
 ?>
 
 <section class="gamme--sticky-scroll w-flex">
         <div class="stickyblock__w gamme--sticky-scroll__img-container js-sticky-image">
-            <img class="stickyblock__image" src="<?php echo $advantages['image']['url'] ?>" alt="<?php echo $advantages['image']['alt'] ?>">
+            <?php echo wp_get_attachment_image($advantages['image']['id'], 'large stickyblock__image') ?>
         </div>
    
 
@@ -30,7 +29,5 @@ $advantages = get_field('gamme_advantages');
                 ?>
             </div>
         </div>
-
     </div>
-
 </section>

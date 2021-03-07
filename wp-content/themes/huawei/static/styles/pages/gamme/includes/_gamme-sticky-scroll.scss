@@ -41,6 +41,10 @@
                         }
                     }
                 }
+
+                &__title:after {
+                    background-color: $secondary-01;
+                }
             }
         }
 
@@ -58,6 +62,7 @@
 
             img {
                 height: 60vh;
+                width: auto;
                 @include breakpoint-max(md) {
                   transform: translateX(50%);  
                 }

@@ -33,4 +33,7 @@
     <!--Last news-->
     <?php get_template_part('template-parts/components/shared-block/last-news'); ?>
 
+    <!--Last news-->
+    <?php get_template_part('template-parts/components/shared-block/newsletter'); ?>
+
 </div>

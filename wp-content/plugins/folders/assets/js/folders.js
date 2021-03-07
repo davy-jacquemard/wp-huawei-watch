@@ -25,6 +25,8 @@
     var folderPropertyArray = [];
     var folderCurrentURL = wcp_settings.page_url;
     var foldersArray = [];
+    var hasStars;
+    var hasChildren;
     var listFolderString = "<li class='grid-view' data-id='__folder_id__' id='folder___folder_id__'>" +
         "<div class='folder-item is-folder' data-id='__folder_id__'>" +
         "<a title='__folder_name__' id='folder_view___folder_id__'" +
@@ -37,6 +39,7 @@
         "</li>";
     var contextOffsetX = null;
     var contextOffsetY = null;
+    var currentPage = 1;
     $(document).ready(function(){
 
         foldersArray = wcp_settings.taxonomies;
@@ -44,6 +47,9 @@
         isKeyActive = parseInt(wcp_settings.is_key_active);
         n_o_file = parseInt(wcp_settings.folders);
         activeRecordID = parseInt(wcp_settings.selected_taxonomy);
+        hasStars = parseInt(wcp_settings.hasStars);
+        hasChildren = parseInt(wcp_settings.hasChildren);
+        currentPage = parseInt(wcp_settings.currentPage);
 
         folderPropertyArray = wcp_settings.folder_settings;
 
@@ -197,18 +203,27 @@
             isStickyClass = (isSticky)?true:false;
             $(".dynamic-menu").remove();
             $(".active-menu").removeClass("active-menu");
-            menuHtml = "<div class='dynamic-menu' data-id='"+$(this).closest("li").prop("id")+"'><ul>" +
-                "<li class='new-folder'><a href='javascript:;'><span class=''><i class='pfolder-add-folder'></i></span> New Folder</a></li>" +
-                "<li class='rename-folder'><a href='javascript:;'><span class=''><i class='pfolder-edit'></i></span> Rename</a></li>" +
-                "<li class='sticky-folder'><a target='_blank' href='"+wcp_settings.upgrade_url+"'><span class='sticky-pin'><i class='pfolder-pin'></i></span> Sticky Folder (Pro)</a></li>" +
-                "<li class='mark-folder'><a href='javascript:;'><span class=''><i class='pfolder-star'></i></span>" + ((isHigh) ? " Remove Star" : "Add a Star") + "</a></li>"+
-                "<li class='duplicate-folder'><a href='javascript:;'><span class=''><i class='pfolder-clone'></i></span> Duplicate folder</a></li>";
+            menuHtml = "<div class='dynamic-menu' data-id='"+$(this).closest("li").prop("id")+"'><ul>";
+                if(hasChildren) {
+                    menuHtml += "<li class='new-folder'><a href='javascript:;'><span class=''><i class='pfolder-add-folder'></i></span>New Folder</a></li>";
+                } else {
+                    menuHtml += "<li class='new-folder-pro'><a target='_blank' href='javascript:;'><span class=''><i class='pfolder-add-folder'></i></span>New Sub-folder (Pro)</a></li>";
+                }
+                menuHtml += "<li class='rename-folder'><a href='javascript:;'><span class=''><i class='pfolder-edit'></i></span>Rename</a></li>" +
+                            "<li class='sticky-folder'><a target='_blank' href='"+wcp_settings.upgrade_url+"'><span class='sticky-pin'><i class='pfolder-pin'></i></span>Sticky Folder (Pro)</a></li>";
+                if(hasStars) {
+                    menuHtml += "<li class='mark-folder'><a href='javascript:;'><span class=''><i class='pfolder-star'></i></span>" + ((isHigh) ? "Remove Star" : "Add a Star") + "</a></li>";
+                } else {
+                    menuHtml += "<li class='mark-folder-pro'><a target='_blank' href='"+wcp_settings.upgrade_url+"'><span class=''><i class='pfolder-star'></i></span>" + ((isHigh) ? "Remove Star (Pro)" : "Add a Star (Pro)") + "</a></li>";
+                }
+                menuHtml += "<li class='lock-folder'><a target='_blank' href='"+wcp_settings.upgrade_url+"'><span class='dashicons dashicons-lock'></span>Lock Folder (Pro)</a></li>" +
+                            "<li class='duplicate-folder-pro'><a target='_blank' href='"+wcp_settings.upgrade_url+"'><span class=''><i class='pfolder-clone'></i></span>Duplicate folder (Pro)</a></li>";
 
             hasPosts = parseInt($(this).closest("a.jstree-anchor").find(".premio-folder-count").text());
             if (wcp_settings.post_type == "attachment" && hasPosts) {
-                menuHtml += "<li target='_blank' class='download-folder'><a target='_blank' href='"+wcp_settings.upgrade_url+"'><span class=''><i class='pfolder-zip-file'></i></span> Download Zip (Pro)</a></li>";
+                menuHtml += "<li target='_blank' class='download-folder'><a target='_blank' href='"+wcp_settings.upgrade_url+"'><span class=''><i class='pfolder-zip-file'></i></span>Download Zip (Pro)</a></li>";
             }
-            menuHtml += "<li class='remove-folder'><a href='javascript:;'><span class=''><i class='pfolder-remove'></i></span> Delete</a></li>" +
+            menuHtml += "<li class='remove-folder'><a href='javascript:;'><span class=''><i class='pfolder-remove'></i></span>Delete</a></li>" +
                 "</ul></div>";
             $("body").append(menuHtml);
             var yPosition;
@@ -278,16 +293,25 @@
             isStickyClass = (isSticky)?true:false;
             $(".dynamic-menu").remove();
             $(".active-menu").removeClass("active-menu");
-            menuHtml = "<div class='dynamic-menu' data-id='"+$(this).closest("li").data("folder-id")+"'><ul>" +
-                "<li class='new-folder'><a href='javascript:;'><span class=''><i class='pfolder-add-folder'></i></span> New Folder</a></li>" +
-                "<li class='rename-folder'><a href='javascript:;'><span class=''><i class='pfolder-edit'></i></span> Rename</a></li>" +
-                "<li class='sticky-folder'><a target='_blank' href='"+wcp_settings.upgrade_url+"'><span class='sticky-pin'><i class='pfolder-pin'></i></span>Sticky Folder (Pro)</a></li>" +
-                "<li class='mark-folder'><a href='javascript:;'><span class=''><i class='pfolder-star'></i></span>" + ((isHigh) ? " Remove Star" : "Add a Star") + "</a></li>"+
-                "<li class='duplicate-folder'><a href='javascript:;'><span class=''><i class='pfolder-clone'></i></span> Duplicate folder</a></li>";
+            menuHtml = "<div class='dynamic-menu' data-id='"+$(this).closest("li").data("folder-id")+"'><ul>";
+            if(hasChildren) {
+                menuHtml += "<li class='new-folder'><a href='javascript:;'><span class=''><i class='pfolder-add-folder'></i></span>New Folder</a></li>";
+            } else {
+                menuHtml += "<li class='new-folder-pro'><a target='_blank' href='javascript:;'><span class=''><i class='pfolder-add-folder'></i></span>New Sub-folder (Pro)</a></li>";
+            }
+            menuHtml += "<li class='rename-folder'><a href='javascript:;'><span class=''><i class='pfolder-edit'></i></span>Rename</a></li>" +
+                        "<li class='sticky-folder'><a target='_blank' href='"+wcp_settings.upgrade_url+"'><span class='sticky-pin'><i class='pfolder-pin'></i></span>Sticky Folder (Pro)</a></li>";
+            if(hasStars) {
+                menuHtml += "<li class='mark-folder'><a href='javascript:;'><span class=''><i class='pfolder-star'></i></span>" + ((isHigh) ? "Remove Star" : "Add a Star") + "</a></li>";
+            } else {
+                menuHtml += "<li class='mark-folder-pro'><a target='_blank' href='"+wcp_settings.upgrade_url+"'><span class=''><i class='pfolder-star'></i></span>" + ((isHigh) ? "Remove Star (Pro)" : "Add a Star (Pro)") + "</a></li>";
+            }
+            menuHtml += "<li class='lock-folder'><a target='_blank' href='"+wcp_settings.upgrade_url+"'><span class='dashicons dashicons-lock'></span>Lock Folder (Pro)</a></li>" +
+                        "<li class='duplicate-folder-pro'><a target='_blank' href='"+wcp_settings.upgrade_url+"'><span class=''><i class='pfolder-clone'></i></span>Duplicate folder (Pro)</a></li>";
 
             hasPosts = parseInt($(this).closest("li.jstree-node").find("h3.title:first > .total-count").text());
             if (wcp_settings.post_type == "attachment" && hasPosts) {
-                menuHtml += "<li class='download-folder'><a target='_blank' href='"+wcp_settings.upgrade_url+"'><span class=''><i class='pfolder-zip-file'></i></span> Download Zip (Pro)</a></li>";
+                menuHtml += "<li class='download-folder'><a target='_blank' href='"+wcp_settings.upgrade_url+"'><span class=''><i class='pfolder-zip-file'></i></span>Download Zip (Pro)</a></li>";
             }
             menuHtml += "<li class='remove-folder'><a href='javascript:;'><span class=''><i class='pfolder-remove'></i></span> Delete</a></li>" +
                 "</ul></div>";
@@ -312,6 +336,16 @@
         $(document).on("click", ".dynamic-menu", function(e){
             e.stopImmediatePropagation()
             e.stopPropagation();
+        });
+
+        $(document).on("click", ".new-folder-pro", function(e){
+            e.preventDefault();
+            $(".dynamic-menu").remove();
+            $("#sub-folder-popup").show();
+        });
+
+        $(document).on("click", ".close-popup-button a", function(){
+            $(".folder-popup-form").hide();
         });
 
         $(document).on("click", "body, html", function(){
@@ -819,8 +853,8 @@
             });
             $(".folder-loader-ajax").addClass("active");
             if($("#folder-posts-filter").length) {
-                $("#folder-posts-filter").load(folderCurrentURL + " #posts-filter", function(){
-                    var obj = { Title: "", Url: folderCurrentURL };
+                $("#folder-posts-filter").load(folderCurrentURL+"&paged="+currentPage + " #posts-filter", function(){
+                    var obj = { Title: "", Url: folderCurrentURL+"&paged="+currentPage };
                     history.pushState(obj, obj.Title, obj.Url);
                     if (wcp_settings.show_in_page == "show" && !$(".tree-structure").length) {
                         $(".wp-header-end").before('<div class="tree-structure-content"><div class="tree-structure"><ul></ul><div class="clear clearfix"></div></div></div>');
@@ -829,8 +863,8 @@
                     triggerInlineUpdate();
                 });
             } else {
-                $("#wpbody").load(folderCurrentURL + " #wpbody-content", false, function (res) {
-                    var obj = { Title: "", Url: folderCurrentURL };
+                $("#wpbody").load(folderCurrentURL+"&paged="+currentPage + " #wpbody-content", false, function (res) {
+                    var obj = { Title: "", Url: folderCurrentURL+"&paged="+currentPage };
                     history.pushState(obj, obj.Title, obj.Url);
                     if (wcp_settings.show_in_page == "show" && !$(".tree-structure").length) {
                         $(".wp-header-end").before('<div class="tree-structure-content"><div class="tree-structure"><ul></ul><div class="clear clearfix"></div></div></div>');
@@ -962,7 +996,7 @@
     });
 
     function setCustomScrollForFolder() {
-        /*contentHeight = $(window).height() - $("#wpadminbar").height() - $(".sticky-wcp-custom-form").height() - 30;
+        contentHeight = $(window).height() - $("#wpadminbar").height() - $(".sticky-wcp-custom-form").height() - 30;
         var scrollTop = 0;
         if($("#custom-scroll-menu").hasClass("mCustomScrollbar")) {
             var $scrollerOuter  = $( '#custom-scroll-menu' );
@@ -985,7 +1019,7 @@
         });
         if(scrollTop != 0) {
             $("#custom-scroll-menu").mCustomScrollbar("scrollTo", scrollTop+"px",{scrollInertia:0});
-        }*/
+        }
     }
 
     /* add folder code */
@@ -993,8 +1027,12 @@
         $(document).on("click", "#add-new-folder", function(){
             if($("#js-tree-menu a.jstree-clicked").length) {
                 fileFolderID = $("#js-tree-menu a.jstree-clicked").closest("li.jstree-node").attr("id");
+                if(!hasChildren) {
+                    $("#pro-notice").removeClass("hide-it");
+                }
             } else {
                 fileFolderID = 0;
+                $("#pro-notice").addClass("hide-it");
             }
             isItFromMedia = false;
             addFolder();
@@ -1031,6 +1069,10 @@
 
                 var parentId = fileFolderID;
                 if(isItFromMedia) {
+                    parentId = 0;
+                }
+
+                if(!hasChildren) {
                     parentId = 0;
                 }
 
@@ -1468,9 +1510,9 @@
         $(document).on("click", ".jstree-node .jstree-icon", function(){
             folderID = $(this).closest("li.jstree-node").attr("id");
             if($("li.jstree-node[id='"+folderID+"']").hasClass("jstree-open")) {
-                folderStatus = 0;
-            } else {
                 folderStatus = 1;
+            } else {
+                folderStatus = 0;
             }
             $(".form-loader-count").css("width","100%");
             nonce = getSettingForPost(folderID, 'nonce');
@@ -1507,6 +1549,7 @@
     /* refresh listing on click */
     $(document).ready(function(){
         $(document).on("click", "a.jstree-anchor", function(e) {
+            currentPage = 1;
             e.stopPropagation();
             $(".un-categorised-items").removeClass("active-item");
             $(".header-posts a").removeClass("active-item");
@@ -1516,7 +1559,7 @@
             $(".sticky-folders .sticky-folder-"+activeRecordID+" a").addClass("active-item");
             if(!$("#media-attachment-taxonomy-filter").length) {
                 var folderSlug = getSettingForPost(activeRecordID, 'slug');
-                folderCurrentURL = wcp_settings.page_url + folderSlug;
+                folderCurrentURL = wcp_settings.page_url + folderSlug+"&paged="+currentPage;
                 $(".form-loader-count").css("width", "100%");
                 if($("#folder-posts-filter").length) {
                     $("#folder-posts-filter").load(folderCurrentURL + " #posts-filter", function(){
@@ -1544,7 +1587,7 @@
                 $("#media-attachment-taxonomy-filter").val(thisIndex);
                 $("#media-attachment-taxonomy-filter").trigger("change");
                 thisSlug = getSettingForPost(thisIndex, 'slug');
-                folderCurrentURL = wcp_settings.page_url + thisSlug;
+                folderCurrentURL = wcp_settings.page_url + thisSlug+"&paged="+currentPage;
                 var obj = { Title: thisSlug, Url: folderCurrentURL };
                 history.pushState(obj, obj.Title, obj.Url);
                 set_default_folders(thisSlug);
@@ -1562,7 +1605,8 @@
             $(".header-posts a").addClass("active-item");
             $(".jstree-clicked").removeClass("jstree-clicked");
             if(!$("#media-attachment-taxonomy-filter").length) {
-                folderCurrentURL = wcp_settings.page_url;
+                currentPage = 1;
+                folderCurrentURL = wcp_settings.page_url+"&paged="+currentPage;
                 $(".form-loader-count").css("width", "100%");
                 if($("#folder-posts-filter").length) {
                     $("#folder-posts-filter").load(folderCurrentURL + " #posts-filter", function(){
@@ -1606,7 +1650,8 @@
             $(".sticky-folders .active-item").removeClass("active-item");
             $(".jstree-clicked").removeClass("jstree-clicked");
             if(!$("#media-attachment-taxonomy-filter").length) {
-                folderCurrentURL = wcp_settings.page_url+"-1";
+                currentPage = 1;
+                folderCurrentURL = wcp_settings.page_url+"-1"+"&paged="+currentPage;
                 $(".form-loader-count").css("width", "100%");
                 if($("#folder-posts-filter").length) {
                     $("#folder-posts-filter").load(folderCurrentURL + " #posts-filter", function(){
@@ -1690,6 +1735,7 @@
             "core": {
                 'cache':false,
                 "animation": 0,
+                "max_depth": hasChildren?"-1":1,
                 // "check_callback": true,
                 check_callback: function(e, t, n, r, o) {
                     $("*").removeClass("drag-bot").removeClass("drag-in").removeClass("drag-up");
@@ -1701,6 +1747,9 @@
                                 $("#jstree-dnd").text("Below "+$.trim($("#js-tree-menu").jstree(true).get_node(nodeId).text));
                                 break;
                             case "i":
+                                if(!hasChildren) {
+                                    return false;
+                                }
                                 o.origin.get_node(o.ref, !0).addClass("drag-in");
                                 nodeId = $(".drag-in").attr("id");
                                 $("#jstree-dnd").text("Inside "+$.trim($("#js-tree-menu").jstree(true).get_node(nodeId).text));
@@ -1756,9 +1805,12 @@
             //data.text is the new name:
             setDragAndDropElements();
         })).bind("move_node.jstree", (function(t, n) {
+            if(n.node.parent != "#") {
+                jQuery("#js-tree-menu").jstree("open_node",n.node.parent);
+            }
             folderMoveId = n.node.id;
             orderString = "";
-            $(".jstree-node[id='"+folderMoveId+"']").closest("ul").children().each(function(){
+            $("#js-tree-menu .jstree-node[id='"+folderMoveId+"']").closest("ul").children().each(function(){
                 if($(this).attr("id") != 'undefined') {
                     orderString += $(this).attr("id") + ",";
                 }
@@ -1807,7 +1859,7 @@
             $(".folder-order").toggleClass("active");
         });
 
-        $(document).on("click", ".folder-sort-menu a", function(e) {
+        $(document).on("click", ".folder-sort-menu a:not(.pro-feature)", function(e) {
             e.stopPropagation();
             e.preventDefault();
             $(".form-loader-count").css("width", "100%");
@@ -1992,7 +2044,7 @@
     function setFolderCountAndDD() {
         if($("#media-attachment-taxonomy-filter").length) {
             $("#media-attachment-taxonomy-filter").each(function(){
-                folders_media_options.terms = foldersArray;
+                wcp_settings.terms = foldersArray;
                 var selectedDD = $(this);
                 currentDDVal = $(this).val();
                 selectedDD.html("<option value='all'>All Folders</option><option value='unassigned'>(Unassigned)</option>");
@@ -2041,7 +2093,16 @@
     }
 
     $(document).ready(function(){
-    /* select dropdown */
+        $(document).on("click", ".thumbnail-hover-box a", function(e){
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+            e.preventDefault();
+            window.open($(this).prop("href"), "_blank");
+            wp.media.frame.close();
+            return false;
+        });
+
+        /* select dropdown */
         $(document).on("click", "#doaction", function(e){
             if($("#bulk-action-selector-top").val() == "move_to_folder") {
                 show_folder_popup();

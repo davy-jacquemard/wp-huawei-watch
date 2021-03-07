@@ -1,0 +1,80 @@
+.newsletter {
+  background-color: white;
+
+  &__inner {
+    width: 100%;
+  }
+
+  &__bloc-text {
+    position: relative;
+    text-align: center;
+    @include flex-col(12);
+
+    @include breakpoint(md) {
+      @include flex-col(10);
+      @include offset(1);
+    }
+
+    @include breakpoint(lg) {
+      @include flex-col(8);
+      @include offset(2);
+    }
+  }
+
+  &__text {
+    margin-top: rem(8);
+  }
+
+  &__icon {
+    position: absolute;
+    top: rem(-16);
+    right: 0;
+  }
+
+  &__form {
+   max-width: rem(500);
+    margin: auto;
+    margin-top: rem(40);
+  }
+
+  &__form-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__field {
+    flex: 1;
+    padding-right: rem(40);
+
+    input {
+      width: 100%;
+    }
+  }
+
+  .mc4wp-error {
+    margin-top: rem(8);
+    p, a {
+      color: $danger-color;
+      @extend %p--small;
+    }
+  }
+
+  .btn {
+    color: $primary-black;
+    background-color: white;
+    padding: 0;
+
+    &:after {
+      background-color: white;
+    }
+
+    input {
+      border: none;
+      background: none;
+      padding-right: rem(32);
+      padding-left: rem(32);
+    }
+  }
+
+}
