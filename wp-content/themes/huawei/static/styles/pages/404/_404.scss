@@ -1,0 +1,22 @@
+.error {
+  &__title {
+    text-align: center;
+  }
+
+  &__column {
+    @include flex-col(12);
+    @include breakpoint(md) {
+      @include flex-col(6);
+    }
+
+    h3 {
+      margin-bottom: rem(24);
+    }
+
+    &:last-of-type {
+      @include breakpoint-max(md) {
+        margin-top: rem(40);
+      }
+    }
+  }
+}
