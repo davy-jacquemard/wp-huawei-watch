@@ -1,15 +1,16 @@
-<?php 
+<?php
 
-$img_centered = get_sub_field('image')
+$img_centered = get_sub_field('image');
 
-?> 
-<section class="w-flex">
-
-    <div class="container flexible-centered-image">
-        <div class="row flexible-centered-image__row">
+?>
+<section class="w-flex flexible-centered-image">
+    <div class="container">
+        <div class="row">
             <div class="flexible-centered-image__inner">
-                <img class="flexible-centered-image__img" src="<?php echo $img_centered['url'] ?>" alt="">
+                <div class="flexible-centered-image__img">
+                    <?php echo wp_get_attachment_image($img_centered['id'], 'large') ?>
+                </div>
             </div>
         </div>
-</div>
+    </div>
 </section>

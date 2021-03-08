@@ -1,0 +1,18 @@
+.flex-centered-text {
+  .wysiwyg {
+    @include flex-col(12);
+
+    @include breakpoint(sm) {
+      @include flex-col(10);
+      @include offset(1);
+    }
+    @include breakpoint(md) {
+      @include flex-col(8);
+      @include offset(2);
+    }
+    @include breakpoint(lg) {
+      @include flex-col(6);
+      @include offset(3);
+    }
+  }
+}

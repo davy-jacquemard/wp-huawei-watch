@@ -1,0 +1,29 @@
+.flexible-centered-image {
+  &__inner {
+    @include flex-col(12, 12);
+    @include breakpoint(sm) {
+      @include flex-col(10, 12);
+      @include offset(1)
+    }
+    @include breakpoint(md) {
+      @include flex-col(8, 12);
+      @include offset(2)
+    }
+    @include breakpoint(lg) {
+      @include flex-col(6, 12);
+      @include offset(3)
+    }
+  }
+
+  &__img {
+    @include img-homothetic(xs 68%);
+    overflow: hidden;
+    position: relative;
+    border-radius: rem(16);
+
+    img {
+      @include img-full()
+    }
+  }
+
+}

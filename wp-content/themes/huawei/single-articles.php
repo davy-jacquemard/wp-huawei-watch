@@ -1,9 +1,23 @@
 <?php get_header() ?>
+
+<?php $id = get_the_ID() ; ?>
+
+
+
 <div class="main">
+
+
+    <section class="page-header on-dark" style="background-image: url('<?php echo get_the_post_thumbnail_url() ?>') "  >
+        <div class="page-header__inner w-flex">
+            <div class="container">
+                <h1 class="h2 page-header__title">
+                    <?php echo get_the_title() ?>
+                </h1>
+            </div>
+        </div>
+    </section>
+
     <?php
-
-    $id = get_the_ID();
-
     // check if the flexible content field has rows of data
     if (have_rows('flex-article', $id)) :
 
