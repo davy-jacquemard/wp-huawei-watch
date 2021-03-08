@@ -55,18 +55,6 @@
                         margin-top: rem(16);
                     }
 
-                    .header & {
-                        a{
-                            &:hover {
-                                color: $secondary-01;
-                                @include transition-color();
-                            }
-                            &:before {
-                                color: $primary-black;
-                            }
-
-                        }
-                    }
                 }
             }
         }

@@ -194,6 +194,14 @@
         align-items: center;
         flex-direction: column;
 
+        img {
+            margin-bottom: rem(40);
+            @include breakpoint(md) {
+                width: 50%;
+                margin-bottom: rem(56);
+            }
+        }
+
         p {
             color: $gray-01;
             text-align: center;

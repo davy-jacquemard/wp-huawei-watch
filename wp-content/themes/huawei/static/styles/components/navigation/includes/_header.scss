@@ -142,7 +142,7 @@
 
       &__item {
         @extend %h2;
-        margin-bottom: rem(64);
+        margin-bottom: rem(48);
 
 
         @include breakpoint(sm) {
@@ -182,6 +182,19 @@
       border-top: rem(2) solid $secondary-01;
       @include breakpoint(sm) {
         padding-top: rem(48);
+      }
+
+      a{
+        &:hover {
+          &:before {
+            color: $secondary-01 !important;
+            @include transition-color();
+          }
+        }
+        &:before {
+          color: $primary-black !important;
+        }
+
       }
     }
 
