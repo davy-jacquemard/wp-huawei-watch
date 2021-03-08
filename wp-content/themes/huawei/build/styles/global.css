@@ -2061,6 +2061,10 @@ label {
   @media (min-width: 960px) {
     .footer {
       padding-top: 80px; } }
+  .footer a {
+    transition: color 250ms ease-out; }
+    .footer a:hover {
+      color: #24B5B4; }
   .footer-top {
     width: 100%;
     display: flex;
@@ -2140,6 +2144,11 @@ label {
         @media (min-width: 960px) {
           .footer-top__menu ul li {
             margin-top: 16px; } }
+        .header .footer-top__menu ul li a:hover {
+          color: #24B5B4;
+          transition: color 250ms ease-out; }
+        .header .footer-top__menu ul li a:before {
+          color: #141416; }
     .footer-top__social {
       flex: 0 0 100%;
       max-width: 100%;

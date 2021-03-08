@@ -7,6 +7,13 @@
     @include breakpoint(md) {
         padding-top: rem(80);
     }
+
+    a {
+        @include transition-color();
+        &:hover {
+            color: $secondary-01;
+        }
+    }
     &-top {
         width: 100%;
         display: flex;
@@ -46,6 +53,19 @@
                     margin-top: rem(24);
                     @include breakpoint(md) {
                         margin-top: rem(16);
+                    }
+
+                    .header & {
+                        a{
+                            &:hover {
+                                color: $secondary-01;
+                                @include transition-color();
+                            }
+                            &:before {
+                                color: $primary-black;
+                            }
+
+                        }
                     }
                 }
             }

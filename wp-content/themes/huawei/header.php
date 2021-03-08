@@ -80,11 +80,11 @@ endif; ?>
             </div>
             <div class="header__menu__watch header__menu__watch--pro">
                 <h2 class="h2">GT2 Pro</h2>
-                <a href="" class="full-link"></a>
+                <a href="<?php echo get_permalink( get_page_by_path( 'watch-gt2-pro' ) ); ?>" class="full-link"></a>
             </div>
             <div class="header__menu__watch header__menu__watch--classic">
                 <h2 class="h2">GT2</h2>
-                <a href="" class="full-link"></a>
+                <a href="<?php echo get_home_url() ?>" class="full-link"></a>
             </div>
 
         </div>

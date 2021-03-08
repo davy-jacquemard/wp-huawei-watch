@@ -28,7 +28,7 @@ $image = $header['image'];
     <?php if ($header['is_switch_section']) : ?>
         <div class="gamme--header__switch on-dark on-dark-bg">
             <div class="gamme--header__switch__left">
-                <h2 class="h2 gamme--header__switch__title"><?php echo $header['switch_section']['title']; ?></h2>
+                <h3 class="h3 gamme--header__switch__title"><?php echo $header['switch_section']['title']; ?></h3>
                 <p class="p gamme--header__switch__text"><?php echo $header['switch_section']['text']; ?></p>
             </div>
             <div class="gamme--header__switch__right">

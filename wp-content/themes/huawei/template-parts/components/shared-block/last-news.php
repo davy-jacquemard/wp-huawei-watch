@@ -43,18 +43,16 @@ $the_query = new WP_Query($args);
                             while ($the_query->have_posts()) {
                                 $the_query->the_post();
 
-                                $fields = get_field('article_header');
                                 $id = get_the_ID();
-                                $title = $fields['title'];
-                                $image = $fields['image'];
+                                $title = get_the_title($id);
 
                                 $date = get_the_date('d F Y', $id);
                                 $taxo = get_the_terms($id, 'article_category');
 
                                 $card = array(
                                     'link'      => get_permalink(),
-                                    'image_url' => $image['url'],
-                                    'image_alt' => $image['alt'],
+                                    'image_url' => get_the_post_thumbnail_url($id),
+                                    'image_alt' => get_the_post_thumbnail_caption($id),
                                     'category'  => $taxo[0]->name,
                                     'title'     => $title,
                                     'date'      => $date,
