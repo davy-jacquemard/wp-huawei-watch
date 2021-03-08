@@ -2238,7 +2238,7 @@ label {
   color: white; }
 
 .header {
-  position: fixed;
+  position: absolute;
   width: 100%;
   z-index: 10;
   background-color: white;
@@ -2435,6 +2435,29 @@ label {
             transform: translateX(-40%) translateZ(0) !important; } }
         .header__menu__watch--classic h2 {
           color: #141416; }
+
+header.sticky-up, header.sticky {
+  position: fixed;
+  z-index: 110000;
+  top: 0;
+  left: 0;
+  width: 100%; }
+
+header.sticky {
+  animation: slideDown 0.3s ease-in-out; }
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%); }
+  100% {
+    transform: translateY(0); } }
+
+header.sticky-up {
+  transform: translateY(-100%); }
+  header.sticky-up.scroll {
+    transition: all 250ms ease-out; }
+  header.sticky-up.scroll--up {
+    transform: translateY(0); }
 
 .woocommerce-notices-wrapper {
   position: fixed;

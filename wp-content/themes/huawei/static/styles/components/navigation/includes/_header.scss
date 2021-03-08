@@ -1,5 +1,5 @@
 .header {
-  position: fixed;
+  position: absolute;
   width: 100%;
   z-index: 10;
   background-color: white;
@@ -276,4 +276,35 @@
     }
 
     }
+}
+
+header{
+  &.sticky-up,
+  &.sticky {
+    position: fixed;
+    z-index: 110000;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+  &.sticky{
+    animation: slideDown 0.3s ease-in-out;
+    @keyframes slideDown {
+      0% {
+        transform: translateY(-100%);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+  }
+  &.sticky-up{
+    transform: translateY(-100%);
+    &.scroll{
+      @include transition-default();
+    }
+    &.scroll--up{
+      transform: translateY(0);
+    }
+  }
 }
