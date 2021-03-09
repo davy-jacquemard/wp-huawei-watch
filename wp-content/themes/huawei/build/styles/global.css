@@ -7825,7 +7825,7 @@ $colors: (
           .gamme--finitions__item.hidden .gamme--finitions__item__text {
             display: block; } }
       .gamme--finitions__item.hidden .gamme--finitions__item__image {
-        transform: translateX(0); }
+        transform: translateX(20%); }
         @media (min-width: 960px) {
           .gamme--finitions__item.hidden .gamme--finitions__item__image {
             transform: translateX(50%); } }

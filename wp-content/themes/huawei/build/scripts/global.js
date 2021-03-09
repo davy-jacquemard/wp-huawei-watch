@@ -376,7 +376,7 @@ for (const link of links) {
 function clickHandler(e) {
   e.preventDefault();
   const href = this.getAttribute("href");
-  const offsetTop = document.querySelector(href).getBoundingClientRect().top + window.scrollY;
+  const offsetTop = document.getElementById(href).getBoundingClientRect().top + window.scrollY;
   scroll({
     top: offsetTop,
     behavior: "smooth"

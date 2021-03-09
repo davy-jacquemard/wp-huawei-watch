@@ -86,7 +86,7 @@
                     }
                 }
                 &__image {
-                    transform: translateX(0);
+                    transform: translateX(20%);
                     @include breakpoint(md) {
                         transform: translateX(50%);
                     }

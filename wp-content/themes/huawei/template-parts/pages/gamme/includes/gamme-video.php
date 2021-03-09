@@ -1,4 +1,4 @@
-<section class="gamme--video">
+<section class="gamme--video" id="#video">
     <?php
 
     // Load value.
