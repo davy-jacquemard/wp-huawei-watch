@@ -4674,6 +4674,9 @@ $colors: (
       padding-right: 12px; } }
     .product--header__images__title {
       margin-top: 40px; }
+      @media (min-width: 960px) {
+        .product--header__images__title {
+          max-width: 260px; } }
       .product--header__images__title.on-dark .headline {
         color: white; }
     .product--header__images .w-main-container {
@@ -4958,7 +4961,10 @@ $colors: (
         .product--header__infos .other-finitions__item__text-box {
           display: flex;
           flex-direction: column;
-          align-items: center; }
+          align-items: center;
+          max-width: 110px; }
+          .product--header__infos .other-finitions__item__text-box h5 {
+            text-align: center; }
           .product--header__infos .other-finitions__item__text-box .btn {
             margin-top: 16px; }
 

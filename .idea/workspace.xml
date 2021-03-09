@@ -50,12 +50,13 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/wp-content/themes/huawei/static/img" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/wp-content/themes/huawei/assets/bea-beautiful-flexible" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\wamp\www\wp-huawei-watch\wp-content\themes\huawei\assets\bea-beautiful-flexible" />
       <recent name="D:\wamp\www\wp-huawei-watch\wp-content\themes\huawei\static\img" />
       <recent name="D:\wamp\www\wp-huawei-watch\wp-content\themes\huawei\woocommerce" />
     </key>
@@ -92,7 +93,8 @@
       <workItem from="1615039731765" duration="912000" />
       <workItem from="1615042000979" duration="7570000" />
       <workItem from="1615104600753" duration="25335000" />
-      <workItem from="1615186168229" duration="15015000" />
+      <workItem from="1615186168229" duration="15614000" />
+      <workItem from="1615272503626" duration="4948000" />
     </task>
     <servers />
   </component>
