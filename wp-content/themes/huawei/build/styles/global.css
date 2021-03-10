@@ -3568,6 +3568,24 @@ $colors: (
   display: flex;
   justify-content: space-between; }
 
+.container.subtitle {
+  margin: 24px auto; }
+
+.row.archive-container.container {
+  margin: auto; }
+
+.head {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background-size: cover no-repeat;
+  background-position: right; }
+  .head h1.h1, .head p {
+    margin: 32px 0; }
+
+.subtitle h3.h3 {
+  margin-bottom: 48px; }
+
 /**
  * modified version of eric meyer's reset 2.0
  * http://meyerweb.com/eric/tools/css/reset/
