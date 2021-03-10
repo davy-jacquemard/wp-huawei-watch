@@ -12,7 +12,7 @@ $titre = $header['title'];
 $intro = $header['text'];
 $link = $header['link'];
 $image = $header['image']['url'];
-
+$archive = get_field('archive', $page_for_posts_ID);
 
 
 // echo '<pre>';
@@ -23,19 +23,13 @@ $image = $header['image']['url'];
 
 ?>
 
-<div class="head ">
+<div class="head" style="background-image: url('<?php echo esc_url($image); ?>');">
   <div class="container">
     <h1 class="h1"> <?php echo $titre; ?></h1>
     <p> <?php echo $intro; ?></p>
-    <a class="btn btn--primary btn--big" href="<?php $link; ?>">Bouton</a>
+    <a class="btn btn--primary btn--big" href="#articles">Lire nos articles</a>
   </div>
 </div>
-
-
-<style>
-.head {background: url("<?php echo esc_url($image); ?>"); min-height: 40vh; display:flex; align-items: center; background-size: cover no-repeat; background-position: right;}
-.head h1.h1, .head p {color: white; margin: 20px 0;}
-
-</style>
+<h2></h2>
 
 <!-- <img src="<?php echo esc_url($image); ?>" alt=""> -->

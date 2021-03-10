@@ -1,12 +1,12 @@
 
-
 <?php if ( have_posts() ) :?>
-        
         <?php get_template_part( 'template-parts/pages/archive/includes/archive-header'); ?>
+        <?php get_template_part( 'template-parts/pages/archive/includes/archive-subtitle'); ?>
 
-        <div class="row archive-container">
+
+        <div class="row archive-container container">
+
             <?php
-
             /* Start the Loop */
             while ( have_posts() ) :
                 the_post();
@@ -23,7 +23,6 @@
                     'date'      => $date,
                 );
             ?>
-
                 <div class="w-news">
                 <?php
                     set_query_var( 'card', $card );
@@ -31,10 +30,8 @@
                 ?>
                 
                 </div>
-        
                 
             <?php endwhile; ?>
-
         </div>
 <?php endif; ?>
   

@@ -3,3 +3,25 @@
     display: flex;
     justify-content: space-between;
 }
+
+
+.container.subtitle {
+    margin: rem(24) auto;
+}
+
+.row.archive-container.container {margin: auto;}
+
+.head {
+    min-height: 100vh; 
+    display:flex; 
+    align-items: center; 
+    background-size: cover no-repeat; 
+    background-position: right;
+    h1.h1, p {
+        margin: rem(32) 0;
+    }
+}
+
+.subtitle h3.h3 {
+    margin-bottom: rem(48);
+}
