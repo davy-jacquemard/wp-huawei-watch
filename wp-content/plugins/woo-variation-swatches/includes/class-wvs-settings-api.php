@@ -69,7 +69,6 @@ if ( ! class_exists( 'WVS_Settings_API' ) ):
 			do_action( 'wvs_setting_api_init', $this );
 		}
 
-
 		public function get_reserved( $key = false ) {
 
 			$data = (array) get_option( $this->reserved_key );
@@ -367,23 +366,16 @@ if ( ! class_exists( 'WVS_Settings_API' ) ):
 			}
 		}
 
-		public function make_implode_html_attributes(
-			$raw_attributes, $except = array(
-			'type',
-			'id',
-			'name',
-			'value'
-		)
-		) {
-			$attributes = array();
-			foreach ( $raw_attributes as $name => $value ) {
-				if ( in_array( $name, $except ) ) {
+		public function make_implode_html_attributes( $attributes, $except = array( 'type', 'id', 'name', 'value' ) ) {
+			$attrs = array();
+			foreach ( $attributes as $name => $value ) {
+				if ( in_array( $name, $except, true ) ) {
 					continue;
 				}
-				$attributes[] = esc_attr( $name ) . '="' . esc_attr( $value ) . '"';
+				$attrs[] = esc_attr( $name ) . '="' . esc_attr( $value ) . '"';
 			}
 
-			return implode( ' ', $attributes );
+			return implode( ' ', array_unique( $attrs ) );
 		}
 
 		public function field_callback( $field ) {
@@ -427,7 +419,7 @@ if ( ! class_exists( 'WVS_Settings_API' ) ):
 
 		public function checkbox_field_callback( $args ) {
 
-			$value = (bool) $this->get_option( $args['id'] );
+			$value = wc_string_to_bool( $this->get_option( $args['id'] ) );
 			// $size  = isset( $args[ 'size' ] ) && ! is_null( $args[ 'size' ] ) ? $args[ 'size' ] : 'regular';
 
 			$attrs = isset( $args['attrs'] ) ? $this->make_implode_html_attributes( $args['attrs'] ) : '';

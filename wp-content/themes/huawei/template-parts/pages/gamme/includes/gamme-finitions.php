@@ -8,7 +8,31 @@ if (is_array($finitions)) {
     $count = count($finitions);
 };
 
-if ($count > 2) {
+
+$finitionSlug = '';
+if (is_front_page()) {
+    $finitionSlug = 'gt2';
+} else {
+    $finitionSlug ='gt2-pro';
+}
+
+
+$args = array(
+    'post_type' => 'product',
+    'post_status' => 'publish',
+    'tax_query' => array(
+        array(
+            'taxonomy' => 'product_cat',
+            'field'    => 'slug',
+            'terms'    => $finitionSlug,
+        ),
+    ),
+    'posts_per_page' => 4,
+    'order' => 'ASC',
+    'orderby' => 'date',
+);
+$the_query = new WP_Query($args);
+if ($the_query->found_posts > 2) {
     $class = 'hidden';
 } else {
     $class = 'visible';
@@ -25,35 +49,40 @@ if ($count > 2) {
     </div>
     <div class="gamme--finitions__finitions">
         <?php
-        if (have_rows('gamme_finition')) : while (have_rows('gamme_finition')) : the_row();
-                if (have_rows('all_finitions')) : while (have_rows('all_finitions')) : the_row();
+        if ($the_query->have_posts()) {
+        while ($the_query->have_posts()) {
+        $the_query->the_post();
 
-                        $image = get_sub_field('image');
-                        $title = get_sub_field('title');
-                        $text = get_sub_field('text');
-                        $link = get_sub_field('link');
+        $finitionID = $post->ID;
+        $image = get_post_thumbnail_id($finitionID);
+        $title = get_field('product_short_name', $finitionID);
+            $text = get_field('product_short_desc', $finitionID);
+            $permalink = get_permalink($finitionID);
+
+
         ?>
+
+
                         <div class="gamme--finitions__item <?php echo $class ?>">
 
-                            <img class="gamme--finitions__item__image" src="<?php echo $image['url'] ?>" alt="<?php echo $image['alt'] ?>">
+                            <?php echo wp_get_attachment_image($image, 'large gamme--finitions__item__image') ?>
                             <div class="h1 gamme--finitions__item__title"><?php echo $title ?></div>
                             <?php if ($text) : ?>
                                 <p class="p gamme--finitions__item__text"><?php echo $text ?></p>
                             <?php endif; ?>
 
-                            <div class="btn btn--primary btn--big gamme--finitions__item__btn"><?php echo $link['title'] ?></div>
+                            <div class="btn btn--primary btn--big gamme--finitions__item__btn">Personnaliser</div>
 
-                            <a href="<?php echo $link['url'] ?>" class="full-link"></a>
+                            <a href="<?php echo $permalink ?>" class="full-link"></a>
 
 
 
                         </div>
 
-        <?php
-                    endwhile;
-                endif;
-            endwhile;
-        endif;
+            <?php
+        }
+        }
+        wp_reset_postdata();
         ?>
 
 

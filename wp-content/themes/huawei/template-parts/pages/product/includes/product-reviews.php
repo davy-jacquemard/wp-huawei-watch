@@ -1,9 +1,22 @@
 <?php
 
+$idProduct = get_the_ID();
+$product = wc_get_product($idProduct);
+$cat_id = $product->category_ids[0];
+$productGamme = get_term_by('id', $cat_id, 'product_cat', 'ARRAY_A')['slug'];
+
+
 
 $args = array(
     'post_type' => 'reviews',
     'post_status' => 'publish',
+    'tax_query' => array(
+        array(
+            'taxonomy' => 'review_gamme',
+            'field'    => 'slug',
+            'terms'    => $productGamme,
+        ),
+    ),
     'posts_per_page' => 4,
     'order' => 'ASC',
     'orderby' => 'date',

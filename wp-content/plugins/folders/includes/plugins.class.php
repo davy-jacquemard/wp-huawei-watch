@@ -78,19 +78,6 @@ class WCP_Folder_Plugins {
         exit;
     }
 
-    public function checkForLimit($folders) {
-        $response = array();
-        $response['status'] = 0;
-        $response['message'] = esc_html__("Invalid request", "folders");
-        $response['data'] = array();
-        $response['data']['plugin'] = array();
-        if($folders >= 10) {
-            $response['status'] = -1;
-            echo json_encode($response);
-            exit;
-        }
-    }
-
     public function import_plugin_folders_data() {
         $postData = filter_input_array(INPUT_POST);
 
@@ -109,10 +96,6 @@ class WCP_Folder_Plugins {
             $categoryByID = array();
             $foldersImported = array();
             $attachmentsImported = array();
-
-            $total_folders = WCP_Folders::get_ttl_fldrs();
-
-            $this->checkForLimit($total_folders);
 
             if($plugin != 'filebird' && $plugin != 'real-media-library') {
 
@@ -145,9 +128,6 @@ class WCP_Folder_Plugins {
                     if (is_wp_error($new_term)) {
                         continue;
                     }
-
-                    $total_folders++;
-                    $this->checkForLimit($total_folders);
 
                     $arg = array(
                         'hide_empty' => false,
@@ -234,9 +214,6 @@ class WCP_Folder_Plugins {
                     if ( is_wp_error( $new_term ) ) {
                         continue;
                     }
-
-                    $total_folders++;
-                    $this->checkForLimit($total_folders);
 
                     $taxonomy = 'media_folder';
 

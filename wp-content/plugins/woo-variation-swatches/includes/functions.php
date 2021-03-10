@@ -23,9 +23,15 @@ if ( ! function_exists( 'wvs_is_ie11' ) ):
 endif;
 
 //-------------------------------------------------------------------------------
-// Get All Image Sizes
+// Get All Image Sizes if wp_get_registered_image_subsizes function not available
 //-------------------------------------------------------------------------------
-
+/**
+ * Returns a normalized list of all currently registered image sub-sizes.
+ *
+ * @return array Associative array of the registered image sub-sizes.
+ * @since WP 5.3.0
+ *
+ */
 if ( ! function_exists( 'wp_get_registered_image_subsizes' ) ):
 	function wp_get_registered_image_subsizes() {
 		$additional_sizes = wp_get_additional_image_sizes();
@@ -64,7 +70,7 @@ if ( ! function_exists( 'wp_get_registered_image_subsizes' ) ):
 			}
 
 			if ( ! is_array( $size_data['crop'] ) || empty( $size_data['crop'] ) ) {
-				$size_data['crop'] = (bool) $size_data['crop'];
+				$size_data['crop'] = wc_string_to_bool( $size_data['crop'] );
 			}
 
 			$all_sizes[ $size_name ] = $size_data;
@@ -923,7 +929,7 @@ if ( ! function_exists( 'wvs_variable_item' ) ):
 							$tooltip_html_attr .= ! empty( $tooltip ) ? ' tabindex="2"' : '';
 						}
 
-						$data .= sprintf( '<li %1$s class="variable-item %2$s-variable-item %2$s-variable-item-%3$s %4$s" title="%5$s" data-title="%5$s" data-value="%3$s" role="radio" tabindex="0">', $screen_reader_html_attr . $tooltip_html_attr, esc_attr( $type ), esc_attr( $term->slug ), esc_attr( $selected_class ), $option );
+						$data .= sprintf( '<li %1$s class="variable-item %2$s-variable-item %2$s-variable-item-%3$s %4$s" title="%5$s" data-title="%5$s" data-value="%3$s" role="radio" tabindex="0"><div class="variable-item-contents">', $screen_reader_html_attr . $tooltip_html_attr, esc_attr( $type ), esc_attr( $term->slug ), esc_attr( $selected_class ), $option );
 
 						switch ( $type ):
 							case 'color':
@@ -956,7 +962,7 @@ if ( ! function_exists( 'wvs_variable_item' ) ):
 								$data .= apply_filters( 'wvs_variable_default_item_content', '', $term, $args, $saved_attribute );
 								break;
 						endswitch;
-						$data .= '</li>';
+						$data .= '</div></li>';
 					}
 				}
 			}
@@ -978,7 +984,7 @@ if ( ! function_exists( 'wvs_default_variable_item' ) ):
 		print_r($product_variations); die;*/
 
 		$is_archive           = ( isset( $args['is_archive'] ) && $args['is_archive'] );
-		$show_archive_tooltip = (bool) woo_variation_swatches()->get_option( 'show_tooltip_on_archive' );
+		$show_archive_tooltip = wc_string_to_bool( woo_variation_swatches()->get_option( 'show_tooltip_on_archive' ) );
 
 		$data = '';
 
@@ -1018,7 +1024,7 @@ if ( ! function_exists( 'wvs_default_variable_item' ) ):
 							$type = 'button';
 						}
 
-						$data .= sprintf( '<li %1$s class="variable-item %2$s-variable-item %2$s-variable-item-%3$s %4$s" title="%5$s" data-title="%5$s"  data-value="%3$s" role="radio" tabindex="0">', $screen_reader_html_attr . $tooltip_html_attr, esc_attr( $type ), esc_attr( $term->slug ), esc_attr( $selected_class ), $option );
+						$data .= sprintf( '<li %1$s class="variable-item %2$s-variable-item %2$s-variable-item-%3$s %4$s" title="%5$s" data-title="%5$s"  data-value="%3$s" role="radio" tabindex="0"><div class="variable-item-contents">', $screen_reader_html_attr . $tooltip_html_attr, esc_attr( $type ), esc_attr( $term->slug ), esc_attr( $selected_class ), $option );
 
 						switch ( $type ):
 
@@ -1040,7 +1046,7 @@ if ( ! function_exists( 'wvs_default_variable_item' ) ):
 								$data .= apply_filters( 'wvs_variable_default_item_content', '', $term, $args, $saved_attribute );
 								break;
 						endswitch;
-						$data .= '</li>';
+						$data .= '</div></li>';
 					}
 				}
 			} else {
@@ -1073,7 +1079,7 @@ if ( ! function_exists( 'wvs_default_variable_item' ) ):
 						$type = 'button';
 					}
 
-					$data .= sprintf( '<li %1$s class="variable-item %2$s-variable-item %2$s-variable-item-%3$s %4$s" title="%5$s" data-title="%5$s"  data-value="%3$s" role="radio" tabindex="0">', $screen_reader_html_attr . $tooltip_html_attr, esc_attr( $type ), esc_attr( $option ), esc_attr( $selected_class ), esc_html( $option ) );
+					$data .= sprintf( '<li %1$s class="variable-item %2$s-variable-item %2$s-variable-item-%3$s %4$s" title="%5$s" data-title="%5$s"  data-value="%3$s" role="radio" tabindex="0"><div class="variable-item-contents">', $screen_reader_html_attr . $tooltip_html_attr, esc_attr( $type ), esc_attr( $option ), esc_attr( $selected_class ), esc_html( $option ) );
 
 					switch ( $type ):
 
@@ -1095,7 +1101,7 @@ if ( ! function_exists( 'wvs_default_variable_item' ) ):
 							$data .= apply_filters( 'wvs_variable_default_item_content', '', $option, $args, array() );
 							break;
 					endswitch;
-					$data .= '</li>';
+					$data .= '</div></li>';
 				}
 			}
 		}
@@ -1572,7 +1578,7 @@ if ( ! function_exists( 'wvs_variation_attribute_options_html' ) ):
 
 		$is_default_to_image_button = ( $is_default_to_image || $is_default_to_button );
 
-		$use_transient = (bool) woo_variation_swatches()->get_option( 'use_transient' );
+		$use_transient = wc_string_to_bool( woo_variation_swatches()->get_option( 'use_transient' ) );
 
 		$transient_name = sprintf( 'wvs_variation_attribute_options_html_%s_%s', $product->get_id(), wc_variation_attribute_name( $args['attribute'] ) . $args['selected'] );
 		$cache          = new Woo_Variation_Swatches_Cache( $transient_name, 'wvs_variation_attribute_options_html' );
@@ -2002,7 +2008,7 @@ function wvs_clear_transient() {
 //-------------------------------------------------------------------------------
 
 function wvs_defer_script_load( $tag, $handle, $src ) {
-	$defer_load_js = (bool) woo_variation_swatches()->get_option( 'defer_load_js' );
+	$defer_load_js = wc_string_to_bool( woo_variation_swatches()->get_option( 'defer_load_js' ) );
 
 	if ( $defer_load_js ) {
 		$handles = array( 'woo-variation-swatches-pro', 'wc-add-to-cart-variation', 'woo-variation-swatches' );

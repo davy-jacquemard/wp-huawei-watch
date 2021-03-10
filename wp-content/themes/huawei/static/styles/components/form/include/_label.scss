@@ -1,6 +1,7 @@
 label {
-    font-family: $font-primary;
+    font-family: $font-primary !important;
     color: $primary-black;
+    line-height: rem(22) !important;
     display: block;
-    margin-bottom: 8px;;
+    margin-bottom: rem(8);
 }

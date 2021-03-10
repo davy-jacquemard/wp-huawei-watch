@@ -156,6 +156,7 @@ const openMenu = document.querySelector(openMenuSelector);
 const closeMenu = document.querySelector(closeMenuSelector);
 const contentMenu = document.querySelector(contentMenuSelector);
 const header = document.querySelector(headerSelector);
+const stickyOffset = 300;
 openMenu.addEventListener('click', () => {
   contentMenu.classList.toggle(activeClass);
   document.body.classList.toggle('menu-open');
@@ -167,6 +168,52 @@ closeMenu.addEventListener('click', () => {
   header.classList.toggle('menu-open');
 });
 
+function _handleSticky(element) {
+  let sticky = element;
+  let lastScrollTop = 0;
+  document.addEventListener('scroll', () => {
+    let st = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (st > sticky.clientHeight + stickyOffset) {
+      document.body.classList.add('header-is-sticky');
+      sticky.classList.add('sticky-up');
+
+      if (st > lastScrollTop) {
+        if (!sticky.classList.contains('scroll--down')) {
+          document.body.classList.add('scroll--down');
+          document.body.classList.remove('scroll--up');
+          sticky.classList.add('scroll--down');
+          sticky.classList.remove('scroll--up'); // document.body.style.paddingTop = sticky.clientHeight + "px";
+
+          setTimeout(() => {
+            sticky.classList.add('scroll');
+          }, 50);
+        }
+      } else {
+        if (!sticky.classList.contains('scroll--up')) {
+          document.body.classList.add('scroll--up');
+          document.body.classList.remove('scroll--down');
+          sticky.classList.add('scroll--up');
+          sticky.classList.remove('scroll--down');
+        }
+      }
+    }
+
+    if (st < 2) {
+      document.body.style.paddingTop = 0;
+      sticky.classList.remove('sticky-up');
+      sticky.classList.remove('scroll--up');
+      sticky.classList.remove('scroll');
+      document.body.classList.remove('scroll--up');
+      document.body.classList.remove('header-is-sticky');
+    }
+
+    lastScrollTop = st <= 0 ? 0 : st;
+  });
+}
+
+_handleSticky(header);
+
 /***/ }),
 
 /***/ "./static/scripts/components/_product-cart.js":
@@ -176,7 +223,6 @@ closeMenu.addEventListener('click', () => {
 /***/ (function() {
 
 var timeout;
-console.log('chnaged');
 jQuery('.woocommerce').on('change', 'input.qty', function () {
   if (timeout !== undefined) {
     clearTimeout(timeout);
@@ -330,7 +376,7 @@ for (const link of links) {
 function clickHandler(e) {
   e.preventDefault();
   const href = this.getAttribute("href");
-  const offsetTop = document.querySelector(href).getBoundingClientRect().top + window.scrollY;
+  const offsetTop = document.getElementById(href).getBoundingClientRect().top + window.scrollY;
   scroll({
     top: offsetTop,
     behavior: "smooth"
@@ -362,6 +408,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_accordions__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_components_accordions__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var _components_product_cart__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/_product-cart */ "./static/scripts/components/_product-cart.js");
 /* harmony import */ var _components_product_cart__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_components_product_cart__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _page_checkout__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./page/_checkout */ "./static/scripts/page/_checkout.js");
+/* harmony import */ var _page_checkout__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_page_checkout__WEBPACK_IMPORTED_MODULE_9__);
 
 
 
@@ -371,7 +419,31 @@ __webpack_require__.r(__webpack_exports__);
 
  //CART 
 
+ //CHECKOUT
 
+
+
+/***/ }),
+
+/***/ "./static/scripts/page/_checkout.js":
+/*!******************************************!*\
+  !*** ./static/scripts/page/_checkout.js ***!
+  \******************************************/
+/***/ (function() {
+
+let checkboxContainer = document.querySelector('#ship-to-different-address .woocommerce-form__label');
+let checkbox = document.getElementById('ship-to-different-address-checkbox');
+let shippingForm = document.querySelector('[js-shipping-form] .shipping_address');
+
+if (checkboxContainer && shippingForm) {
+  checkboxContainer.addEventListener('click', () => {
+    if (checkbox.checked) {
+      shippingForm.classList.remove('is-hidden');
+    } else {
+      shippingForm.classList.add('is-hidden');
+    }
+  });
+}
 
 /***/ }),
 

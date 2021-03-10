@@ -10,14 +10,14 @@
                 <div class="footer-top__menu">
                     <div class="headline footer-top__menu__title">Nos montres</div>
                     <ul>
-                        <li><a href="#" class="p">Huawei Watch GT2</a></li>
-                        <li><a href="#" class="p">Huawei Watch GT2 Pro</a></li>
+                        <li><a href="<?php echo get_home_url() ?>" class="p">Huawei Watch GT2</a></li>
+                        <li><a href="<?php echo get_permalink( get_page_by_path( 'watch-gt2-pro' ) ); ?>" class="p">Huawei Watch GT2 Pro</a></li>
                     </ul>
                 </div>
                 <div class="footer-top__menu">
                     <div class="headline footer-top__menu__title">Blog</div>
                     <ul>
-                        <li><a href="#" class="p">Nos actualités</a></li>
+                        <li><a href="<?php echo get_post_type_archive_link( 'post' ) ?>" class="p">Nos actualités</a></li>
                     </ul>
                 </div>
                 <div class="footer-top__social footer-social">
@@ -35,8 +35,8 @@
             <div class="footer-bottom">
                 <div class="footer-bottom__legals">
                     <ul class="footer-bottom__legals__list">
-                        <li>Mentions légales</li>
-                        <li>Politique de confidentialité</li>
+                        <li><a href="<?php echo get_template_directory_uri() . '/mentions-legales' ?>">Mentions légales</a></li>
+                        <li><a href="<?php echo get_template_directory_uri() . '/politique-de-confidentialite' ?>">Politique de confidentialité</a></li>
                     </ul>
                 </div>
                 <div class="footer-bottom__copyright">

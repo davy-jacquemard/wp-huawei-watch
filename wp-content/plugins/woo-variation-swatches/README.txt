@@ -5,7 +5,7 @@ Requires PHP: 5.6
 Requires at least: 4.8
 WC requires at least: 4.5
 Tested up to: 5.6
-WC tested up to: 4.9
+WC tested up to: 5.0
 Stable tag: trunk
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -16,11 +16,7 @@ Beautiful Color, Image and Buttons Variation Swatches For WooCommerce Product At
 
 === How To Install Product Variation Swatches Plugin for WooCommerce Variable Products ===
 
-[youtube https://www.youtube.com/watch?v=BySSYFuqwls]
-
-=== How To Import Product Swatches Plugin Data For Existing Product Attribute Variations ===
-
-[youtube https://www.youtube.com/watch?v=k-Snfpzy8M0]
+[youtube https://www.youtube.com/watch?v=4uIZjvWiSf0]
 
 Variation Swatches is easy to use WooCommerce product variation swatches plugin. It offers an aesthetic and professional experience to select attributes for variation products. It turns the product variation select options fields into radio images, colors, and label. It means with the help of this powerful WooCommerce color or image variation swatches plugin, you can show product variation items in images, colors, and label. So, you can say goodbye to dropdown product attribute fields.
 
@@ -117,6 +113,11 @@ In the free WooCommerce attribute variation plugin, besides creating size, brand
 
 [Live Demo](http://bit.ly/3rd-main-demo-readme) | [Upgrade to PRO](http://bit.ly/upgrade-to-pro-readme) | [Documentation](https://getwooplugins.com/documentation/woocommerce-variation-swatches/?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-variation-swatches) | [Support](https://getwooplugins.com/tickets/?utm_source=wordpress.org&utm_medium=README&utm_campaign=woo-variation-swatches)
 
+=== How To Create Product Variation Swatches From Custom Product Level Attribute ===
+
+[youtube https://www.youtube.com/watch?v=Ny9QBY_x9cA&t]
+
+
 👉 Auto Convert All Dropdowns to Image Swatch If Variation Has a Featured Image Set
    [Live Demo & Documentation](http://j.mp/auto-image-swatches-insideplugin)
 <hr />
@@ -194,6 +195,10 @@ In the free WooCommerce attribute variation plugin, besides creating size, brand
 <hr />
 👉 Show Variation Product Stock Notice
  [Live Demo & Documentation](http://bit.ly/show-variation-product-stock-notice)
+<hr />
+<hr />
+👉 WooCommerce Filter Widget
+ [Live Demo & Documentation](http://bit.ly/filter-widget-link-doc)
 <hr />
 👉 Compatible with Printful, Alidrop, and Multivendor Plugins
 👉 Customize Tooltip Text and Background Color
@@ -408,6 +413,34 @@ And your are ready to go.
 12. Global Variation Color Swatches Attribute List Preview
 
 == Changelog ==
+
+= 1.1.12 - 02-03-2021 =
+
+* Update: Add UnderscoreJS on script dependency
+
+= 1.1.11 - 01-03-2021 =
+
+* Fix: WooCommerce Composite Products selection issue
+* Update: Swatch support for Global Ajax complete event
+* Update: Swatches Markup Modified
+* New: Disable WoodMart theme default swatches
+
+= 1.1.10 - 16-02-2021 =
+
+* Fix: Error when woocommerce not available
+
+= 1.1.9 - 12-02-2021 =
+
+* Fix: no_cache header modification issue
+
+= 1.1.8 - 08-02-2021 =
+
+* Fix: RTL label css
+* Update: Load scripts globally
+
+= 1.1.7 - 01-02-2021 =
+
+* Support: WooCommerce Composite Product
 
 = 1.1.6 - 27-01-2021 =
 

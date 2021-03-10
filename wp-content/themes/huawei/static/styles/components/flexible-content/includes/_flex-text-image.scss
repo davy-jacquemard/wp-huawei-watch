@@ -1,0 +1,87 @@
+
+.flexible-txt-img {
+
+  &__inner {
+    display: flex;
+
+    @include breakpoint(md) {
+      align-items: center;
+    }
+
+    &--left {
+      flex-direction: column;
+      @include breakpoint(md) {
+        flex-direction: row;
+      }
+    }
+
+    &--right {
+      flex-direction: column-reverse;
+      @include breakpoint(md) {
+        flex-direction: row-reverse;
+      }
+
+      .flexible-txt-img {
+        &__side-text {
+          margin-top: rem(24);
+          @include breakpoint(sm) {
+            margin-top: rem(40);
+          }
+          @include breakpoint(md) {
+            margin-top: 0;
+            @include flex-col(5);
+            @include offset(1)
+          }
+          @include breakpoint(lg) {
+            @include flex-col(6);
+            @include offset(1)
+          }
+        }
+      }
+    }
+  }
+
+
+  &__side-text, &__side-img {
+    @include flex-col(12, 12);
+
+    @include breakpoint(sm) {
+      @include flex-col(10, 12);
+      @include offset(1)
+    }
+    @include breakpoint(md) {
+      @include flex-col(6, 12);
+      @include offset(0)
+    }
+  }
+
+  &__side-img {
+    margin-top: rem(24);
+    @include breakpoint(sm) {
+      margin-top: rem(40);
+    }
+    @include breakpoint(md) {
+      margin-top: 0;
+    }
+    @include breakpoint(lg) {
+      @include flex-col(5, 12);
+      @include offset(1)
+    }
+  }
+
+  &__side-img {
+    .img-container {
+      width: 100%;
+      @include img-homothetic(xs 66%);
+      overflow: hidden;
+      position: relative;
+      border-radius: rem(16);
+
+      img {
+        @include img-full();
+      }
+    }
+  }
+}
+
+

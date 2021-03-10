@@ -47,6 +47,7 @@
             top: 0;
             right: 0;
             height: 100%;
+            width: auto;
             transform: translateX(50%);
             @include transition(400ms, transform);
         }
@@ -85,7 +86,7 @@
                     }
                 }
                 &__image {
-                    transform: translateX(0);
+                    transform: translateX(20%);
                     @include breakpoint(md) {
                         transform: translateX(50%);
                     }

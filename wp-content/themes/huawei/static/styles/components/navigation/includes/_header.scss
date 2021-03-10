@@ -1,5 +1,5 @@
 .header {
-  position: fixed;
+  position: absolute;
   width: 100%;
   z-index: 10;
   background-color: white;
@@ -142,7 +142,7 @@
 
       &__item {
         @extend %h2;
-        margin-bottom: rem(64);
+        margin-bottom: rem(48);
 
 
         @include breakpoint(sm) {
@@ -182,6 +182,19 @@
       border-top: rem(2) solid $secondary-01;
       @include breakpoint(sm) {
         padding-top: rem(48);
+      }
+
+      a{
+        &:hover {
+          &:before {
+            color: $secondary-01 !important;
+            @include transition-color();
+          }
+        }
+        &:before {
+          color: $primary-black !important;
+        }
+
       }
     }
 
@@ -263,4 +276,35 @@
     }
 
     }
+}
+
+header{
+  &.sticky-up,
+  &.sticky {
+    position: fixed;
+    z-index: 110000;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+  &.sticky{
+    animation: slideDown 0.3s ease-in-out;
+    @keyframes slideDown {
+      0% {
+        transform: translateY(-100%);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+  }
+  &.sticky-up{
+    transform: translateY(-100%);
+    &.scroll{
+      @include transition-default();
+    }
+    &.scroll--up{
+      transform: translateY(0);
+    }
+  }
 }

@@ -30,6 +30,13 @@ if(isset($thumb[0])) {
 }
 $file_parts = pathinfo($attachment->guid);
 $file_name = $file_parts['basename'];
+
+$customize_folders = get_option("customize_folders");
+if(isset($customize_folders['show_folder_in_settings']) && $customize_folders['show_folder_in_settings'] == "yes") {
+	$upgradeURL = admin_url("options-general.php?page=wcp_folders_settings&setting_page=upgrade-to-pro");
+} else {
+	$upgradeURL = admin_url("admin.php?page=folders-upgrade-to-pro");
+}
 ?>
 <div class="wrap">
     <h2><?php esc_html_e("Replace Media", "folders"); ?></h2>
@@ -53,14 +60,14 @@ $file_name = $file_parts['basename'];
                         <?php if (wp_attachment_is('image', $attachment_id)) { ?>
                             <?php if(!empty($url)) { ?>
                                 <img src="<?php echo esc_url($url) ?>" />
-                                <span class="image-size"><?php echo esc_attr($image_meta['width']." x ".$image_meta['height']) ?></span>
+                                <span class="image-size"><?php echo esc_attr($image_meta['width']." PX x ".$image_meta['height'])." PX" ?></span>
                             <?php } ?>
                         <?php } else { ?>
                                 <span class="dashicons dashicons-media-document"></span>
                         <?php } ?>
                     </div>
                     <?php if(!empty($size)) { ?>
-                        <div class="file-size"><?php echo esc_attr($size) ?></div>
+                        <div class="file-size"><a target="_blank" href="<?php echo esc_url($upgradeURL) ?>"><?php esc_html_e("Upgrade to Pro", "folders") ?></a> <?php esc_html_e("to compare file size", "folders") ?></div>
                     <?php } ?>
                 </div>
                 <div class="new-image-box">
@@ -75,11 +82,14 @@ $file_name = $file_parts['basename'];
                                     <div class="drag-and-drop-title">
                                         <span><?php echo esc_html_e("Click here to upload file", "folders") ?></span>
                                     </div>
+                                    <div class="upgrade-btn-box">
+                                        <a target="_blank" href="<?php echo esc_url($upgradeURL) ?>"><?php esc_html_e("Upgrade to Pro", "folders") ?></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="file-size"></div>
+                    <div class="file-size hide-it"><a target="_blank" href="<?php echo esc_url($upgradeURL) ?>"><?php esc_html_e("Upgrade to Pro", "folders") ?></a> <?php esc_html_e("to compare file size", "folders") ?></div>
                 </div>
                 <div class="clearfix"></div>
             </div>

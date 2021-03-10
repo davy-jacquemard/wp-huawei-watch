@@ -352,7 +352,7 @@
                     When you are selling products having multiple attribute variations like color and size. It’s really essential to show the remaining product variation so that it can help to create an urge to purchase a certain limited variation as soon as possible.
                 </div>
                 <div class="tutorial-buttons">
-                    <a href="http://bit.ly/show-remaining-stock-quantity-notice-demo" target="_blank" class="button button-live-demo">Live Video Preview</a>
+                    <a href="https://demo.getwooplugins.com/woocommerce-variation-swatches/product/nike-air-vapormax-plus/" target="_blank" class="button button-live-demo">Live Video Preview</a>
                     <a href="http://bit.ly/show-variation-product-stocks-notice" target="_blank" class="button button-docs">Documentation</a>
 					<?php if ( ! woo_variation_swatches()->is_pro_active() ): ?>
                         <a href="<?php echo woo_variation_swatches()->get_pro_link( 'settings-tutorial' ) ?>" target="_blank" class="button button-pro">Upgrade to pro</a>
@@ -380,7 +380,7 @@
                     WooCommerce Variation Swatches Converts Filter Products by Attribute Widget into color swatches. So, you can use the widget to enable swatches for filter dropdown.
                 </div>
                 <div class="tutorial-buttons">
-                    <a href="http://bit.ly/free-demo-tutorial-tab" target="_blank" class="button button-live-demo">Live Video Preview</a>
+                    <a href="http://bit.ly/widget-filterr-demo" target="_blank" class="button button-live-demo">Live Video Preview</a>
                     <a href="http://bit.ly/widget-tutorial-tab-doc" target="_blank" class="button button-docs">Documentation</a>
                     <?php if ( ! woo_variation_swatches()->is_pro_active() ): ?>
                         <a href="<?php echo woo_variation_swatches()->get_pro_link( 'settings-tutorial' ) ?>" target="_blank" class="button button-pro">Upgrade to pro</a>
@@ -388,6 +388,32 @@
                 </div>
             </div>
 
+        </li>
+
+         <li>
+            <div class="tutorial-description-wrapper">
+                <h3>Duplicate Variation With Its Feature Image, Price, SKU, Stock etc</h3>
+                <div class="tutorial-contents">
+                   Duplicate WooCommerce product variations with its all available properties including Variation Price, Variation Image, and SKU in just a single click.
+                </div>
+                <div class="tutorial-buttons">
+                    <a href="http://j.mp/duplicate-variation-swatches-tutorial" target="_blank" class="button button-docs">Documentation</a>
+                </div>
+            </div>
+            <div class="tutorial-image-wrapper"><img alt="" src="<?php echo woo_variation_swatches()->wp_images_uri( 'tutorial-23.png' ) ?>"></div>
+        </li>
+
+        <li>
+            <div class="tutorial-image-wrapper"><img alt="" src="<?php echo woo_variation_swatches()->wp_images_uri( 'tutorial-24.png' ) ?>"></div>
+            <div class="tutorial-description-wrapper">
+                <h3>Copy Selected Variation Image To Unlimited Variations</h3>
+                <div class="tutorial-contents">
+                    Sometimes, you may insert same images to multiple variations. Using this feature, you can insert the selected variation image to your desired variations
+                </div>
+                <div class="tutorial-buttons">
+                    <a href="http://bit.ly/copy-variation-image" target="_blank" class="button button-docs">Documentation</a>
+                </div>
+            </div>
         </li>
     </ul>
 </div>

@@ -1,4 +1,4 @@
-<section class="gamme--video">
+<section class="gamme--video" id="#video">
     <?php
 
     // Load value.
@@ -14,6 +14,7 @@
         'autohide'  => 1,
         'loop'      => 1,
         'modestbranding' => 1,
+        'autoplay' => 1,
     );
     $new_src = add_query_arg($params, $src);
     $iframe = str_replace($src, $new_src, $iframe);

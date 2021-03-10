@@ -24,6 +24,7 @@ defined('ABSPATH') || exit; ?>
             <h1 class="cart__title h1">Mon panier</h1>
         </div>
         <div class="cart__empty">
+            <img src="<?php echo get_template_directory_uri() . '/static/img/panier-vide.png' ?>" alt="Illustration panier vide">
             <h5 class="h5">Votre panier est actuellement vide</h5>
             <p class="p p--bold">Il semble que vous n'ayez pas encore ajouté de montre à votre panier</p>
 

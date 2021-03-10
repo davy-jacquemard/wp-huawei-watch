@@ -5,36 +5,52 @@ class folders_replace_media {
 
     public $button_color;
 
+    public $is_enabled =  false;
+
+    public $upgradeLink;
+
     function __construct() {
 
         $customize_folders = get_option('customize_folders');
 
         $this->button_color = isset($customize_folders['media_replace_button'])?$customize_folders['media_replace_button']:"#FA166B";
 
-        add_action('admin_menu', array($this, 'admin_menu'));
+        $this->is_enabled = isset($customize_folders['folders_enable_replace_media'])?$customize_folders['folders_enable_replace_media']:"yes";
 
-        add_filter('media_row_actions', array($this, 'add_media_action'), 10, 2);
+        $this->is_enabled = ($this->is_enabled == "yes")?true:false;
 
-        add_action('add_meta_boxes', function () {
-            add_meta_box('folders-replace-box', esc_html__('Replace Media', 'folders'), array($this, 'replace_meta_box'), 'attachment', 'side', 'low');
-        });
-        add_filter('attachment_fields_to_edit', array($this, 'attachment_editor'), 10, 2);
+        if($this->is_enabled) {
 
-        add_action('admin_enqueue_scripts', array($this, 'folders_admin_css_and_js'));
+            add_action('admin_menu', array($this, 'admin_menu'));
 
-        add_action('admin_init', array($this, 'handle_folders_file_upload'));
+            add_filter('media_row_actions', array($this, 'add_media_action'), 10, 2);
 
+            add_action('add_meta_boxes', function () {
+                add_meta_box('folders-replace-box', esc_html__('Replace Media', 'folders'), array($this, 'replace_meta_box'), 'attachment', 'side', 'low');
+            });
+            add_filter('attachment_fields_to_edit', array($this, 'attachment_editor'), 10, 2);
+
+            add_action('admin_enqueue_scripts', array($this, 'folders_admin_css_and_js'));
+
+            add_action('admin_init', array($this, 'handle_folders_file_upload'));
+        }
+
+	    $customize_folders = get_option("customize_folders");
+	    if(isset($customize_folders['show_folder_in_settings']) && $customize_folders['show_folder_in_settings'] == "yes") {
+		    $this->upgradeLink = admin_url("options-general.php?page=wcp_folders_settings&setting_page=upgrade-to-pro");
+	    } else {
+		    $this->upgradeLink = admin_url("admin.php?page=folders-upgrade-to-pro");
+	    }
     }
 
     public function folders_admin_css_and_js($page) {
-        if($page == "media_page_folders-replace-media") {
+	    if($page == "media_page_folders-replace-media" || $page == "admin_page_folders-replace-media") {
             wp_enqueue_style('folders-media', plugin_dir_url(dirname(__FILE__)) . 'assets/css/replace-media.css', array(), WCP_FOLDER_VERSION);
             wp_enqueue_script('folders-media', plugin_dir_url(dirname(__FILE__)) . 'assets/js/replace-media.js', array(), WCP_FOLDER_VERSION);
         }
     }
 
-    public function admin_menu()
-    {
+    public function admin_menu() {
         add_submenu_page(null,
             esc_html__("Replace media", "folders"),
             esc_html__("Replace media", "folders"),
@@ -69,10 +85,23 @@ class folders_replace_media {
     }
 
     public function add_media_action($actions, $post) {
-        $link = $this->getMediaReplaceURL($post->ID);
+        if(!$this->is_enabled) {
+	        return array_merge($actions);
+        }
+	    if (wp_attachment_is('image', $post->ID)) {
+		    $link = $this->getMediaReplaceURL( $post->ID );
 
-        $newaction['replace_media'] = '<a style="color: '.$this->button_color.'" href="' . $link . '" rel="permalink">' . esc_html__("Replace media", "folders") . '</a>';
-        return array_merge($actions, $newaction);
+		    $newaction['replace_media'] = '<a style="color: ' . $this->button_color . '" href="' . $link . '" rel="permalink">' . esc_html__( "Replace media", "folders" ) . '</a>';
+
+		    return array_merge( $actions, $newaction );
+	    } else {
+		    $link = $this->getMediaReplaceURL( $post->ID );
+
+		    $newaction['replace_media'] = '<a style="color: ' . $this->button_color . '" target="_blank" href="' . $this->upgradeLink . '" rel="permalink">' . esc_html__( "Replace Media 🔑", "folders" ) . '</a>';
+
+		    return array_merge( $actions, $newaction );
+	    }
+	    return $actions;
     }
 
     public function getMediaReplaceURL($attach_id) {
@@ -88,8 +117,12 @@ class folders_replace_media {
     }
 
     public function replace_meta_box($post) {
-        $link = $this->getMediaReplaceURL($post->ID);
-        echo "<p><a style='background: {$this->button_color}; border-color: {$this->button_color}; color:#ffffff' href='" . $link . "' class='button-secondary'>" . esc_html__("Upload a new file", "folders") . "</a></p><p>" . esc_html__("Click on the button to replace the file with another file", "folders") . "</p>";
+	    if (wp_attachment_is('image', $post->ID)) {
+		    $link = $this->getMediaReplaceURL($post->ID);
+		    echo "<p><a style='background: {$this->button_color}; border-color: {$this->button_color}; color:#ffffff' href='" . $link . "' class='button-secondary'>" . esc_html__( "Upload a new file", "folders" ) . "</a></p><p>" . esc_html__( "Click on the button to replace the file with another file", "folders" ) . "</p>";
+	    } else {
+		    echo "<p><a style='color: {$this->button_color}; font-weight: 500' target='_blank' href='" . $this->upgradeLink . "' >" . esc_html__( "Upgrade to Pro", "folders" ) . "</a> ".esc_html__( "to replace any kind of files while uploading including pdf/svg/docx/etc & more.", "folders" ) . "</p>";
+	    }
     }
 
     public function attachment_editor($form_fields, $post)
@@ -102,13 +135,22 @@ class folders_replace_media {
             if(! is_null($screen) && $screen->id == 'attachment') // hide on edit attachment screen.
                 return $form_fields;
         }
-
-        $link = $this->getMediaReplaceURL($post->ID);
-        $form_fields["folders"] = array(
-            "label" => esc_html__("Replace media", "folders"),
-            "input" => "html",
-            "html" => "<a style='background: {$this->button_color}; border-color: {$this->button_color}; color:#ffffff' href='" . $link . "' class='button-secondary'>" . esc_html__("Upload a new file", "folders") . "</a>", "helps" => esc_html__("Click on the button to replace the file with another file", "folders")
-        );
+	    if (wp_attachment_is('image', $post->ID)) {
+		    $link                   = $this->getMediaReplaceURL( $post->ID );
+		    $form_fields["folders"] = array(
+			    "label" => esc_html__( "Replace media", "folders" ),
+			    "input" => "html",
+			    "html"  => "<a style='background: {$this->button_color}; border-color: {$this->button_color}; color:#ffffff' href='" . $link . "' class='button-secondary'>" . esc_html__( "Upload a new file", "folders" ) . "</a>",
+			    "helps" => esc_html__( "Click on the button to replace the file with another file", "folders" )
+		    );
+	    } else {
+		    $form_fields["folders"] = array(
+			    "label" => esc_html__( "Replace media", "folders" ),
+			    "input" => "html",
+			    "html"  => "<div style='border: solid 1px #c0c0c0; padding: 10px; border-radius: 2px; background: #ececec;'><a style='color: {$this->button_color}; font-weight: 500' target='_blank' href='" . $this->upgradeLink . "' >" . esc_html__( "Upgrade to Pro", "folders" ) . "</a> ".esc_html__( "to replace media files other than images", "folders" ) . "</div>",
+			    "helps" => esc_html__( "Click on the button to replace the file with another file", "folders" )
+		    );
+	    }
 
         return $form_fields;
     }

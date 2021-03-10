@@ -1,0 +1,141 @@
+.thx-page {
+  &__inner {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    //@include breakpoint(md) {
+    //  flex-direction: row-reverse;
+    //  align-items: center;
+    //}
+  }
+
+  &__image, &__content {
+    @include flex-col(12, 12);
+
+    @include breakpoint(sm) {
+      @include flex-col(10);
+      @include offset(1);
+    }
+    @include breakpoint(md) {
+      @include flex-col(10);
+      @include offset(1);
+    }
+  }
+
+  &__image {
+    @include breakpoint(md) {
+      @include flex-col(8);
+      @include offset(2);
+    }
+    h2 {
+      text-align: center;
+    }
+  }
+
+  &__content {
+    margin-top: rem(40);
+    display: flex;
+    flex-wrap: wrap;
+
+    @include breakpoint(md) {
+      align-items: center;
+    }
+
+
+
+    .woocommerce-order-overview {
+      margin-top: rem(32) !important;
+      @include flex-col(12);
+      @include breakpoint(md) {
+        margin: 0 !important;
+        @include flex-col(6);
+      }
+      li {
+        float: inherit !important;
+        margin-right: 0 !important;
+        text-transform: none !important;
+        border-right: 0 !important;
+        padding-right: 0 !important;
+
+        & + li {
+          margin-top: rem(8);
+        }
+
+      }
+    }
+
+    .summary__content {
+      @include breakpoint-max(sm) {
+        overflow: scroll;
+      }
+    }
+
+    table {
+      @extend p;
+      border-collapse: collapse;
+      margin: rem(24) 0;
+      font-size: 0.9em;
+      border-top-left-radius: rem(8);
+      border-top-right-radius: rem(8);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+      width: 100%;
+      overflow: hidden;
+      display: table;
+
+      * {
+        @extend p;
+      }
+
+      @include breakpoint-max(md) {
+        white-space: nowrap;
+      }
+
+      thead tr {
+        font-weight: bold;
+        background-color: $secondary-01;
+        color: #ffffff;
+        text-align: left;
+        th {
+          color: white;
+        }
+      }
+
+      th, td {
+        padding: rem(12) rem(15);
+      }
+
+      tbody tr {
+        border-bottom: rem(1) solid #dddddd;
+      }
+
+      tbody tr:nth-of-type(even) {
+        background-color: rgba(36, 181, 180, 0.1);
+      }
+
+      tbody tr:last-of-type {
+        border-bottom: rem(2) solid $secondary-02;
+      }
+
+    }
+
+    .woocommerce-table {
+      &__product-name {
+        a {
+          @extend %link;
+        }
+        .cartProduct__info {
+          margin-top: rem(8);
+          margin-left: rem(16);
+        }
+      }
+    }
+
+    .woocommerce-order-details {
+      @include flex-col(12);
+      @include breakpoint(md) {
+        @include flex-col(6);
+      }
+    }
+
+  }
+}
